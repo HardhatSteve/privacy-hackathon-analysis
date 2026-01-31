@@ -1,0 +1,4 @@
+# Ignore cloned hackathon repos (only keep analysis)
+*/
+!analyses/
+!.gitignore
