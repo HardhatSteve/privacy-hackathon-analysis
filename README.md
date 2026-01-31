@@ -208,6 +208,110 @@ Each repository analyzed via parallel agents examining:
 
 ---
 
+## Project Repositories
+
+| Project | GitHub |
+|---------|--------|
+| AgenC_Moltbook_Agent | [tetsuo-ai/AgenC_Moltbook_Agent](https://github.com/tetsuo-ai/AgenC_Moltbook_Agent) |
+| anamnesis | [ranuts/anamnesis](https://github.com/ranuts/anamnesis) |
+| anoma.cash | [anomacash/anoma.cash](https://github.com/anomacash/anoma.cash) |
+| anon0mesh | [anon0mesh/anon0mesh](https://github.com/anon0mesh/anon0mesh) |
+| arcium-dev-skill | [outsmartchad/arcium-dev-skill](https://github.com/outsmartchad/arcium-dev-skill) |
+| Arcshield | [EmperorLuxionVibecoder/Arcshield](https://github.com/EmperorLuxionVibecoder/Arcshield) |
+| Auction-App-Data-Processing_AWS-Pipeline | [ArgyaSR/Auction-App-Data-Processing_AWS-Pipeline](https://github.com/ArgyaSR/Auction-App-Data-Processing_AWS-Pipeline) |
+| AURORAZK_SUBMISSION | [PotluckProtocol/AURORAZK_SUBMISSION](https://github.com/PotluckProtocol/AURORAZK_SUBMISSION) |
+| awesome-privacy-on-solana | [catmcgee/awesome-privacy-on-solana](https://github.com/catmcgee/awesome-privacy-on-solana) |
+| Axtral-priv | [web3-engineer/Axtral-priv](https://github.com/web3-engineer/Axtral-priv) |
+| blog-sip | [sip-protocol/blog-sip](https://github.com/sip-protocol/blog-sip) |
+| chameo | [chigozzdevv/chameo](https://github.com/chigozzdevv/chameo) |
+| circuits | [sip-protocol/circuits](https://github.com/sip-protocol/circuits) |
+| cleanproof-frontend | [Pavelevich/cleanproof-frontend](https://github.com/Pavelevich/cleanproof-frontend) |
+| cloakcraft | [craft-ec/cloakcraft](https://github.com/craft-ec/cloakcraft) |
+| confpay | [Somtiee/confpay](https://github.com/Somtiee/confpay) |
+| core | [orroprotocol/core](https://github.com/orroprotocol/core) |
+| custos-cli | [Custos-Sec/custos-cli](https://github.com/Custos-Sec/custos-cli) |
+| Dark-Null-Protocol | [Parad0x-Labs/Dark-Null-Protocol](https://github.com/Parad0x-Labs/Dark-Null-Protocol) |
+| DarkTip | [UncleTom29/DarkTip](https://github.com/UncleTom29/DarkTip) |
+| deploy-shield | [Emengkeng/deploy-shield](https://github.com/Emengkeng/deploy-shield) |
+| docs-sip | [sip-protocol/docs-sip](https://github.com/sip-protocol/docs-sip) |
+| donatrade | [donatrade/donatrade](https://github.com/donatrade/donatrade) |
+| ECHO | [Shawnchee/ECHO](https://github.com/Shawnchee/ECHO) |
+| encryptedMessagingChat | [adnene-guessoum/encryptedMessagingChat](https://github.com/adnene-guessoum/encryptedMessagingChat) |
+| epoch | [epochdotm/epoch](https://github.com/epochdotm/epoch) |
+| ExposureCheck | [bhoopeshdev/ExposureCheck](https://github.com/bhoopeshdev/ExposureCheck) |
+| hushfold | [hushfold/hushfold](https://github.com/hushfold/hushfold) |
+| hydentity | [hydentity/hydentity](https://github.com/hydentity/hydentity) |
+| IAP | [IAP-xyz/IAP](https://github.com/IAP-xyz/IAP) |
+| incognito-protocol | [incognito-protocol/incognito-protocol](https://github.com/incognito-protocol/incognito-protocol) |
+| Iris-QuickNode-Kotlin-SDK | [truong-xuan-linh/Iris-QuickNode-Kotlin-SDK](https://github.com/truong-xuan-linh/Iris-QuickNode-Kotlin-SDK) |
+| LeakLens | [MatthewSullivn/LeakLens](https://github.com/MatthewSullivn/LeakLens) |
+| Mukon-messenger | [Mukon-app/Mukon-messenger](https://github.com/Mukon-app/Mukon-messenger) |
+| n8n-nodes-trezor | [velocity-bpa/n8n-nodes-trezor](https://github.com/velocity-bpa/n8n-nodes-trezor) |
+| nahualli | [nahualli-labs/nahualli](https://github.com/nahualli-labs/nahualli) |
+| OBSCURA-PRIVACY | [mzf11125/OBSCURA-PRIVACY](https://github.com/mzf11125/OBSCURA-PRIVACY) |
+| Obsidian | [Obsidian-ZK/Obsidian](https://github.com/Obsidian-ZK/Obsidian) |
+| opencoins | [PHalla0/opencoins](https://github.com/PHalla0/opencoins) |
+| paraloom-core | [paraloom-labs/paraloom-core](https://github.com/paraloom-labs/paraloom-core) |
+| pigeon | [pigeon-chat/pigeon](https://github.com/pigeon-chat/pigeon) |
+| PNPFUCIUS | [pnp-protocol/pnpfucius](https://github.com/pnp-protocol/pnpfucius) |
+| privacy-execution-layer | [privacy-execution-layer/protocol](https://github.com/privacy-execution-layer/protocol) |
+| privacy-pay | [yomite47/privacy-pay](https://github.com/yomite47/privacy-pay) |
+| privacy-vault | [Pavelevich/privacy-vault](https://github.com/Pavelevich/privacy-vault) |
+| privacylens | [privacylens/privacylens](https://github.com/privacylens/privacylens) |
+| Privatepay | [Privatepay-sol/Privatepay](https://github.com/Privatepay-sol/Privatepay) |
+| PrivyLocker | [Nitish-d-Great/PrivyLocker](https://github.com/Nitish-d-Great/PrivyLocker) |
+| Protocol-01 | [IsSlashy/Protocol-01](https://github.com/IsSlashy/Protocol-01) |
+| PublicTesting | [PublicTesting/PublicTesting](https://github.com/PublicTesting/PublicTesting) |
+| QN-Privacy-Gateway | [QN-Privacy-Gateway/QN-Privacy-Gateway](https://github.com/QN-Privacy-Gateway/QN-Privacy-Gateway) |
+| rentreclaim-privacy | [ayubeay/rentreclaim-privacy](https://github.com/ayubeay/rentreclaim-privacy) |
+| ruka0911 | [ruka0911/ruka0911](https://github.com/ruka0911/ruka0911) |
+| safesol | [safesol-team/safesol](https://github.com/safesol-team/safesol) |
+| sapp | [sapp-dev/sapp](https://github.com/sapp-dev/sapp) |
+| Scope-privacy-engine | [xxpopielxx/Scope-privacy-engine](https://github.com/xxpopielxx/Scope-privacy-engine) |
+| seedpay-solana-privacy-hack | [seedpay/seedpay-solana-privacy-hack](https://github.com/seedpay/seedpay-solana-privacy-hack) |
+| shadow | [some1uknow/shadow](https://github.com/some1uknow/shadow) |
+| shadow-fence | [techbones59/shadow-fence](https://github.com/techbones59/shadow-fence) |
+| shadow-tracker | [Pavelevich/shadow-tracker](https://github.com/Pavelevich/shadow-tracker) |
+| shielded-pool-pinocchio-solana | [shielded-pool/shielded-pool-pinocchio-solana](https://github.com/shielded-pool/shielded-pool-pinocchio-solana) |
+| shieldedremit | [shieldedremit/shieldedremit](https://github.com/shieldedremit/shieldedremit) |
+| Silent-Rails | [NorthArchitecture/Silent-Rails](https://github.com/NorthArchitecture/Silent-Rails) |
+| sip-app | [sip-protocol/sip-app](https://github.com/sip-protocol/sip-app) |
+| sip-mobile | [sip-protocol/sip-mobile](https://github.com/sip-protocol/sip-mobile) |
+| sip-protocol | [sip-protocol/sip-protocol](https://github.com/sip-protocol/sip-protocol) |
+| sip-website | [sip-protocol/sip-website](https://github.com/sip-protocol/sip-website) |
+| solana-exposure-scanner | [solanagod2003-gif/solana-exposure-scanner](https://github.com/solanagod2003-gif/solana-exposure-scanner) |
+| solana-exposure-scanner-2 | [solana-exposure-scanner/solana-exposure-scanner-2](https://github.com/solana-exposure-scanner/solana-exposure-scanner-2) |
+| Solana-Privacy-CLI | [Solana-Privacy-CLI/Solana-Privacy-CLI](https://github.com/Solana-Privacy-CLI/Solana-Privacy-CLI) |
+| Solana-Privacy-Hack- | [Solana-Privacy-Hack/Solana-Privacy-Hack-](https://github.com/Solana-Privacy-Hack/Solana-Privacy-Hack-) |
+| solana-privacy-hack | [solana-privacy-hack/solana-privacy-hack](https://github.com/solana-privacy-hack/solana-privacy-hack) |
+| solana-privacy-hack-frontend | [solana-privacy-hack/solana-privacy-hack-frontend](https://github.com/solana-privacy-hack/solana-privacy-hack-frontend) |
+| Solana-Privacy-Hackathon-2026 | [Solana-Privacy-Hackathon-2026/Solana-Privacy-Hackathon-2026](https://github.com/Solana-Privacy-Hackathon-2026/Solana-Privacy-Hackathon-2026) |
+| solana-privacy-rpc | [solana-privacy-rpc/solana-privacy-rpc](https://github.com/solana-privacy-rpc/solana-privacy-rpc) |
+| solana-privacy-scanner | [taylorferran/solana-privacy-scanner](https://github.com/taylorferran/solana-privacy-scanner) |
+| solana-privacy-shield | [solana-privacy-shield/solana-privacy-shield](https://github.com/solana-privacy-shield/solana-privacy-shield) |
+| SolanaPrivacyHackathon2026 | [joinQuantish/SolanaPrivacyHackathon2026](https://github.com/joinQuantish/SolanaPrivacyHackathon2026) |
+| SolanaPrivacyKit | [SolanaPrivacyKit/SolanaPrivacyKit](https://github.com/SolanaPrivacyKit/SolanaPrivacyKit) |
+| solprivacy-cli | [Pavelevich/solprivacy-cli](https://github.com/Pavelevich/solprivacy-cli) |
+| solShare | [solShare/solShare](https://github.com/solShare/solShare) |
+| SolsticeProtocol | [Shaurya2k06/SolsticeProtocol](https://github.com/Shaurya2k06/SolsticeProtocol) |
+| SolVoid | [brainless3178/SolVoid](https://github.com/brainless3178/SolVoid) |
+| stealth-rails-SDK | [stealth-rails/stealth-rails-SDK](https://github.com/stealth-rails/stealth-rails-SDK) |
+| StealthPay | [StealthPay/StealthPay](https://github.com/StealthPay/StealthPay) |
+| synelar | [synelar/synelar](https://github.com/synelar/synelar) |
+| unified-trust-protocol-sdk | [unified-trust-protocol/unified-trust-protocol-sdk](https://github.com/unified-trust-protocol/unified-trust-protocol-sdk) |
+| unstoppable-wallet-android | [horizontalsystems/unstoppable-wallet-android](https://github.com/horizontalsystems/unstoppable-wallet-android) |
+| vapor-tokens | [vapor-tokens/vapor-tokens](https://github.com/vapor-tokens/vapor-tokens) |
+| veil | [psyto/veil](https://github.com/psyto/veil) |
+| Veil-SDK | [Veil-SDK/Veil-SDK](https://github.com/Veil-SDK/Veil-SDK) |
+| velum | [velumdotcash/velum](https://github.com/velumdotcash/velum) |
+| wavis-protocol | [wavis-protocol/wavis-protocol](https://github.com/wavis-protocol/wavis-protocol) |
+| yieldcash-solana-privacy | [yieldcash/yieldcash-solana-privacy](https://github.com/yieldcash/yieldcash-solana-privacy) |
+| zelana | [zelana-labs/zelana](https://github.com/zelana-labs/zelana) |
+| zkprof | [zkprof/zkprof](https://github.com/zkprof/zkprof) |
+| zmix | [zmix-sol/zmix](https://github.com/zmix-sol/zmix) |
+
+---
+
 ## Related Files
 
 - [WINNER_PREDICTIONS.md](WINNER_PREDICTIONS.md) - Predicted winners by track
