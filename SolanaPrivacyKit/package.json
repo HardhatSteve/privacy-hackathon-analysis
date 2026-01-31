@@ -1,0 +1,18 @@
+{
+  "name": "privacy-devkit-solana",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Monorepo for Solana privacy devkit (SDK, CLI, demo)",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "build:sdk": "npm run build -w @privacy-devkit/sdk",
+    "build:cli": "npm run build -w @privacy-devkit/cli",
+    "dev:demo": "npm run dev -w demo"
+  },
+  "keywords": ["solana", "privacy", "monorepo"],
+  "license": "MIT"
+}

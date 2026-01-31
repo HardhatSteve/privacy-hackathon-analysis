@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORRO | Discovery Survey</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* ORRO V2.2 Color Palette */
+            --bg-primary: #0a0a0c;
+            --surface: #16161a;
+            --accent-glow: #00f2ff;
+            --text-main: #e4e4e7;
+            --text-dim: #a1a1aa;
+            --border-subtle: #27272a;
+            --transition-speed: 0.25s;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 1rem;
+        }
+
+        .survey-container {
+            background: var(--surface);
+            border: 1px solid var(--border-subtle);
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            margin: 0 0 0.75rem 0;
+            letter-spacing: -0.02em;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            color: var(--text-dim);
+            font-size: 1rem;
+            margin: 0 0 2rem 0;
+        }
+
+        .subtitle .brand {
+            background: var(--bg-primary);
+            color: var(--text-main);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-left: 4px;
+        }
+
+        /* Button Grid */
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            column-gap: 12px;
+            row-gap: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .source-option {
+            display: block;
+        }
+
+        .source-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .source-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-main);
+            padding: 12px 14px;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-speed);
+            text-align: left;
+        }
+
+        .source-btn i {
+            font-size: 1.1rem;
+            width: 20px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .source-btn span {
+            flex: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            min-width: 0;
+        }
+
+        .source-option:hover .source-btn {
+            border-color: rgba(0, 242, 255, 0.3);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .source-option input:checked + .source-btn {
+            border-color: var(--accent-glow);
+            background: rgba(0, 242, 255, 0.08);
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.15);
+        }
+
+        /* Submit Button */
+        button.action-btn {
+            width: 100%;
+            padding: 0.95rem;
+            background: var(--text-main);
+            color: var(--bg-primary);
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        button.action-btn:hover {
+            opacity: 0.9;
+        }
+
+        button.action-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 640px) {
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .survey-container {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="survey-container">
+        <h1>How did you discover us?</h1>
+        <p class="subtitle">Tell us where you first heard about orro</p>
+
+        <form action="/onboard/discovery" method="POST" id="discoveryForm">
+            <div class="options-grid">
+                
+                <label class="source-option">
+                    <input type="radio" name="source" value="facebook">
+                    <div class="source-btn">
+                        <i class="fab fa-facebook"></i>
+                        <span>Facebook</span>
+                    </div>
+                </label>
+
+                <label class="source-option">
+                    <input type="radio" name="source" value="instagram">
+                    <div class="source-btn">
+                        <i class="fab fa-instagram"></i>
+                        <span>Instagram</span>
+                    </div>
+                </label>
+
+                <label class="source-option">
+                    <input type="radio" name="source" value="tiktok">
+                    <div class="source-btn">
+                        <i class="fab fa-tiktok"></i>
+                        <span>TikTok</span>
+                    </div>
+                </label>
+
+                <label class="source-option">
+                    <input type="radio" name="source" value="youtube">
+                    <div class="source-btn">
+                        <i class="fab fa-youtube"></i>
+                        <span>YouTube</span>
+                    </div>
+                </label>
+
+                <label class="source-option">
+                    <input type="radio" name="source" value="twitter">
+                    <div class="source-btn">
+                        <i class="fab fa-twitter"></i>
+                        <span>Twitter / X</span>
+                    </div>
+                </label>
+
+                <label class="source-option">
+                    <input type="radio" name="source" value="linkedin">
+                    <div class="source-btn">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </div>
+                </label>
+
+                <label class="source-option">
+                    <input type="radio" name="source" value="reddit">
+                    <div class="source-btn">
+                        <i class="fab fa-reddit"></i>
+                        <span>Reddit</span>
+                    </div>
+                </label>
+
+                <label class="source-option">
+                    <input type="radio" name="source" value="google">
+                    <div class="source-btn">
+                        <i class="fab fa-google"></i>
+                        <span>Google search</span>
+                    </div>
+                </label>
+
+                <label class="source-option">
+                    <input type="radio" name="source" value="newsletter">
+                    <div class="source-btn">
+                        <i class="fas fa-envelope"></i>
+                        <span>Newsletter (e.g., AI Snacks)</span>
+                    </div>
+                </label>
+
+                <label class="source-option">
+                    <input type="radio" name="source" value="app-store">
+                    <div class="source-btn">
+                        <i class="fab fa-apple"></i>
+                        <span>App Store (iOS)</span>
+                    </div>
+                </label>
+
+                <label class="source-option">
+                    <input type="radio" name="source" value="play-store">
+                    <div class="source-btn">
+                        <i class="fab fa-google-play"></i>
+                        <span>Play Store (Android)</span>
+                    </div>
+                </label>
+
+                <label class="source-option">
+                    <input type="radio" name="source" value="podcast">
+                    <div class="source-btn">
+                        <i class="fas fa-headphones"></i>
+                        <span>Podcast</span>
+                    </div>
+                </label>
+
+                <label class="source-option">
+                    <input type="radio" name="source" value="affiliate">
+                    <div class="source-btn">
+                        <i class="fas fa-handshake"></i>
+                        <span>Affiliate / Partner</span>
+                    </div>
+                </label>
+
+                <label class="source-option">
+                    <input type="radio" name="source" value="blog">
+                    <div class="source-btn">
+                        <i class="fas fa-newspaper"></i>
+                        <span>Blog / Article</span>
+                    </div>
+                </label>
+
+                <label class="source-option">
+                    <input type="radio" name="source" value="friends">
+                    <div class="source-btn">
+                        <i class="fas fa-user-friends"></i>
+                        <span>Friends</span>
+                    </div>
+                </label>
+
+                <label class="source-option">
+                    <input type="radio" name="source" value="ai-communities">
+                    <div class="source-btn">
+                        <i class="fas fa-plus"></i>
+                        <span>AI communities</span>
+                    </div>
+                </label>
+
+                <label class="source-option">
+                    <input type="radio" name="source" value="discord">
+                    <div class="source-btn">
+                        <i class="fab fa-discord"></i>
+                        <span>Discord</span>
+                    </div>
+                </label>
+
+                <label class="source-option">
+                    <input type="radio" name="source" value="other">
+                    <div class="source-btn">
+                        <i class="fas fa-ellipsis-h"></i>
+                        <span>Other</span>
+                    </div>
+                </label>
+
+            </div>
+
+            <button type="submit" class="action-btn">Continue</button>
+        </form>
+    </div>
+
+    <script>
+        // Optional: Enable/disable submit button based on selection
+        const form = document.getElementById('discoveryForm');
+        const checkboxes = form.querySelectorAll('input[type="radio"]');
+        const submitBtn = form.querySelector('.action-btn');
+
+        // Uncomment to require at least one selection
+        /*
+        function updateSubmitState() {
+            const hasSelection = Array.from(checkboxes).some(cb => cb.checked);
+            submitBtn.disabled = !hasSelection;
+        }
+
+        checkboxes.forEach(cb => {
+            cb.addEventListener('change', updateSubmitState);
+        });
+
+        updateSubmitState();
+        */
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,449 @@
+// Prisma schema for PrivacyLens
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// User & Authentication
+// ============================================
+
+model User {
+  id            String    @id @default(cuid())
+  clerkId       String    @unique
+  email         String    @unique
+  name          String?
+  avatarUrl     String?
+
+  // Subscription
+  tier          UserTier  @default(FREE)
+  stripeId      String?   @unique
+
+  // Settings
+  emailNotifications Boolean @default(true)
+  weeklyDigest       Boolean @default(true)
+
+  // Relations
+  programs      Program[]
+  analyses      Analysis[]
+  apiKeys       ApiKey[]
+  teams         TeamMember[]
+  comments      Comment[]
+
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@index([clerkId])
+  @@index([email])
+}
+
+enum UserTier {
+  FREE
+  PRO
+  TEAM
+  ENTERPRISE
+}
+
+model ApiKey {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  name        String
+  keyHash     String   @unique
+  keyPrefix   String   // First 8 chars for identification
+
+  permissions String[] @default(["read", "analyze"])
+
+  lastUsedAt  DateTime?
+  expiresAt   DateTime?
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([userId])
+  @@index([keyHash])
+}
+
+// ============================================
+// Teams & Collaboration
+// ============================================
+
+model Team {
+  id          String       @id @default(cuid())
+  name        String
+  slug        String       @unique
+  avatarUrl   String?
+
+  members     TeamMember[]
+  programs    Program[]
+
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  @@index([slug])
+}
+
+model TeamMember {
+  id        String   @id @default(cuid())
+  teamId    String
+  team      Team     @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  role      TeamRole @default(MEMBER)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([teamId, userId])
+  @@index([teamId])
+  @@index([userId])
+}
+
+enum TeamRole {
+  OWNER
+  ADMIN
+  MEMBER
+  VIEWER
+}
+
+// ============================================
+// Programs & Analysis
+// ============================================
+
+model Program {
+  id              String    @id @default(cuid())
+
+  // Program identification
+  address         String    @unique
+  name            String
+  description     String?
+  category        ProgramCategory @default(OTHER)
+
+  // Ownership
+  userId          String?
+  user            User?     @relation(fields: [userId], references: [id], onDelete: SetNull)
+  teamId          String?
+  team            Team?     @relation(fields: [teamId], references: [id], onDelete: SetNull)
+
+  // Verification
+  isVerified      Boolean   @default(false)
+  verifiedAt      DateTime?
+
+  // External links
+  website         String?
+  github          String?
+  twitter         String?
+
+  // Leaderboard
+  isPublic        Boolean   @default(false)
+
+  // Relations
+  analyses        Analysis[]
+
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@index([address])
+  @@index([userId])
+  @@index([teamId])
+  @@index([category])
+  @@index([isPublic, isVerified])
+}
+
+enum ProgramCategory {
+  DEFI
+  NFT
+  GAMING
+  DAO
+  SOCIAL
+  INFRASTRUCTURE
+  ORACLE
+  BRIDGE
+  WALLET
+  OTHER
+}
+
+model Analysis {
+  id              String   @id @default(cuid())
+
+  // Relations
+  programId       String
+  program         Program  @relation(fields: [programId], references: [id], onDelete: Cascade)
+  userId          String?
+  user            User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  // Analysis configuration
+  depth           AnalysisDepth @default(STANDARD)
+  focusAreas      String[]      @default([])
+
+  // Status
+  status          AnalysisStatus @default(PENDING)
+  progress        Int            @default(0)
+  startedAt       DateTime?
+  completedAt     DateTime?
+  errorMessage    String?
+
+  // Results - Privacy Score
+  overallScore    Int?
+  encryptionScore Int?
+  accessControlScore Int?
+  dataPrivacyScore   Int?
+  sideChannelScore   Int?
+  piiHandlingScore   Int?
+
+  // Score metadata
+  confidence      Float?
+  percentile      Float?
+
+  // Bytecode hash for caching
+  bytecodeHash    String?
+
+  // Relations
+  vulnerabilities Vulnerability[]
+  recommendations Recommendation[]
+  comments        Comment[]
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([programId])
+  @@index([userId])
+  @@index([status])
+  @@index([createdAt])
+  @@index([overallScore])
+}
+
+enum AnalysisDepth {
+  QUICK
+  STANDARD
+  DEEP
+}
+
+enum AnalysisStatus {
+  PENDING
+  PARSING
+  ANALYZING
+  SCORING
+  COMPLETED
+  FAILED
+}
+
+// ============================================
+// Vulnerabilities & Recommendations
+// ============================================
+
+model Vulnerability {
+  id              String   @id @default(cuid())
+
+  analysisId      String
+  analysis        Analysis @relation(fields: [analysisId], references: [id], onDelete: Cascade)
+
+  // Vulnerability details
+  title           String
+  description     String   @db.Text
+  severity        Severity
+  category        VulnerabilityCategory
+
+  // Location
+  location        String?
+  lineStart       Int?
+  lineEnd         Int?
+  instruction     String?
+
+  // Impact & remediation
+  impact          String   @db.Text
+  attackScenario  String?  @db.Text
+  recommendation  String   @db.Text
+  codeExample     String?  @db.Text
+  fixedExample    String?  @db.Text
+
+  // References
+  cweId           String?
+  owaspId         String?
+  references      String[] @default([])
+
+  // Detection metadata
+  confidence      Float    @default(0.9)
+  detectorId      String
+
+  // Status
+  isAcknowledged  Boolean  @default(false)
+  isFalsePositive Boolean  @default(false)
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([analysisId])
+  @@index([severity])
+  @@index([category])
+}
+
+enum Severity {
+  CRITICAL
+  HIGH
+  MEDIUM
+  LOW
+  INFO
+}
+
+enum VulnerabilityCategory {
+  PII_EXPOSURE
+  TIMING_ATTACK
+  STATE_LEAKAGE
+  TRANSACTION_PRIVACY
+  ACCESS_CONTROL
+  CRYPTOGRAPHIC
+  SIDE_CHANNEL
+  DATA_AGGREGATION
+  CONFIGURATION
+  OTHER
+}
+
+model Recommendation {
+  id              String   @id @default(cuid())
+
+  analysisId      String
+  analysis        Analysis @relation(fields: [analysisId], references: [id], onDelete: Cascade)
+
+  title           String
+  description     String   @db.Text
+  category        RecommendationCategory
+  priority        Priority
+
+  // Implementation
+  effort          Effort
+  impact          Impact
+  codeExample     String?  @db.Text
+
+  // Related vulnerabilities
+  relatedVulnerabilityIds String[] @default([])
+
+  // Status
+  isImplemented   Boolean  @default(false)
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([analysisId])
+  @@index([priority])
+}
+
+enum RecommendationCategory {
+  ENCRYPTION
+  ACCESS_CONTROL
+  DATA_MINIMIZATION
+  KEY_MANAGEMENT
+  TIMING_PROTECTION
+  STATE_MANAGEMENT
+  BEST_PRACTICE
+}
+
+enum Priority {
+  CRITICAL
+  HIGH
+  MEDIUM
+  LOW
+}
+
+enum Effort {
+  EASY
+  MEDIUM
+  HARD
+}
+
+enum Impact {
+  HIGH
+  MEDIUM
+  LOW
+}
+
+// ============================================
+// Comments & Collaboration
+// ============================================
+
+model Comment {
+  id          String   @id @default(cuid())
+
+  analysisId  String
+  analysis    Analysis @relation(fields: [analysisId], references: [id], onDelete: Cascade)
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  content     String   @db.Text
+
+  // Threading
+  parentId    String?
+  parent      Comment? @relation("CommentReplies", fields: [parentId], references: [id])
+  replies     Comment[] @relation("CommentReplies")
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([analysisId])
+  @@index([userId])
+  @@index([parentId])
+}
+
+// ============================================
+// Usage & Analytics
+// ============================================
+
+model UsageRecord {
+  id          String   @id @default(cuid())
+
+  userId      String?
+  apiKeyId    String?
+
+  action      UsageAction
+  metadata    Json?
+
+  ipAddress   String?
+  userAgent   String?
+
+  createdAt   DateTime @default(now())
+
+  @@index([userId])
+  @@index([apiKeyId])
+  @@index([action])
+  @@index([createdAt])
+}
+
+enum UsageAction {
+  ANALYSIS_STARTED
+  ANALYSIS_COMPLETED
+  REPORT_GENERATED
+  REPORT_EXPORTED
+  API_CALL
+}
+
+// ============================================
+// Webhooks
+// ============================================
+
+model Webhook {
+  id          String   @id @default(cuid())
+
+  userId      String
+
+  url         String
+  secret      String
+  events      String[] @default([])
+
+  isActive    Boolean  @default(true)
+
+  lastTriggeredAt DateTime?
+  failureCount    Int      @default(0)
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([userId])
+  @@index([isActive])
+}

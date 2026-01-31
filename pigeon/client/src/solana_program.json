@@ -1,0 +1,248 @@
+{
+  "address": "4tPu12rEL3zjVXeKx5hTbDt4dH3dbo6dTELYfVGUGQyv",
+  "metadata": {
+    "name": "pigeon_program",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "register_user",
+      "discriminator": [
+        2,
+        241,
+        150,
+        223,
+        99,
+        214,
+        116,
+        97
+      ],
+      "accounts": [
+        {
+          "name": "user_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  117,
+                  115,
+                  101,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "authority"
+              }
+            ]
+          }
+        },
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "encryption_key",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
+      "name": "send_dm",
+      "discriminator": [
+        98,
+        158,
+        242,
+        215,
+        245,
+        45,
+        228,
+        233
+      ],
+      "accounts": [
+        {
+          "name": "chat_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  104,
+                  97,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "participant_a"
+              },
+              {
+                "kind": "account",
+                "path": "participant_b"
+              }
+            ]
+          }
+        },
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "participant_a"
+        },
+        {
+          "name": "participant_b"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "encrypted_text",
+          "type": "bytes"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "ChatAccount",
+      "discriminator": [
+        188,
+        218,
+        213,
+        242,
+        64,
+        84,
+        104,
+        17
+      ]
+    },
+    {
+      "name": "UserAccount",
+      "discriminator": [
+        211,
+        33,
+        136,
+        16,
+        186,
+        110,
+        242,
+        127
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "MessageTooLong",
+      "msg": "Message too long!"
+    },
+    {
+      "code": 6001,
+      "name": "EmptyMessage",
+      "msg": "Message cannot be empty!"
+    },
+    {
+      "code": 6002,
+      "name": "ChatFull",
+      "msg": "Chat is full! Maximum 10 messages reached."
+    },
+    {
+      "code": 6003,
+      "name": "InvalidParticipants",
+      "msg": "Chat participants do not match expected addresses."
+    },
+    {
+      "code": 6004,
+      "name": "UnauthorizedSender",
+      "msg": "Only chat participants can send messages."
+    }
+  ],
+  "types": [
+    {
+      "name": "ChatAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "participants",
+            "type": {
+              "array": [
+                "pubkey",
+                2
+              ]
+            }
+          },
+          {
+            "name": "messages",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "DirectMessage"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "DirectMessage",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "sender",
+            "type": "pubkey"
+          },
+          {
+            "name": "encrypted_payload",
+            "type": {
+              "array": [
+                "u8",
+                308
+              ]
+            }
+          },
+          {
+            "name": "payload_len",
+            "type": "u16"
+          },
+          {
+            "name": "timestamp",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "UserAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "encryption_pubkey",
+            "type": "pubkey"
+          }
+        ]
+      }
+    }
+  ]
+}

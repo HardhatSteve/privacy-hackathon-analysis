@@ -1,0 +1,80 @@
+# AuroraZK Project Context
+
+This is a dark limit order book for Solana using zero-knowledge proofs.
+
+## Project Overview
+AuroraZK is a privacy-first DEX where traders can place limit orders with hidden prices and sizes. Orders are committed on-chain using cryptographic hashes, and only revealed when matched with a counterparty. Settlement happens via ShadowWire private transfers.
+
+## Tech Stack
+- **Blockchain**: Solana (Devnet for development)
+- **Smart Contracts**: Anchor framework (Rust)
+- **Frontend**: Next.js 15 + TypeScript + Tailwind CSS
+- **Privacy Layer**: ShadowWire SDK for private transfers
+- **UI Components**: Radix UI primitives
+- **Animations**: Framer Motion
+
+## Directory Structure
+```
+AuroraZK/
+├── programs/           # Anchor programs (Rust)
+│   └── aurorazk/      # Main order book program
+├── app/               # Next.js frontend
+│   ├── app/          # App router pages
+│   ├── components/   # React components
+│   └── lib/          # Utilities and SDK wrappers
+├── tests/            # Integration tests
+├── Anchor.toml       # Anchor configuration
+└── Cargo.toml        # Rust workspace
+```
+
+## Key Principles
+1. **Privacy First**: All order prices/sizes are hidden using ZK commitments
+2. **Commit-Reveal Pattern**: Orders committed first, revealed only for matching
+3. **Private Settlement**: All trades settle via ShadowWire private transfers
+4. **Client-Side Proofs**: ZK proofs generated in browser for max privacy
+5. **Minimal Trust**: On-chain verification of all proofs
+
+## Important Technical Notes
+- ShadowWire requires wallet signature authentication
+- All amounts in lamports (1 SOL = 1e9 lamports)
+- Orders use 48-hour expiration by default
+- 1% relayer fee on all settled trades
+- Range proofs verify order validity without revealing values
+
+## Coding Conventions
+- Use `anchor_lang` prelude for Solana programs
+- TypeScript strict mode enabled
+- Tailwind CSS for all styling
+- Component files use PascalCase
+- Utility files use camelCase
+
+## Current Development Phase
+- [x] Project scaffolding
+- [x] Basic Anchor program with order placement
+- [x] Next.js frontend with wallet connection
+- [x] ShadowWire SDK integration
+- [ ] ZK commitment implementation
+- [ ] Range proof generation
+- [ ] Order matching logic
+- [ ] Settlement via ShadowWire
+
+## Commands Reference
+```bash
+# Anchor
+anchor build          # Build programs
+anchor test           # Run tests
+anchor deploy         # Deploy to devnet
+
+# Frontend
+cd app && npm run dev # Start dev server
+cd app && npm run build # Production build
+
+# Solana
+solana config set --url devnet
+solana airdrop 2 <WALLET>
+```
+
+## External Resources
+- ShadowWire Docs: https://github.com/Radrdotfun/ShadowWire
+- Anchor Book: https://www.anchor-lang.com/docs
+- Solana Cookbook: https://solanacookbook.com/

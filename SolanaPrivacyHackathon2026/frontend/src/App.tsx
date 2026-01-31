@@ -1,0 +1,317 @@
+import React, { useEffect, useState } from 'react';
+import { useWallet, useConnection } from '@solana/wallet-adapter-react';
+import { useWalletModal } from '@solana/wallet-adapter-react-ui';
+import { AppShell } from './components/layout/AppShell';
+import { MarketSearch } from './components/market/MarketSearch';
+import { MarketList } from './components/market/MarketList';
+import { SubWalletList } from './components/wallet/SubWalletList';
+import { Button } from './components/common/Button';
+import { Card } from './components/common/Card';
+import { FullPageSpinner } from './components/common/Spinner';
+import { DemoTabs, DemoTab } from './components/common/DemoTabs';
+import { ArciumDemo } from './components/arcium/ArciumDemo';
+import { useWalletStore } from './store/walletStore';
+import { LAMPORTS_PER_SOL, PublicKey } from '@solana/web3.js';
+
+function WelcomeScreen() {
+  const { setVisible } = useWalletModal();
+
+  return (
+    <div className="space-y-8">
+      {/* Hero Section */}
+      <div className="text-center py-8">
+        <h1 className="text-3xl font-bold text-qn-black mb-3 uppercase tracking-tight">
+          Private Prediction Markets
+        </h1>
+        <p className="text-qn-gray-500 max-w-lg mx-auto">
+          Trade prediction markets without linking your wallet to your positions.
+          Powered by Privacy Cash zero-knowledge proofs.
+        </p>
+      </div>
+
+      {/* How It Works - 3 Steps */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="bg-white p-5 border-2 border-qn-black" style={{ boxShadow: '4px 4px 0px 0px rgb(13, 13, 13)' }}>
+          <div className="w-10 h-10 bg-qn-black flex items-center justify-center mb-3">
+            <span className="text-white font-bold font-mono">1</span>
+          </div>
+          <h3 className="font-bold text-qn-black mb-1 uppercase text-sm tracking-wide">Connect Wallet</h3>
+          <p className="text-sm text-qn-gray-500">
+            Connect your Phantom wallet. This is your funding source.
+          </p>
+        </div>
+
+        <div className="bg-white p-5 border-2 border-qn-black" style={{ boxShadow: '4px 4px 0px 0px rgb(13, 13, 13)' }}>
+          <div className="w-10 h-10 bg-qn-black flex items-center justify-center mb-3">
+            <span className="text-white font-bold font-mono">2</span>
+          </div>
+          <h3 className="font-bold text-qn-black mb-1 uppercase text-sm tracking-wide">Choose a Market</h3>
+          <p className="text-sm text-qn-gray-500">
+            Browse prediction markets and pick your position (YES/NO).
+          </p>
+        </div>
+
+        <div className="bg-white p-5 border-2 border-qn-black" style={{ boxShadow: '4px 4px 0px 0px rgba(28, 202, 91, 0.4)' }}>
+          <div className="w-10 h-10 bg-accent-green flex items-center justify-center mb-3">
+            <span className="text-white font-bold font-mono">3</span>
+          </div>
+          <h3 className="font-bold text-qn-black mb-1 uppercase text-sm tracking-wide">Buy Privately</h3>
+          <p className="text-sm text-qn-gray-500">
+            Enable Privacy Mode to break the on-chain link between your wallet and position.
+          </p>
+        </div>
+      </div>
+
+      {/* Connect Button */}
+      <div className="flex justify-center">
+        <button
+          onClick={() => setVisible(true)}
+          className="bg-qn-black text-white font-bold px-8 py-3 text-lg uppercase tracking-wider border-2 border-qn-black transition-all duration-100 hover:translate-x-[-2px] hover:translate-y-[-2px]"
+          style={{ boxShadow: '4px 4px 0px 0px rgb(13, 13, 13)' }}
+        >
+          Connect Phantom to Start
+        </button>
+      </div>
+
+      {/* Markets Preview */}
+      <section className="pt-8 border-t-2 border-qn-black">
+        <h2 className="text-lg font-bold text-qn-black mb-4 uppercase tracking-wide">
+          Available Markets
+        </h2>
+        <div className="space-y-4">
+          <MarketSearch />
+          <MarketList />
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function ConnectedDashboard() {
+  const { publicKey, disconnect } = useWallet();
+  const { connection } = useConnection();
+  const { initialize, subWallets, isInitialized } = useWalletStore();
+  const [solBalance, setSolBalance] = useState<number | null>(null);
+  const [usdcBalance, setUsdcBalance] = useState<number | null>(null);
+  const [isLoadingBalance, setIsLoadingBalance] = useState(true);
+  const [showSubWallets, setShowSubWallets] = useState(false);
+
+  const address = publicKey?.toBase58() || '';
+  const shortAddress = address ? `${address.slice(0, 4)}...${address.slice(-4)}` : '';
+
+  // Initialize wallet store (loads sub-wallets from localStorage)
+  useEffect(() => {
+    if (!isInitialized) {
+      initialize();
+    }
+  }, [isInitialized, initialize]);
+
+  useEffect(() => {
+    if (!publicKey) return;
+
+    const fetchBalances = async () => {
+      setIsLoadingBalance(true);
+      try {
+        const balance = await connection.getBalance(publicKey);
+        setSolBalance(balance / LAMPORTS_PER_SOL);
+
+        const USDC_MINT = 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v';
+        const tokenAccounts = await connection.getParsedTokenAccountsByOwner(publicKey, {
+          mint: new PublicKey(USDC_MINT),
+        });
+
+        if (tokenAccounts.value.length > 0) {
+          setUsdcBalance(tokenAccounts.value[0].account.data.parsed.info.tokenAmount.uiAmount);
+        } else {
+          setUsdcBalance(0);
+        }
+      } catch (error) {
+        console.error('Failed to fetch balances:', error);
+      } finally {
+        setIsLoadingBalance(false);
+      }
+    };
+
+    fetchBalances();
+    const interval = setInterval(fetchBalances, 15000);
+    return () => clearInterval(interval);
+  }, [publicKey, connection]);
+
+  return (
+    <div className="space-y-6">
+      {/* Step Indicator */}
+      <div className="flex items-center justify-center gap-2 text-sm font-mono uppercase tracking-wider">
+        <span className="flex items-center gap-1.5 text-accent-green font-bold">
+          <span className="w-5 h-5 bg-accent-green flex items-center justify-center text-xs text-white font-bold">✓</span>
+          Connected
+        </span>
+        <span className="w-8 h-0.5 bg-qn-black"></span>
+        <span className="flex items-center gap-1.5 text-qn-gray-400">
+          <span className="w-5 h-5 border-2 border-qn-black flex items-center justify-center text-xs font-bold bg-white">2</span>
+          Choose Market
+        </span>
+        <span className="w-8 h-0.5 bg-qn-gray-300"></span>
+        <span className="flex items-center gap-1.5 text-qn-gray-400">
+          <span className="w-5 h-5 border-2 border-qn-black flex items-center justify-center text-xs font-bold bg-white">3</span>
+          Buy
+        </span>
+      </div>
+
+      {/* Wallet Card */}
+      <div className="bg-white border-2 border-qn-black p-6" style={{ boxShadow: '4px 4px 0px 0px rgb(13, 13, 13)' }}>
+        <div className="flex items-start justify-between mb-4">
+          <div>
+            <span className="text-xs font-bold text-qn-gray-500 uppercase tracking-widest font-mono">
+              Your Wallet
+            </span>
+            <div className="flex items-center gap-2 mt-1">
+              <span className="text-qn-gray-600 font-mono text-sm">{shortAddress}</span>
+              <button
+                onClick={() => navigator.clipboard.writeText(address)}
+                className="text-qn-gray-400 hover:text-qn-black"
+                title="Copy"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                </svg>
+              </button>
+              <a
+                href={`https://solscan.io/account/${address}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-qn-gray-400 hover:text-qn-black"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <button
+            onClick={disconnect}
+            className="text-qn-gray-400 hover:text-accent-red text-xs font-bold uppercase tracking-wider font-mono"
+          >
+            Disconnect
+          </button>
+        </div>
+
+        <div className="grid grid-cols-2 gap-4 pt-4 border-t-2 border-qn-gray-200">
+          <div>
+            <span className="text-qn-gray-400 text-xs font-mono uppercase">SOL</span>
+            <p className="text-xl font-bold text-qn-black font-mono">
+              {isLoadingBalance ? '...' : `${solBalance?.toFixed(4) || '0'}`}
+            </p>
+          </div>
+          <div>
+            <span className="text-qn-gray-400 text-xs font-mono uppercase">USDC</span>
+            <p className="text-xl font-bold text-accent-green font-mono">
+              {isLoadingBalance ? '...' : `$${usdcBalance?.toFixed(2) || '0.00'}`}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Privacy Info Banner */}
+      <div className="p-4 border-2 border-accent-green bg-accent-green/5" style={{ boxShadow: '4px 4px 0px 0px rgba(28, 202, 91, 0.3)' }}>
+        <div className="flex items-start gap-3">
+          <div className="w-10 h-10 bg-accent-green flex items-center justify-center flex-shrink-0">
+            <span className="text-xl">🔒</span>
+          </div>
+          <div>
+            <h3 className="text-sm font-bold text-qn-black uppercase tracking-wide">
+              How Privacy Mode Works
+            </h3>
+            <p className="text-xs text-qn-gray-500 mt-1">
+              When you buy with <span className="text-accent-green font-bold">Privacy Mode</span> enabled:
+            </p>
+            <ol className="text-xs text-qn-gray-500 mt-2 space-y-1 list-decimal list-inside">
+              <li>Your USDC goes to a temporary wallet (you sign once in Phantom)</li>
+              <li>That wallet deposits into Privacy Cash's ZK pool</li>
+              <li>A <span className="text-accent-green font-bold">new unlinked wallet</span> withdraws and places your order</li>
+              <li>Result: <span className="text-accent-green font-bold">No on-chain connection</span> between you and your position</li>
+            </ol>
+            <p className="text-[10px] text-qn-gray-400 mt-2 font-mono uppercase">
+              Fee: 0.35% + ~0.006 SOL | Powered by Privacy Cash
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Sub-Wallets Section (for receiving shares privately) */}
+      <section>
+        <div className="flex items-center justify-between mb-4">
+          <button
+            onClick={() => setShowSubWallets(!showSubWallets)}
+            className="flex items-center gap-2 text-lg font-bold text-qn-black hover:text-qn-gray-700 uppercase tracking-wide"
+          >
+            <span>🔐</span>
+            Privacy Wallets
+            <span className="text-xs text-qn-gray-400 font-mono">
+              ({subWallets.length})
+            </span>
+            <svg
+              className={`w-4 h-4 transition-transform ${showSubWallets ? 'rotate-180' : ''}`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+        </div>
+
+        {showSubWallets && (
+          <div className="mb-6">
+            <p className="text-sm text-qn-gray-500 mb-4">
+              These wallets receive your shares when using Privacy Mode.
+              They are <span className="text-accent-green font-bold">not linked</span> to your main wallet on-chain.
+            </p>
+            <SubWalletList />
+          </div>
+        )}
+      </section>
+
+      {/* Markets Section */}
+      <section>
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-lg font-bold text-qn-black uppercase tracking-wide">
+            Step 2: Choose a Market
+          </h2>
+        </div>
+        <p className="text-sm text-qn-gray-500 mb-4">
+          Click <span className="text-accent-green font-bold">Buy Yes</span> or <span className="text-accent-red font-bold">Buy No</span> on any market.
+          You'll see the Privacy Mode toggle in the order form.
+        </p>
+        <div className="space-y-4">
+          <MarketSearch />
+          <MarketList />
+        </div>
+      </section>
+    </div>
+  );
+}
+
+export default function App() {
+  const { connected, connecting } = useWallet();
+  const [activeTab, setActiveTab] = useState<DemoTab>('mainnet');
+
+  if (connecting) {
+    return <FullPageSpinner />;
+  }
+
+  return (
+    <AppShell>
+      {/* Demo Tab Navigation */}
+      <DemoTabs activeTab={activeTab} onTabChange={setActiveTab} />
+
+      {/* Tab Content */}
+      {activeTab === 'mainnet' ? (
+        // Mainnet Demo: Privacy Cash + zkNoir + Real Trading
+        connected ? <ConnectedDashboard /> : <WelcomeScreen />
+      ) : (
+        // Devnet Demo: Arcium MPC Integration
+        <ArciumDemo />
+      )}
+    </AppShell>
+  );
+}

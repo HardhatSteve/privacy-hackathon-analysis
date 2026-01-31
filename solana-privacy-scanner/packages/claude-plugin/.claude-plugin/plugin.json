@@ -1,0 +1,14 @@
+{
+  "name": "solana-privacy-scanner",
+  "description": "AI-powered Solana privacy analysis for developers. Detect privacy risks, get explanations, and receive fix suggestions.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Taylor Ferran",
+    "email": "taylor@anthropic.com"
+  },
+  "homepage": "https://taylorferran.github.io/solana-privacy-scanner",
+  "repository": "https://github.com/taylorferran/solana-privacy-scanner",
+  "license": "MIT",
+  "keywords": ["solana", "privacy", "security", "blockchain", "analysis"],
+  "commands": "./skills"
+}

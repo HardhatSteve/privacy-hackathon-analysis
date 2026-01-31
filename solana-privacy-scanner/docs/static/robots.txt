@@ -1,0 +1,27 @@
+# https://sps.guide/robots.txt
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://sps.guide/sitemap.xml
+
+# Crawl-delay (optional, helps with rate limiting)
+Crawl-delay: 1
+
+# Allow all search engines to index
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# Block if needed (currently allowing all)
+# Disallow: /api/
+# Disallow: /_next/

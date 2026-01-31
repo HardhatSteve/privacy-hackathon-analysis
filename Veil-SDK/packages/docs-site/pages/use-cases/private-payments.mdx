@@ -1,0 +1,44 @@
+# Private Payments
+
+Most users do not want "anonymity" in the illicit sense. They want **confidentiality** in the commercial sense. They don't want their salary, rent payments, or business suppliers visible to the entire world on a block explorer.
+
+## The Goal: Privacy, Not Secrecy
+
+When building a payment flow, you often face a dilemma:
+1.  **Raw Solana Transfers:** Fast, cheap, but completely public.
+2.  **Mixers/Tornado Cash:** Private, but slow, expensive, and often flagged by compliance tools.
+
+Veil targets the middle ground: **shielded transfers**.
+
+## How Veil Handles It
+
+When you execute a payment via Veil, you aren't just broadcasting a `SystemProgram.transfer`.
+
+```typescript
+await veil.send({
+  recipient: 'VendorPublicKey...',
+  amount: 500,
+  token: 'USDC'
+});
+```
+
+### The Selection Process
+
+1.  **Analysis:** Veil sees a request for `USDC`.
+2.  **Routing:** It checks if a privacy adapter (like Light Protocol or Elusiv) is available for this token.
+3.  **Execution:**
+    *   If a privacy adapter is active, it generates a Zero-Knowledge proof on the client side.
+    *   It submits the proof to a relayer or the chain directly.
+    *   The recipient receives the funds from a shared pool, breaking the on-chain link between sender and receiver.
+
+## Compliance and Auditing
+
+The critical distinction here is that while the link is broken for the *public observer*, the adapter often retains a **view key** or **proof of origin**.
+
+This allows your application to generate a receipt or history for the user (and tax authorities) without exposing that data to the public internet.
+
+## Why not just use the protocol SDKs directly?
+
+Protocol SDKs are volatile. Privacy technology on Solana is evolving rapidly. If you hardcode your application to "Privacy Protocol V1", you are essentially technical debt waiting to happen.
+
+By using Veil, you define the *intent* ("Pay this person privately"). If the underlying protocol upgrades its circuit or changes its proof generation API, your application code remains untouched. You simply update the Veil adapter dependency.

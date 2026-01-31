@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Check Your Hidden SOL | RentReclaim</title>
+  <meta name="description" content="Find out how much SOL is locked in your Solana wallet. Free scan, instant recovery.">
+  
+  <!-- Preload fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    :root {
+      --bg: #0a0a0f;
+      --card: #1a1a24;
+      --green: #00ff88;
+      --blue: #3b82f6;
+      --text: #ffffff;
+      --muted: #9ca3af;
+      --border: #2a2a3a;
+    }
+    
+    html, body {
+      height: 100%;
+      overflow-x: hidden;
+    }
+    
+    body {
+      font-family: 'Space Mono', monospace;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem;
+      max-width: 420px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    
+    /* Animated gradient background */
+    .bg-gradient {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(ellipse at 30% 0%, rgba(0, 255, 136, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 100%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    .content {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--green), var(--blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    /* Hero */
+    .hero {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .hero-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+    
+    .hero-title .highlight {
+      color: var(--green);
+    }
+    
+    .hero-sub {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    
+    /* Quick Stats */
+    .quick-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .stat {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.75rem 0.5rem;
+      text-align: center;
+    }
+    
+    .stat-value {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--green);
+    }
+    
+    .stat-label {
+      font-size: 0.65rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 0.25rem;
+    }
+    
+    /* Estimator Card */
+    .estimator {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .estimator-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .slider-container {
+      margin-bottom: 1rem;
+    }
+    
+    .slider-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .slider-value {
+      color: var(--text);
+      font-weight: 700;
+    }
+    
+    input[type="range"] {
+      width: 100%;
+      height: 8px;
+      -webkit-appearance: none;
+      background: var(--bg);
+      border-radius: 4px;
+      outline: none;
+    }
+    
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 24px;
+      height: 24px;
+      background: var(--green);
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0, 255, 136, 0.4);
+    }
+    
+    .estimate-result {
+      background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(59, 130, 246, 0.1));
+      border: 1px solid var(--green);
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+    }
+    
+    .estimate-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+    
+    .estimate-value {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--green);
+    }
+    
+    .estimate-usd {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    
+    /* CTA Button */
+    .cta-section {
+      margin-top: auto;
+    }
+    
+    .cta-btn {
+      display: block;
+      width: 100%;
+      padding: 1.125rem;
+      background: linear-gradient(135deg, var(--green), #00cc6a);
+      color: #000;
+      font-family: 'Space Mono', monospace;
+      font-size: 1rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .cta-btn:active {
+      transform: scale(0.98);
+    }
+    
+    .cta-btn:hover {
+      box-shadow: 0 8px 30px rgba(0, 255, 136, 0.4);
+    }
+    
+    .cta-sub {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 0.75rem;
+    }
+    
+    /* Trust Badges */
+    .trust {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+    
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+    
+    .trust-icon {
+      font-size: 1rem;
+    }
+    
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 1rem 0;
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+    
+    /* Pulse animation for CTA */
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.4); }
+      50% { box-shadow: 0 0 0 10px rgba(0, 255, 136, 0); }
+    }
+    
+    .cta-btn {
+      animation: pulse 2s infinite;
+    }
+    
+    /* Social proof ticker */
+    .ticker {
+      background: var(--card);
+      border-radius: 8px;
+      padding: 0.5rem 0.75rem;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+      font-size: 0.75rem;
+    }
+    
+    .ticker-content {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--green);
+    }
+    
+    .ticker-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: blink 2s infinite;
+    }
+    
+    @keyframes blink {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0.3; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-gradient"></div>
+  
+  <div class="container">
+    <div class="content">
+      <!-- Header -->
+      <header class="header">
+        <div class="logo">🧹 RentReclaim</div>
+      </header>
+      
+      <!-- Social Proof Ticker -->
+      <div class="ticker">
+        <div class="ticker-content">
+          <span class="ticker-dot"></span>
+          <span id="tickerText">Someone just recovered 0.12 SOL</span>
+        </div>
+      </div>
+      
+      <!-- Hero -->
+      <section class="hero">
+        <h1 class="hero-title">
+          You Have <span class="highlight">Hidden SOL</span> in Your Wallet
+        </h1>
+        <p class="hero-sub">
+          Every memecoin trade locks ~$0.30 in rent. Check how much you can recover.
+        </p>
+      </section>
+      
+      <!-- Quick Stats -->
+      <div class="quick-stats">
+        <div class="stat">
+          <div class="stat-value">127 SOL</div>
+          <div class="stat-label">Recovered</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">2,847</div>
+          <div class="stat-label">Wallets</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">< 30s</div>
+          <div class="stat-label">Avg Time</div>
+        </div>
+      </div>
+      
+      <!-- Estimator -->
+      <div class="estimator">
+        <h3 class="estimator-title">
+          <span>🧮</span> Quick Estimate
+        </h3>
+        
+        <div class="slider-container">
+          <div class="slider-label">
+            <span>Memecoins traded</span>
+            <span class="slider-value" id="coinCount">50</span>
+          </div>
+          <input type="range" id="coinSlider" min="10" max="300" value="50">
+        </div>
+        
+        <div class="estimate-result">
+          <div class="estimate-label">Estimated recovery</div>
+          <div class="estimate-value" id="estSol">~0.08 SOL</div>
+          <div class="estimate-usd" id="estUsd">≈ $12</div>
+        </div>
+      </div>
+      
+      <!-- CTA -->
+      <div class="cta-section">
+        <a href="/app" class="cta-btn" id="ctaBtn">
+          🔍 Scan My Wallet Free
+        </a>
+        <p class="cta-sub">Connect wallet → See hidden SOL → Recover instantly</p>
+        
+        <!-- Trust Badges -->
+        <div class="trust">
+          <div class="trust-item">
+            <span class="trust-icon">🔐</span>
+            <span>Non-custodial</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-icon">⚡</span>
+            <span>Instant</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-icon">✅</span>
+            <span>Free scan</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <footer class="footer">
+      Your keys never leave your wallet 💚
+    </footer>
+  </div>
+  
+  <script>
+    // Estimator
+    const slider = document.getElementById('coinSlider');
+    const coinCount = document.getElementById('coinCount');
+    const estSol = document.getElementById('estSol');
+    const estUsd = document.getElementById('estUsd');
+    
+    const RENT = 0.00204;
+    const EMPTY_RATE = 0.8;
+    const FEE_RATE = 0.25;
+    const SOL_PRICE = 150;
+    
+    function updateEstimate(coins) {
+      const accounts = Math.round(coins * EMPTY_RATE);
+      const gross = accounts * RENT;
+      const net = gross * (1 - FEE_RATE);
+      const usd = net * SOL_PRICE;
+      
+      coinCount.textContent = coins;
+      estSol.textContent = `~${net.toFixed(2)} SOL`;
+      estUsd.textContent = `≈ $${Math.round(usd)}`;
+    }
+    
+    slider.addEventListener('input', (e) => updateEstimate(parseInt(e.target.value)));
+    updateEstimate(50);
+    
+    // Social proof ticker
+    const tickerMessages = [
+      'Someone just recovered 0.12 SOL',
+      '47 accounts closed in 30 seconds',
+      'Just found 0.08 SOL hidden',
+      'Wallet cleaned: +0.15 SOL',
+      '92 empty accounts recovered',
+      'Another 0.06 SOL unlocked',
+    ];
+    
+    let tickerIndex = 0;
+    const tickerText = document.getElementById('tickerText');
+    
+    setInterval(() => {
+      tickerIndex = (tickerIndex + 1) % tickerMessages.length;
+      tickerText.style.opacity = 0;
+      setTimeout(() => {
+        tickerText.textContent = tickerMessages[tickerIndex];
+        tickerText.style.opacity = 1;
+      }, 300);
+    }, 4000);
+    
+    // Track referral
+    const params = new URLSearchParams(window.location.search);
+    const ref = params.get('ref');
+    if (ref) {
+      const ctaBtn = document.getElementById('ctaBtn');
+      ctaBtn.href = `/app?ref=${ref}`;
+      // Store for analytics
+      try { localStorage.setItem('ref', ref); } catch(e) {}
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL_UNPOOLED")  // For migrations with connection poolers like PgBouncer
+}
+
+model Paylink {
+  id                     String    @id @default(cuid())
+
+  // Recipient's shielded keys (public keys only)
+  recipientUtxoPubkey    String    // BN254 curve point for UTXO ownership
+  recipientEncryptionKey String    // X25519 pubkey for note encryption
+
+  // Payment parameters
+  token                  String    @default("ANY") // ANY, SOL, USDC, USDT
+  amountLamports         BigInt?   // null = sender decides amount
+  memo                   String?
+
+  // User-configurable expiry
+  createdAt              DateTime  @default(now())
+  expiresAt              DateTime?
+
+  // Minimal analytics
+  viewCount              Int       @default(0)
+
+  // Relations
+  transactions           TransactionLog[]
+
+  @@index([expiresAt])
+}
+
+// API Key for external API access
+model ApiKey {
+  id           String    @id @default(cuid())
+  keyHash      String    @unique           // SHA-256 hash of the API key
+  keyPrefix    String                      // First 8 chars for identification (e.g., "pk_live_")
+  name         String                      // "My Integration", "Production"
+  ownerWallet  String                      // Wallet pubkey of the owner
+  createdAt    DateTime  @default(now())
+  lastUsedAt   DateTime?
+  revokedAt    DateTime?
+  rateLimit    Int       @default(100)     // Requests per minute
+
+  utxoSnapshots UTXOSnapshot[]
+  transactions  TransactionLog[]
+
+  @@index([ownerWallet])
+}
+
+// Server-side UTXO balance cache (solves browser storage loss)
+model UTXOSnapshot {
+  id                String   @id @default(cuid())
+  apiKeyId          String
+  apiKey            ApiKey   @relation(fields: [apiKeyId], references: [id], onDelete: Cascade)
+
+  utxoPubkey        String                // BN254 pubkey of the owner
+  token             String                // SOL, USDC, USDT
+  balanceLamports   BigInt                // Total balance for this token
+  utxoCount         Int                   // Number of UTXOs
+  utxoData          String?               // JSON array of UTXO details (encrypted)
+  lastSyncedAt      DateTime  @default(now())
+  lastBlockSlot     BigInt                // For incremental sync
+
+  @@unique([apiKeyId, utxoPubkey, token])
+  @@index([utxoPubkey])
+}
+
+// Persistent transaction history
+model TransactionLog {
+  id             String    @id @default(cuid())
+  apiKeyId       String?
+  apiKey         ApiKey?   @relation(fields: [apiKeyId], references: [id], onDelete: SetNull)
+
+  type           String                   // deposit, withdraw
+  token          String                   // SOL, USDC, USDT
+  amountLamports BigInt
+  signature      String    @unique        // Solana tx signature
+  status         String    @default("confirmed") // pending, confirmed, failed
+  utxoPubkey     String?                  // Owner's UTXO pubkey for querying
+  paylinkId      String?
+  paylink        Paylink?  @relation(fields: [paylinkId], references: [id], onDelete: SetNull)
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  @@index([utxoPubkey])
+  @@index([apiKeyId])
+  @@index([signature])
+  @@index([utxoPubkey, token])         // Filter by user and token type
+  @@index([utxoPubkey, createdAt])     // Recent transactions by user
+  @@index([paylinkId, status])         // Paylink transaction status
+}

@@ -1,0 +1,15 @@
+[features]
+default = []
+
+[cluster]
+# Use devnet for hackathon deployment
+cluster = "devnet"
+# Local cluster for development
+# cluster = "localnet"
+
+[program]
+name = "arcshield"
+path = "programs/arcshield"
+
+[encrypted_instructions]
+path = "encrypted-ixs"

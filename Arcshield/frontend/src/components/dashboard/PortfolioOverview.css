@@ -1,0 +1,93 @@
+.portfolio-overview {
+  height: 100%;
+}
+
+.portfolio-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: 100%;
+}
+
+.portfolio-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.portfolio-value {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.portfolio-label {
+  font-size: 12px;
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.portfolio-amount {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.portfolio-change {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.change-label {
+  font-size: 10px;
+  color: var(--color-text-tertiary);
+}
+
+.portfolio-chart {
+  flex: 1;
+  min-height: 200px;
+}
+
+.portfolio-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.asset-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  background-color: var(--color-bg-secondary);
+  border-radius: 8px;
+}
+
+.asset-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.asset-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.asset-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.asset-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  font-family: 'JetBrains Mono', monospace;
+}

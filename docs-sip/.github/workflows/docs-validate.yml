@@ -1,0 +1,54 @@
+name: Docs Validation
+
+on:
+  pull_request:
+    branches: [main, dev]
+    paths:
+      - 'src/content/**'
+      - 'astro.config.mjs'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build docs
+        run: npm run build
+
+      - name: Check for broken links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --verbose --no-progress './dist/**/*.html'
+          fail: true
+        continue-on-error: true  # Don't fail build, just warn
+
+      - name: Notify on failure
+        if: failure()
+        uses: slackapi/slack-github-action@v2.1.1
+        with:
+          payload: |
+            {
+              "text": "❌ docs-sip CI failed on ${{ github.ref }}",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "❌ *docs-sip CI Failed*\n*Branch:* ${{ github.ref }}\n*Commit:* ${{ github.sha }}\n*Author:* ${{ github.actor }}\n*Workflow:* Docs Validation"
+                  }
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        # Note: Requires SLACK_WEBHOOK_URL secret to be configured in repository settings

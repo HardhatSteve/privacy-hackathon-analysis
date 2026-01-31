@@ -1,0 +1,91 @@
+{
+  "name": "n8n-nodes-trezor",
+  "version": "1.0.0",
+  "description": "Comprehensive n8n community node for Trezor hardware wallets providing 26 resources and 200+ operations for Bitcoin, Ethereum, Cardano, Solana, and 15+ blockchain networks",
+  "license": "BUSL-1.1",
+  "author": {
+    "name": "Velocity BPA",
+    "email": "licensing@velobpa.com",
+    "url": "https://velobpa.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/velocity-bpa/n8n-nodes-trezor.git"
+  },
+  "homepage": "https://github.com/velocity-bpa/n8n-nodes-trezor",
+  "bugs": {
+    "url": "https://github.com/velocity-bpa/n8n-nodes-trezor/issues"
+  },
+  "main": "dist/nodes/Trezor/Trezor.node.js",
+  "keywords": [
+    "n8n",
+    "n8n-community-node-package",
+    "trezor",
+    "hardware-wallet",
+    "cryptocurrency",
+    "bitcoin",
+    "ethereum",
+    "cardano",
+    "solana",
+    "blockchain",
+    "crypto",
+    "wallet",
+    "signing",
+    "web3"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "credentials": [
+      "dist/credentials/TrezorDeviceApi.credentials.js",
+      "dist/credentials/TrezorConnectApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/Trezor/Trezor.node.js",
+      "dist/nodes/Trezor/TrezorTrigger.node.js"
+    ]
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc && npm run copy:icons",
+    "copy:icons": "copyfiles -u 1 \"nodes/**/*.svg\" dist/",
+    "dev": "tsc --watch",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "format": "prettier --write \"**/*.ts\"",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "clean": "rimraf dist",
+    "prepublishOnly": "npm run build",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "bip39": "^3.1.0",
+    "bs58check": "^3.0.1",
+    "ethers": "^6.11.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.11.0",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "copyfiles": "^2.4.1",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-n8n-nodes-base": "^1.16.1",
+    "jest": "^29.7.0",
+    "n8n-workflow": "^1.27.0",
+    "prettier": "^3.2.5",
+    "rimraf": "^5.0.5",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.3.3"
+  },
+  "peerDependencies": {
+    "n8n-workflow": ">=1.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

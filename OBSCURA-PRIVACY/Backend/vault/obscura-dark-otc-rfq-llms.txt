@@ -1,0 +1,1700 @@
+# OBSCURA DARK OTC RFQ API Documentation for LLMs
+# Privacy-Preserving Request for Quote System
+
+## Overview
+Obscura Dark OTC RFQ is a privacy-preserving bilateral trading system that enables takers and market makers to exchange quotes confidentially. The system wraps Obscura privacy infrastructure including off-chain balance tracking (Arcium cSPL), stealth addresses, Pedersen commitments, WOTS+ signatures, and relayer networks.
+
+Base URL: `http://localhost:3000` (development)
+Production URL: `https://otc-api.obscura-app.com`
+
+---
+
+## ARCHITECTURE
+
+### System Components
+```
+┌─────────────────────────────────────────────────────────────┐
+│         obscura-dark-otc-rfq-be (Express TypeScript)        │
+├─────────────────────────────────────────────────────────────┤
+│  RFQ Core Service  │  Privacy Service  │  Obscura-LLMS     │
+│  (Quote Management)│  (Stealth/Commit) │  Client           │
+└─────────────────────────────────────────────────────────────┘
+                          │
+                          ▼
+┌─────────────────────────────────────────────────────────────┐
+│         Obscura-LLMS BE (EXISTING INFRASTRUCTURE)           │
+│         https://api.obscura-app.com             │
+├─────────────────────────────────────────────────────────────┤
+│  Arcium cSPL (Off-chain Balance) │  Relayer Network        │
+│  Light Protocol (ZK Compression)  │  Settlement Service     │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Privacy Features
+- **Off-chain Balance Tracking**: Encrypted balances via Arcium cSPL (Rescue cipher)
+- **Stealth Addresses**: Unlinkable one-time addresses (identity hidden)
+- **Transparent Amounts & Prices**: Visible for fair trading (no commitments)
+- **WOTS+ Signatures**: Post-quantum secure one-time signatures (CRITICAL for privacy)
+- **Relayer Network**: Private transaction submission (user address not visible)
+- **Nullifiers**: Prevent double-acceptance of quotes
+- **ZK Compression**: Solana-only, ~1000x cheaper storage via Light Protocol
+
+### Privacy Model
+**VISIBLE (Fair Trading):**
+- ✅ Amounts - Displayed in plaintext for market makers to quote fairly
+- ✅ Prices - Displayed in plaintext for takers to compare quotes
+- ✅ Asset pairs, directions, timestamps
+
+**HIDDEN (Privacy):**
+- ✅ Identities - Stealth addresses hide who is trading
+- ✅ User Activity - WOTS+ one-time signatures prevent transaction linking
+- ✅ Settlement - ZK proofs hide transaction details
+- ✅ On-chain activity - Relayer network prevents address tracking
+
+---
+
+## WOTS+ SIGNATURES: THE PRIVACY FOUNDATION
+
+### Why WOTS+ is Critical for Privacy
+
+**WOTS+ (Winternitz One-Time Signature Plus)** is the CORE privacy mechanism in Obscura Dark OTC. It provides **unlinkability** - the ability to prevent blockchain analysts from linking multiple transactions to the same user.
+
+### How WOTS+ Provides Privacy
+
+#### 1. **One-Time Use = Unlinkability**
+Each WOTS+ wallet can only sign ONCE. For every action, users generate a NEW wallet with a NEW public key.
+
+**Example:**
+```
+Alice creates quote request → WOTS+ wallet #1 (public key A)
+Alice accepts quote         → WOTS+ wallet #2 (public key B)
+Bob submits quote           → WOTS+ wallet #3 (public key C)
+
+❌ Blockchain analyst CANNOT determine:
+   - Public key A and B belong to the same person (Alice)
+   - Which transactions are related
+   - User's trading patterns or history
+
+✅ Result: Perfect unlinkability and privacy
+```
+
+#### 2. **Post-Quantum Security**
+WOTS+ is resistant to quantum computer attacks, making it future-proof.
+
+#### 3. **No Master Key**
+Unlike traditional wallets (Phantom/MetaMask) that have a master public key that can be tracked across all transactions, WOTS+ generates a completely NEW public key for each signature.
+
+**Traditional Wallet (NOT PRIVATE):**
+```
+Alice's Phantom wallet: PublicKey_Master
+Transaction 1: Signed by PublicKey_Master
+Transaction 2: Signed by PublicKey_Master
+Transaction 3: Signed by PublicKey_Master
+
+❌ Blockchain analyst can link ALL transactions to Alice
+```
+
+**WOTS+ (PRIVATE):**
+```
+Alice's actions:
+Transaction 1: Signed by PublicKey_1 (generated once, never reused)
+Transaction 2: Signed by PublicKey_2 (generated once, never reused)
+Transaction 3: Signed by PublicKey_3 (generated once, never reused)
+
+✅ Blockchain analyst CANNOT link transactions
+```
+
+### WOTS+ Signature Format
+
+**CRITICAL: Frontend MUST use WOTS+ signatures, NOT wallet signatures**
+
+- **Signature**: 2144 bytes = 4288 hex characters
+- **Public Key**: 2208 bytes = 4416 hex characters
+- **Library**: `mochimo-wots-v2` (npm package)
+
+**⚠️ WARNING: Phantom/MetaMask signatures are NOT compatible!**
+- Phantom signature: ~88 characters (ed25519)
+- MetaMask signature: ~132 characters (ECDSA)
+- These are TOO SHORT and do NOT provide one-time signature privacy
+
+### Frontend Implementation Required
+
+Frontend MUST implement WOTS+ wallet generation and signing. See `WOTS_FRONTEND_GUIDE.md` for complete implementation guide.
+
+**Quick Example:**
+```typescript
+import { createWallet } from 'mochimo-wots-v2';
+
+// Generate NEW wallet for EACH signature
+const seed = crypto.randomUUID();
+const tag = `create-request-${Date.now()}`;
+const wallet = createWallet(seed, tag);
+
+// Get public key (4416 hex chars)
+const publicKey = Buffer.from(wallet.wots).toString('hex');
+
+// Sign message (ONE TIME ONLY!)
+const messageBytes = new TextEncoder().encode(message);
+const signature = wallet.sign(messageBytes);
+const signatureHex = Buffer.from(signature).toString('hex'); // 4288 hex chars
+
+// ⚠️ NEVER reuse this wallet for another signature!
+```
+
+### Backend Verification
+
+Backend verifies WOTS+ signatures using `mochimo-wots-v2` library:
+- Validates signature format (4288 hex chars)
+- Validates public key format (4416 hex chars)
+- Verifies signature against message and public key
+- Checks signature has not been reused (one-time use enforcement)
+- Rejects invalid or reused signatures with `SIGNATURE_VERIFICATION_FAILED` error
+
+---
+
+## DEPLOYED CONTRACTS
+
+### Solana Devnet
+- Program ID: `GG9U34H1xXkuzvv8Heoy4UWav5vUgrQFEVwrYMi84QuE`
+- Vault PDA: `6owJu2yXoPvTbM67XwmRguVRQhCADaswHkAVhVHSvoH7`
+- Vault State PDA: `5L1Vh6ftZWncYc1SEdZsoEX4DKaqCY6ZoQ3CdcEqursB`
+
+### Sepolia Testnet (ETH)
+- SIPVault: `0xc4937Ba6418eE72EDABF72694198024b5a3599CC`
+- SIPSettlement: `0x88dA9c5D9801cb33615f0A516eb1098dF1889DA9`
+
+### Arcium Configuration
+- Version: v0.6.3
+- Cluster Offset: 456
+- Program ID: `arcaborPMqYhZbLqPKPRXpBKyCMgH8kApNoxp4cLKg`
+
+### Whitelist Mode Configuration
+
+**IMPORTANT**: Backend supports 2 modes for market maker authorization:
+
+#### 1. Permissionless Mode (Default - Recommended for Testing/Open Market)
+```bash
+WHITELIST_MODE=permissionless
+```
+- ✅ **Anyone can be a market maker** - No approval needed
+- ✅ **No manual whitelist management** - Admin doesn't need to approve every user
+- ✅ **Instant testing** - Developers can test immediately without setup
+- ✅ **Open/decentralized market** - Community-driven liquidity
+- ⚠️ **No quality control** - Anyone can submit quotes (good or bad)
+
+**Use Cases**: Development, testing, open markets, decentralized trading
+
+#### 2. Permissioned Mode (Production with Quality Control)
+```bash
+WHITELIST_MODE=permissioned
+```
+- ✅ **Quality control** - Only trusted market makers can submit quotes
+- ✅ **Admin approval required** - Admin must whitelist each market maker
+- ✅ **Audit trail** - All whitelist changes are logged
+- ⚠️ **Manual management** - Admin must manage whitelist
+
+**Use Cases**: Production, regulated markets, institutional trading
+
+**Default**: `permissionless` (no whitelist required)
+
+---
+
+## ENDPOINTS
+
+### Health & Status
+
+#### GET /
+Get API information.
+
+Response:
+```json
+{
+  "name": "Obscura Dark OTC RFQ API",
+  "version": "1.0.0",
+  "description": "Privacy-preserving Request for Quote system",
+  "endpoints": {
+    "health": "/health",
+    "privacy": "/api/v1/privacy/status",
+    "solana": "/api/v1/solana/status",
+    "evm": "/api/v1/evm/status",
+    "rfq": "/api/v1/rfq",
+    "admin": "/api/v1/admin"
+  }
+}
+```
+
+#### GET /health
+Health check endpoint.
+
+Response:
+```json
+{
+  "success": true,
+  "data": {
+    "status": "healthy",
+    "timestamp": "2026-01-23T12:00:00.000Z",
+    "uptime": 3600
+  }
+}
+```
+
+#### GET /api/v1/privacy/status
+Get privacy infrastructure status.
+
+Response:
+```json
+{
+  "success": true,
+  "data": {
+    "status": "operational",
+    "arcium": {
+      "configured": true,
+      "clusterOffset": "456",
+      "version": "v0.6.3",
+      "programId": "arcaborPMqYhZbLqPKPRXpBKyCMgH8kApNoxp4cLKg"
+    },
+    "lightProtocol": {
+      "configured": true,
+      "zkCompression": true
+    },
+    "features": {
+      "pedersenCommitments": true,
+      "stealthAddresses": true,
+      "wotsSignatures": true,
+      "offChainBalance": true
+    }
+  }
+}
+```
+
+#### GET /api/v1/solana/status
+Get Solana Devnet status.
+
+Response:
+```json
+{
+  "success": true,
+  "data": {
+    "configured": true,
+    "network": "devnet",
+    "programId": "GG9U34H1xXkuzvv8Heoy4UWav5vUgrQFEVwrYMi84QuE",
+    "vaultPda": "6owJu2yXoPvTbM67XwmRguVRQhCADaswHkAVhVHSvoH7",
+    "balance": "1234567890"
+  }
+}
+```
+
+#### GET /api/v1/evm/status
+Get Sepolia Testnet status.
+
+Response:
+```json
+{
+  "success": true,
+  "data": {
+    "configured": true,
+    "network": "sepolia",
+    "chainId": 11155111,
+    "vaultAddress": "0xc4937Ba6418eE72EDABF72694198024b5a3599CC",
+    "settlementAddress": "0x88dA9c5D9801cb33615f0A516eb1098dF1889DA9",
+    "balance": "1000000000000000000"
+  }
+}
+```
+
+---
+
+### RFQ Operations
+
+#### POST /api/v1/rfq/quote-request
+Create a new quote request.
+
+**Request Body:**
+```json
+{
+  "assetPair": "SOL/USDC",
+  "direction": "buy",
+  "amount": "5000000",
+  "timeout": 1737648000000,
+  "signature": "0x...",
+  "publicKey": "0x...",
+  "message": "create_quote_request:SOL/USDC:buy:5000000:1737648000000",
+  "commitment": "0x...",
+  "chainId": "solana-devnet"
+}
+```
+
+**Field Descriptions:**
+- `assetPair` (required): Trading pair (e.g., "SOL/USDC", "ETH/USDT")
+- `direction` (required): "buy" or "sell"
+- `amount` (required): Amount as string (in base units, e.g., lamports for SOL). **VISIBLE to all users for fair trading.**
+- `timeout` (required): Expiration timestamp in milliseconds (max 24 hours from now)
+- `signature` (required): **WOTS+ signature (hex string, 4288 characters)**. Must be generated using `mochimo-wots-v2` library. See WOTS+ section above.
+- `publicKey` (required): **WOTS+ public key (hex string, 4416 characters)**. Must be generated using `mochimo-wots-v2` library. See WOTS+ section above.
+- `message` (required): **Original message that was signed**. Format: `create_quote_request:${assetPair}:${direction}:${amount}:${timeout}`. Frontend must send this exact message that was hashed and signed.
+- `commitment` (optional): SIP commitment for balance verification (from Obscura-LLMS deposit)
+- `chainId` (optional): "solana-devnet" or "sepolia"
+
+**⚠️ CRITICAL: Must use WOTS+ signatures, NOT Phantom/MetaMask signatures!**
+- Phantom signatures (~88 chars) are TOO SHORT and will be REJECTED
+- MetaMask signatures (~132 chars) are TOO SHORT and will be REJECTED
+- Only WOTS+ signatures (4288 chars) provide the required privacy guarantees
+
+**Success Response (201):**
+```json
+{
+  "success": true,
+  "data": {
+    "quoteRequestId": "550e8400-e29b-41d4-a716-446655440000",
+    "stealthAddress": "0x...",
+    "commitment": "5000000",
+    "expiresAt": 1737648000000
+  }
+}
+```
+
+**Note:** The `commitment` field now returns the plaintext amount (for backward compatibility). Amount is visible to all users.
+
+**Error Response (400):**
+```json
+{
+  "success": false,
+  "error": "Validation failed",
+  "code": "VALIDATION_ERROR",
+  "details": {
+    "amount": ["Amount must be positive"],
+    "timeout": ["Timeout must be in the future"]
+  }
+}
+```
+
+---
+
+#### GET /api/v1/rfq/quote-requests
+Get all active quote requests (for public board).
+
+**Query Parameters:**
+- `status` (optional): Filter by status ("active", "expired", "filled", "cancelled"). Default: "active"
+
+**Success Response (200):**
+```json
+{
+  "success": true,
+  "data": {
+    "quoteRequests": [
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440000",
+        "asset_pair": "SOL/USDC",
+        "direction": "buy",
+        "amount_commitment": "5000000",
+        "stealth_address": "0x...",
+        "taker_public_key": "0x...",
+        "created_at": 1737640000000,
+        "expires_at": 1737648000000,
+        "status": "active",
+        "nullifier": null,
+        "quote_count": 3
+      }
+    ]
+  }
+}
+```
+
+**Field Descriptions:**
+- `amount_commitment`: Plaintext amount in base units (lamports/wei). Divide by 1e9 for SOL/ETH display.
+- `quote_count`: Number of ACTIVE, non-expired quotes for this request. Updates in real-time.
+- `taker_public_key`: WOTS+ public key used to create request (4416 hex chars). For display only - not used for authorization.
+
+**Quote Count Logic:**
+- Only counts quotes with `status = 'active'`
+- Only counts quotes with `expires_at > current_timestamp`
+- Excludes expired, cancelled, and accepted quotes
+- Real-time count (not cached)
+
+---
+
+#### GET /api/v1/rfq/quote-request/:id
+Get quote request details.
+
+**URL Parameters:**
+- `id`: Quote request ID (UUID)
+
+**Success Response (200):**
+```json
+{
+  "success": true,
+  "data": {
+    "id": "550e8400-e29b-41d4-a716-446655440000",
+    "asset_pair": "SOL/USDC",
+    "direction": "buy",
+    "amount_commitment": "5000000",
+    "stealth_address": "0x...",
+    "taker_public_key": "0x...",
+    "created_at": 1737640000000,
+    "expires_at": 1737648000000,
+    "status": "active",
+    "nullifier": null,
+    "quote_count": 3
+  }
+}
+```
+
+**Field Descriptions:**
+- `amount_commitment`: Plaintext amount (5000000 lamports = 0.005 SOL). Amount is visible for fair trading.
+- `quote_count`: Number of ACTIVE, non-expired quotes. Updates in real-time.
+- `taker_public_key`: WOTS+ public key (for display only - not used for authorization with one-time signatures).
+
+**Status Values:**
+- `active`: Quote request is open for quotes
+- `expired`: Quote request has timed out
+- `filled`: Quote has been accepted
+- `cancelled`: Quote request was cancelled by taker
+
+---
+
+#### POST /api/v1/rfq/quote-request/:id/cancel
+Cancel a quote request.
+
+**URL Parameters:**
+- `id`: Quote request ID (UUID)
+
+**Request Body:**
+```json
+{
+  "signature": "0x...",
+  "publicKey": "0x..."
+}
+```
+
+**Success Response (200):**
+```json
+{
+  "success": true,
+  "data": {
+    "quoteRequestId": "550e8400-e29b-41d4-a716-446655440000",
+    "status": "cancelled"
+  }
+}
+```
+
+---
+
+#### POST /api/v1/rfq/quote
+Submit a quote (market makers only).
+
+**Request Body:**
+```json
+{
+  "quoteRequestId": "550e8400-e29b-41d4-a716-446655440000",
+  "price": "1500000",
+  "expirationTime": 1737648000000,
+  "signature": "0x...",
+  "publicKey": "0x..."
+}
+```
+
+**Field Descriptions:**
+- `quoteRequestId` (required): Quote request ID to respond to
+- `price` (required): Price PER UNIT as string (in base units, e.g., USDC per SOL). **VISIBLE to taker for comparison.**
+- `expirationTime` (required): Quote expiration timestamp (cannot exceed quote request expiration)
+- `signature` (required): **WOTS+ signature (hex string, 4288 characters)**. Must use NEW WOTS+ wallet (different from any previous signatures).
+- `publicKey` (required): **WOTS+ public key (hex string, 4416 characters)**. 
+  - **Permissionless Mode**: Any public key accepted (default)
+  - **Permissioned Mode**: Must be whitelisted as market maker
+
+**⚠️ CRITICAL: Generate NEW WOTS+ wallet for each quote submission!**
+
+**Example:** For "buy 5 SOL", market maker quotes price="150000000" (150 USDC per SOL in base units). Total cost = 5 × 150 = 750 USDC.
+
+**Success Response (201):**
+```json
+{
+  "success": true,
+  "data": {
+    "quoteId": "660e8400-e29b-41d4-a716-446655440001",
+    "priceCommitment": "150000000",
+    "expiresAt": 1737648000000
+  }
+}
+```
+
+**Note:** `priceCommitment` now returns plaintext price (for backward compatibility). Price is visible to taker for comparison.
+
+**Error Response (403) - Not Whitelisted (Permissioned Mode Only):**
+```json
+{
+  "success": false,
+  "error": "Market maker not whitelisted",
+  "code": "NOT_WHITELISTED"
+}
+```
+
+**Note**: This error only occurs in `WHITELIST_MODE=permissioned`. In `WHITELIST_MODE=permissionless` (default), all market makers are accepted.
+
+---
+
+#### GET /api/v1/rfq/quote-request/:id/quotes
+Get all quotes for a quote request.
+
+**URL Parameters:**
+- `id`: Quote request ID (UUID)
+
+**Success Response (200):**
+```json
+{
+  "success": true,
+  "data": {
+    "quotes": [
+      {
+        "quoteId": "660e8400-e29b-41d4-a716-446655440001",
+        "priceCommitment": "150000000",
+        "marketMakerPublicKey": "0x...",
+        "expiresAt": 1737648000000,
+        "status": "active"
+      },
+      {
+        "quoteId": "770e8400-e29b-41d4-a716-446655440002",
+        "priceCommitment": "148000000",
+        "marketMakerPublicKey": "0x...",
+        "expiresAt": 1737648000000,
+        "status": "active"
+      }
+    ]
+  }
+}
+```
+
+**Note:** `priceCommitment` contains plaintext price per unit (in base units). Taker can calculate total cost: Amount × Price.
+
+---
+
+#### POST /api/v1/rfq/quote/:id/accept
+Accept a quote.
+
+**URL Parameters:**
+- `id`: Quote ID (UUID)
+
+**Request Body:**
+```json
+{
+  "signature": "0x...",
+  "publicKey": "0x...",
+  "commitment": "0x..."
+}
+```
+
+**Field Descriptions:**
+- `signature` (required): **WOTS+ signature (hex string, 4288 characters)**. Must use NEW WOTS+ wallet (different from create request wallet).
+- `publicKey` (required): **WOTS+ public key (hex string, 4416 characters)**. Must match the taker who created the quote request.
+- `commitment` (required): SIP commitment for settlement
+
+**⚠️ CRITICAL: Generate NEW WOTS+ wallet for acceptance (different from create request)!**
+
+**Success Response (200):**
+```json
+{
+  "success": true,
+  "data": {
+    "quoteId": "660e8400-e29b-41d4-a716-446655440001",
+    "quoteRequestId": "550e8400-e29b-41d4-a716-446655440000",
+    "nullifier": "0x...",
+    "txHash": "5fmG66Xz8Uyv5Sfu6QfPUYYzcNaLPfgWVSZV5rijKmJKQ2UEu77hRoCdJBcZ9VoZyQxHP5DMsYb5VG77DhAGoSpS",
+    "zkCompressed": true,
+    "compressionSignature": "3Ag8rUJB6tswcHubJ62aspEkJFf3QvShwCJPa4jgUsX2Pj3uTTzE6u27wDuAdLZnTJt2nBCkheGcrECnoFJMoCXb"
+  }
+}
+```
+
+**Response Fields:**
+- `nullifier`: Secret nullifier for this acceptance (keep safe!)
+- `txHash`: Settlement transaction hash (verifiable on blockchain explorer)
+- `zkCompressed`: `true` if stored via Light Protocol ZK Compression (Solana only)
+- `compressionSignature`: ZK compression transaction signature (Solana only)
+
+**Note:** ETH (Sepolia) settlements return `zkCompressed: false` - ZK Compression is Solana-only to preserve cross-chain privacy.
+
+---
+
+### Private Messaging
+
+#### POST /api/v1/rfq/message
+Send a private message.
+
+**Request Body:**
+```json
+{
+  "quoteRequestId": "550e8400-e29b-41d4-a716-446655440000",
+  "recipientStealthAddress": "0x...",
+  "encryptedContent": "0x...",
+  "signature": "0x...",
+  "publicKey": "0x..."
+}
+```
+
+**Field Descriptions:**
+- `quoteRequestId` (required): Quote request ID
+- `recipientStealthAddress` (required): Recipient's stealth address
+- `encryptedContent` (required): Encrypted message content (hex string)
+- `signature` (required): WOTS+ signature
+- `publicKey` (required): Sender's WOTS+ public key
+
+**Authorization:**
+- Sender must be either the taker who created the quote request OR a market maker who submitted a quote for it
+
+**Success Response (201):**
+```json
+{
+  "success": true,
+  "data": {
+    "messageId": "880e8400-e29b-41d4-a716-446655440003",
+    "timestamp": 1737640000000
+  }
+}
+```
+
+---
+
+#### GET /api/v1/rfq/quote-request/:id/messages?publicKey=...
+Get messages for a quote request.
+
+**URL Parameters:**
+- `id`: Quote request ID (UUID)
+
+**Query Parameters:**
+- `publicKey` (required): User's WOTS+ public key (to filter messages)
+
+**Success Response (200):**
+```json
+{
+  "success": true,
+  "data": {
+    "messages": [
+      {
+        "messageId": "880e8400-e29b-41d4-a716-446655440003",
+        "senderPublicKey": "0x...",
+        "recipientStealthAddress": "0x...",
+        "encryptedContent": "0x...",
+        "timestamp": 1737640000000
+      }
+    ]
+  }
+}
+```
+
+**Note:** Only returns messages where the user is either sender or recipient.
+
+---
+
+### Admin Operations
+
+**Note:** Admin endpoints require authentication. The `publicKey` in the request body must match one of the authorized admin public keys configured in the `ADMIN_PUBLIC_KEY` environment variable.
+
+#### POST /api/v1/admin/whitelist/add
+Add market maker to whitelist (Permissioned Mode only).
+
+**Note**: This endpoint is only needed when `WHITELIST_MODE=permissioned`. In permissionless mode (default), all market makers are automatically allowed.
+
+**Request Body:**
+```json
+{
+  "address": "market-maker-address",
+  "signature": "0x...",
+  "publicKey": "0x..."
+}
+```
+
+**Field Descriptions:**
+- `address` (required): Market maker address to whitelist
+- `signature` (required): Admin WOTS+ signature
+- `publicKey` (required): Admin WOTS+ public key (must be authorized)
+
+**Success Response (201):**
+```json
+{
+  "success": true,
+  "data": {
+    "address": "market-maker-address",
+    "addedAt": 1737640000000,
+    "addedBy": "0x..."
+  }
+}
+```
+
+**Error Response (403) - Not Authorized:**
+```json
+{
+  "success": false,
+  "error": "Not authorized: Public key is not an authorized admin",
+  "code": "NOT_AUTHORIZED",
+  "details": {
+    "reason": "unauthorized_public_key"
+  }
+}
+```
+
+---
+
+#### POST /api/v1/admin/whitelist/remove
+Remove market maker from whitelist (Permissioned Mode only).
+
+**Note**: This endpoint is only needed when `WHITELIST_MODE=permissioned`.
+
+**Request Body:**
+```json
+{
+  "address": "market-maker-address",
+  "signature": "0x...",
+  "publicKey": "0x..."
+}
+```
+
+**Success Response (200):**
+```json
+{
+  "success": true,
+  "data": {
+    "address": "market-maker-address",
+    "removedAt": 1737640000000
+  }
+}
+```
+
+---
+
+#### GET /api/v1/admin/whitelist
+Get all whitelisted market makers (Permissioned Mode only).
+
+**Note**: This endpoint returns the whitelist when `WHITELIST_MODE=permissioned`. In permissionless mode, this list is not enforced.
+
+**Success Response (200):**
+```json
+{
+  "success": true,
+  "data": {
+    "whitelist": [
+      {
+        "address": "market-maker-1",
+        "addedAt": 1737640000000,
+        "addedBy": "0x..."
+      },
+      {
+        "address": "market-maker-2",
+        "addedAt": 1737641000000,
+        "addedBy": "0x..."
+      }
+    ]
+  }
+}
+```
+
+---
+
+## PRIVACY vs TRANSPARENCY
+
+### What's Visible (Fair Trading)
+- ✅ **Amounts**: Takers post amount in plaintext so market makers can quote fairly
+- ✅ **Prices**: Market makers quote price per unit in plaintext so takers can compare
+- ✅ **Asset Pairs**: Trading pairs are public (SOL/USDC, ETH/USDT, etc.)
+- ✅ **Directions**: Buy/sell direction is public
+- ✅ **Timestamps**: Creation and expiration times are public
+
+### What's Hidden (Privacy)
+- ✅ **Identities**: Stealth addresses hide who is the taker/market maker
+- ✅ **Wallet Addresses**: Real wallet addresses never exposed on-chain
+- ✅ **Settlement Details**: ZK proofs hide transaction details
+- ✅ **On-chain Activity**: Relayer network prevents address tracking
+- ✅ **Trade History**: No one can link trades to specific users
+
+### Why This Model?
+**Problem with Hidden Amounts:**
+- Market makers can't quote fair prices without knowing size
+- Large trades deserve volume discounts
+- Small trades waste gas fees
+- Creates information asymmetry
+
+**Solution: Transparent Amounts, Private Identities**
+- Market makers see amount → quote fair price
+- Takers see all prices → pick best quote
+- Identities stay hidden → privacy preserved
+- Settlement private → on-chain privacy maintained
+
+---
+
+## WORKFLOW EXAMPLES
+
+### 1. Taker Creates Quote Request
+```typescript
+// Step 1: Generate WOTS+ wallet
+import { createWallet } from 'mochimo-wots-v2';
+
+const takerWallet = createWallet('taker-secret-seed', 'taker-tag');
+const takerPublicKey = Buffer.from(takerWallet.wots).toString('hex');
+
+// Step 2: Create quote request
+const quoteRequestData = {
+  assetPair: 'SOL/USDC',
+  direction: 'buy',
+  amount: '5000000000', // 5 SOL in lamports (VISIBLE to all)
+  timeout: Date.now() + (60 * 60 * 1000), // 1 hour from now
+};
+
+// Step 3: Sign the request
+const message = JSON.stringify(quoteRequestData);
+const messageBytes = new TextEncoder().encode(message);
+const signature = takerWallet.sign(messageBytes);
+const signatureHex = Buffer.from(signature).toString('hex');
+
+// Step 4: Submit to API
+const response = await fetch('https://obscura-dark-api.daemonprotocol.com/api/v1/rfq/quote-request', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    ...quoteRequestData,
+    signature: signatureHex,
+    publicKey: takerPublicKey,
+  }),
+});
+
+const result = await response.json();
+console.log('Quote Request ID:', result.data.quoteRequestId);
+console.log('Stealth Address:', result.data.stealthAddress);
+console.log('Amount (visible):', result.data.commitment); // Returns plaintext amount
+```
+
+---
+
+### 2. Market Maker Submits Quote
+```typescript
+// Step 1: Generate WOTS+ wallet
+// Note: In permissionless mode (default), no whitelist needed!
+// In permissioned mode, market maker must be whitelisted first.
+const mmWallet = createWallet('mm-secret-seed', 'mm-tag');
+const mmPublicKey = Buffer.from(mmWallet.wots).toString('hex');
+
+// Step 2: Create quote (after seeing amount = 5 SOL)
+const quoteData = {
+  quoteRequestId: '550e8400-e29b-41d4-a716-446655440000',
+  price: '150000000000', // 150 USDC per SOL (price per unit, VISIBLE to taker)
+  expirationTime: Date.now() + (30 * 60 * 1000), // 30 minutes
+};
+
+// Taker will calculate: Total = 5 SOL × 150 USDC/SOL = 750 USDC
+
+// Step 3: Sign the quote
+const message = JSON.stringify(quoteData);
+const messageBytes = new TextEncoder().encode(message);
+const signature = mmWallet.sign(messageBytes);
+const signatureHex = Buffer.from(signature).toString('hex');
+
+// Step 4: Submit to API
+const response = await fetch('https://obscura-dark-api.daemonprotocol.com/api/v1/rfq/quote', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    ...quoteData,
+    signature: signatureHex,
+    publicKey: mmPublicKey,
+  }),
+});
+
+const result = await response.json();
+console.log('Quote ID:', result.data.quoteId);
+console.log('Price (visible):', result.data.priceCommitment); // Returns plaintext price
+```
+
+---
+
+### 3. Taker Accepts Quote
+```typescript
+// Step 1: Get all quotes for quote request
+const quotesResponse = await fetch(
+  `https://obscura-dark-api.daemonprotocol.com/api/v1/rfq/quote-request/${quoteRequestId}/quotes`
+);
+const quotesData = await quotesResponse.json();
+const quotes = quotesData.data.quotes;
+
+// Step 2: Compare quotes and select best
+// Quote A: 150 USDC/SOL × 5 SOL = 750 USDC
+// Quote B: 148 USDC/SOL × 5 SOL = 740 USDC ← Best!
+const selectedQuote = quotes.reduce((best, quote) => 
+  parseFloat(quote.priceCommitment) < parseFloat(best.priceCommitment) ? quote : best
+);
+
+// Step 3: Generate new WOTS+ wallet for acceptance (one-time signature!)
+const acceptWallet = createWallet('accept-secret-seed', 'accept-tag');
+const acceptPublicKey = Buffer.from(acceptWallet.wots).toString('hex');
+
+// Step 4: Create acceptance data
+const acceptData = {
+  commitment: '0x...', // SIP commitment from Obscura-LLMS deposit
+};
+
+// Step 5: Sign the acceptance
+const message = JSON.stringify({ quoteId: selectedQuote.quoteId, ...acceptData });
+const messageBytes = new TextEncoder().encode(message);
+const signature = acceptWallet.sign(messageBytes);
+const signatureHex = Buffer.from(signature).toString('hex');
+
+// Step 6: Submit to API
+const response = await fetch(
+  `https://obscura-dark-api.daemonprotocol.com/api/v1/rfq/quote/${selectedQuote.quoteId}/accept`,
+  {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      ...acceptData,
+      signature: signatureHex,
+      publicKey: acceptPublicKey,
+    }),
+  }
+);
+
+const result = await response.json();
+console.log('Nullifier:', result.data.nullifier); // KEEP SAFE!
+console.log('TX Hash:', result.data.txHash);
+console.log('ZK Compressed:', result.data.zkCompressed);
+```
+
+---
+
+## WOTS+ SIGNATURE GUIDE
+
+### Critical Rules
+1. **One-Time Use**: Each WOTS+ wallet can only sign ONCE. For multiple signatures, create NEW wallets.
+2. **Message Format**: Encode message as Uint8Array before signing.
+3. **Public Key Format**: WOTS+ public key is 2208 bytes (hex: 4416 characters).
+4. **Signature Format**: WOTS+ signature is 2144 bytes (hex: 4288 characters).
+
+### Creating WOTS+ Wallet
+```typescript
+import { createWallet } from 'mochimo-wots-v2';
+
+// Create wallet with unique seed and tag
+const wallet = createWallet('unique-secret-seed', 'unique-tag');
+
+// Get public key (2208 bytes)
+const publicKey = Buffer.from(wallet.wots).toString('hex');
+
+// Sign message (ONE TIME ONLY!)
+const message = 'Hello, Obscura!';
+const messageBytes = new TextEncoder().encode(message);
+const signature = wallet.sign(messageBytes);
+const signatureHex = Buffer.from(signature).toString('hex');
+
+// ⚠️ NEVER reuse this wallet for another signature!
+```
+
+### Signature Verification (Backend)
+```typescript
+import { verifySignature } from 'mochimo-wots-v2';
+
+const isValid = verifySignature(
+  messageBytes,
+  signatureBytes,
+  publicKeyBytes
+);
+```
+
+---
+
+## ERROR CODES
+
+| HTTP | Error Code | Description |
+|------|------------|-------------|
+| 400 | VALIDATION_ERROR | Request validation failed (check signature/publicKey length) |
+| 400 | INVALID_TIMESTAMP | Timeout/expiration is invalid |
+| 400 | SIGNATURE_REUSED | WOTS+ signature already used (one-time use violated) |
+| 401 | SIGNATURE_VERIFICATION_FAILED | Invalid WOTS+ signature (check format: 4288 hex chars) |
+| 402 | INSUFFICIENT_BALANCE | Insufficient off-chain balance |
+| 403 | NOT_AUTHORIZED | Not authorized for this operation |
+| 403 | NOT_WHITELISTED | Market maker not whitelisted (permissioned mode only) |
+| 403 | NOT_OWNER | User does not own this resource |
+| 404 | QUOTE_REQUEST_NOT_FOUND | Quote request not found |
+| 404 | QUOTE_NOT_FOUND | Quote not found |
+| 410 | QUOTE_REQUEST_EXPIRED | Quote request has expired |
+| 410 | QUOTE_EXPIRED | Quote has expired |
+| 410 | QUOTE_REQUEST_CANCELLED | Quote request was cancelled |
+| 410 | QUOTE_REQUEST_FILLED | Quote request already filled |
+| 500 | INTERNAL_ERROR | Internal server error |
+| 500 | DATABASE_ERROR | Database operation failed |
+| 500 | SETTLEMENT_FAILED | Settlement via Obscura-LLMS failed |
+
+### Common WOTS+ Signature Errors
+
+**Error: "Signature must be at least 4288 characters"**
+- Cause: Using Phantom/MetaMask signature instead of WOTS+
+- Solution: Use `mochimo-wots-v2` library to generate WOTS+ signature
+- See: `WOTS_FRONTEND_GUIDE.md` for implementation
+
+**Error: "Public key must be at least 4416 characters"**
+- Cause: Using wallet public key instead of WOTS+ public key
+- Solution: Use `Buffer.from(wallet.wots).toString('hex')` to get WOTS+ public key
+- See: `WOTS_FRONTEND_GUIDE.md` for implementation
+
+**Error: "Signature verification failed"**
+- Cause: Invalid WOTS+ signature or message format mismatch
+- Solution: Ensure message format matches backend expectation
+- Check: Backend expects specific message format (see workflow examples)
+
+**Error: "Signature has already been used"**
+- Cause: Reusing WOTS+ wallet for multiple signatures
+- Solution: Generate NEW WOTS+ wallet for EACH signature
+- Remember: WOTS+ = One-Time Signature (never reuse!)
+
+---
+
+## INTEGRATION WITH OBSCURA-LLMS
+
+The RFQ backend integrates with Obscura-LLMS for balance tracking and settlement.
+
+**IMPORTANT**: Backend already has complete integration via `src/clients/obscura-llms.client.ts`. Frontend does NOT need to implement this!
+
+### Architecture
+
+```
+Frontend → Dark OTC Backend → Obscura Main API
+                ↓
+         (Already integrated!)
+```
+
+### Deposit (Balance Tracking)
+
+**Frontend calls Obscura Main API directly:**
+```typescript
+// User deposits to Obscura-LLMS vault
+const depositResponse = await fetch(
+  'https://api.obscura-app.com/api/v1/deposit',
+  {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      network: 'solana-devnet',
+      token: 'native',
+      amount: '5000000',
+    }),
+  }
+);
+
+const depositData = await depositResponse.json();
+// Save depositNote.commitment for quote acceptance
+const commitment = depositData.depositNote.commitment;
+```
+
+### Withdrawal (Settlement)
+
+**Backend handles this automatically!** When a quote is accepted, `rfqService.acceptQuote()` calls `settlementService.executeSettlement()` which calls Obscura-LLMS withdraw endpoint internally.
+
+**Frontend does NOT need to call this!** Just call accept quote endpoint:
+
+```typescript
+// Frontend only needs to do this:
+POST /api/v1/rfq/quote/:id/accept
+{
+  "signature": "...",
+  "publicKey": "...",
+  "message": "...",
+  "commitment": "0xabc...",
+  "chainId": "solana-devnet"
+}
+
+// Backend automatically:
+// 1. Calls Obscura-LLMS withdraw for taker → MM transfer
+// 2. Calls Obscura-LLMS withdraw for MM → taker transfer
+// 3. Returns settlement result with nullifier + txHash
+```
+
+**Backend internal call (already implemented):**
+```typescript
+// Backend calls this internally
+const withdrawResponse = await fetch(
+  'https://api.obscura-app.com/api/v1/withdraw',
+  {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      commitment: commitment,
+      nullifierHash: nullifierHash,
+      recipient: recipientAddress,
+      amount: amount,
+      chainId: 'solana-devnet',
+    }),
+  }
+);
+```
+
+---
+
+## FRONTEND INTEGRATION CHECKLIST
+
+### Required Libraries
+```json
+{
+  "dependencies": {
+    "mochimo-wots-v2": "^1.1.1",
+    "@solana/web3.js": "^1.95.8",
+    "ethers": "^6.13.0"
+  }
+}
+```
+
+### Wallet Connection
+- Use Phantom (Solana) or MetaMask (Ethereum) for user wallet
+- Generate WOTS+ wallets client-side for signatures
+- NEVER send private keys to backend
+
+### State Management
+- Store quote request ID after creation
+- Store stealth address for receiving messages
+- Store nullifier after quote acceptance (CRITICAL - needed for withdrawal)
+- Track quote expiration times
+
+### UI/UX Considerations
+- Show countdown timer for quote request expiration
+- Display amounts and prices in human-readable format (convert from base units)
+- Calculate and show total cost: Amount × Price Per Unit
+- Indicate ZK compression status for Solana settlements
+- Provide blockchain explorer links for transaction verification
+- Highlight best quote (lowest price for buy, highest for sell)
+
+### Security Best Practices
+- Generate new WOTS+ wallet for each signature
+- Validate all inputs client-side before API calls
+- Store nullifiers securely (encrypted local storage)
+- Never log sensitive data (signatures, nullifiers, private keys)
+
+---
+
+## TESTING
+
+### Development Server
+```bash
+npm run dev
+# Server runs on http://localhost:3000
+```
+
+### Production Server
+```
+https://obscura-dark-api.daemonprotocol.com
+```
+
+### Test Endpoints
+```bash
+# Health check (development)
+curl http://localhost:3000/health
+
+# Health check (production)
+curl https://obscura-dark-api.daemonprotocol.com/health
+
+# Privacy status
+curl https://obscura-dark-api.daemonprotocol.com/api/v1/privacy/status
+
+# Solana status
+curl https://obscura-dark-api.daemonprotocol.com/api/v1/solana/status
+```
+
+### Blockchain Verification
+- **Solana**: https://explorer.solana.com/?cluster=devnet
+- **Sepolia**: https://sepolia.etherscan.io
+- **Photon (ZK Compression)**: https://photon.helius.dev/?cluster=devnet
+
+---
+
+## SUPPORT
+
+For issues or questions:
+1. Check error codes and messages
+2. Verify WOTS+ signature format (2144 bytes)
+3. Ensure wallet is not reused for multiple signatures
+4. Check blockchain explorer for transaction status
+5. Verify environment configuration (Arcium, Light Protocol)
+
+---
+
+## CHANGELOG
+
+### v1.0.0 (Current)
+- ✅ Private quote request creation
+- ✅ Market maker quote submission
+- ✅ Confidential quote selection
+- ✅ Private messaging between taker and market maker
+- ✅ Market maker whitelist management (permissioned mode)
+- ✅ Off-chain balance integration (Arcium cSPL)
+- ✅ WOTS+ signature verification
+- ✅ Relayer network integration
+- ✅ ZK Compression (Solana only)
+- ✅ Admin authentication
+
+### Upcoming Features
+- Dark pool order matching
+- Advanced chat features
+- Cross-chain atomic settlement
+- MEV protection
+- Oracle integration
+
+---
+
+## WOTS+ OWNERSHIP & AUTHORIZATION
+
+### 🔑 CRITICAL: How Ownership Works with One-Time Signatures
+
+**WOTS+ uses ONE-TIME signatures!** Each action uses a DIFFERENT public key.
+
+#### ❌ WRONG Assumption (Traditional Signatures):
+```
+User creates request → Public Key A
+User cancels request → Public Key A (SAME)
+User accepts quote   → Public Key A (SAME)
+Backend checks: if (stored_pk === request_pk) { allow }
+```
+
+#### ✅ CORRECT Design (WOTS+ One-Time):
+```
+User creates request → Public Key A (used once, NEVER reuse)
+User cancels request → Public Key B (NEW, different from A)
+User accepts quote   → Public Key C (NEW, different from A and B)
+Backend checks: Verify signature only (NO public key comparison)
+```
+
+### How Backend Verifies Ownership
+
+Backend **DOES NOT** compare public keys because each action uses a different key.
+
+**Ownership is proven by:**
+
+1. **Knowledge of Resource ID**
+   - Only creator knows `quoteRequestId`
+   - Only authorized users know `quoteId`
+   - Resource IDs are secrets, not public
+
+2. **Valid WOTS+ Signature**
+   - User signs message with WOTS+ private key
+   - Backend verifies signature (proves authenticity)
+   - Signature proves legitimate access
+
+3. **Encrypted Communication**
+   - Messages encrypted to recipient's stealth address
+   - Only intended recipient can decrypt
+   - Privacy preserved without public key linking
+
+### Endpoints Without Public Key Checks
+
+These endpoints **DO NOT** check if `publicKey` matches stored keys:
+
+1. **Cancel Quote Request** (`POST /api/v1/rfq/quote-request/:id/cancel`)
+   - ✅ Verifies WOTS+ signature
+   - ✅ Checks user knows `quoteRequestId`
+   - ❌ Does NOT check `publicKey === taker_public_key`
+
+2. **Accept Quote** (`POST /api/v1/rfq/quote/:id/accept`)
+   - ✅ Verifies WOTS+ signature
+   - ✅ Checks user knows `quoteId`
+   - ❌ Does NOT check `publicKey === taker_public_key`
+
+3. **Send Message** (`POST /api/v1/rfq/message`)
+   - ✅ Verifies WOTS+ signature
+   - ✅ Encrypts to recipient's stealth address
+   - ❌ Does NOT check authorization by public key
+
+4. **Get Messages** (`GET /api/v1/rfq/quote-request/:id/messages`)
+   - ✅ Returns all messages for quote request
+   - ✅ Client decrypts only their own messages
+   - ❌ Does NOT filter by public key
+
+### Frontend Implementation Pattern
+
+```typescript
+// 1. Create Quote Request
+const keypair1 = WOTS.wots_generate_pk_sk();
+const message1 = `create_quote_request:${assetPair}:${direction}:${amount}:${timeout}`;
+const sig1 = WOTS.wots_sign(message1, keypair1.sk);
+const response = await createQuoteRequest({ signature: sig1, publicKey: keypair1.pk, message: message1 });
+
+// SAVE resource ID (NOT public key)
+localStorage.setItem('quoteRequestId', response.quoteRequestId);
+
+// 2. Cancel Quote Request (uses DIFFERENT keypair)
+const keypair2 = WOTS.wots_generate_pk_sk(); // NEW keypair!
+const qrId = localStorage.getItem('quoteRequestId');
+const message2 = `cancel_quote_request:${qrId}`;
+const sig2 = WOTS.wots_sign(message2, keypair2.sk);
+await cancelQuoteRequest(qrId, { signature: sig2, publicKey: keypair2.pk });
+
+// ✅ Backend verifies sig2 is valid (proves ownership)
+// ✅ Backend does NOT check if keypair2.pk === keypair1.pk
+```
+
+### Security Model
+
+**Q: Is this secure if we don't check public keys?**
+**A: YES! Here's why:**
+
+1. **Resource ID is Secret**
+   - Attacker doesn't know victim's `quoteRequestId`
+   - Only creator has this information
+   - Can't cancel someone else's request without the ID
+
+2. **Signature Verification**
+   - Attacker can't forge WOTS+ signature
+   - Valid signature proves authenticity
+   - Cryptographically secure
+
+3. **Privacy Preserved**
+   - Each action uses different public key
+   - Actions are NOT linkable
+   - Perfect unlinkability
+
+**Q: Why not use a master public key for ownership?**
+**A: That would DESTROY privacy!**
+
+```
+// ❌ BAD: Master public key (linkable)
+User creates request → Master PK
+User cancels request → Master PK (SAME)
+User accepts quote   → Master PK (SAME)
+→ Blockchain analyst can link ALL actions to same user
+
+// ✅ GOOD: WOTS+ one-time (unlinkable)
+User creates request → PK A
+User cancels request → PK B (different)
+User accepts quote   → PK C (different)
+→ Blockchain analyst CANNOT link actions
+```
+
+### Common Frontend Mistakes
+
+#### ❌ Mistake 1: Reusing WOTS+ Keypair
+```typescript
+// WRONG - NEVER DO THIS!
+const keypair = WOTS.wots_generate_pk_sk();
+createRequest(keypair); // First use - OK
+cancelRequest(keypair); // REUSE - SECURITY RISK!
+```
+
+#### ❌ Mistake 2: Storing Public Key for Authorization
+```typescript
+// WRONG - Don't store PK for later use
+localStorage.setItem('myPublicKey', keypair.pk);
+// Later...
+const myPK = localStorage.getItem('myPublicKey');
+cancelRequest(myPK); // Won't work - need NEW keypair
+```
+
+#### ✅ Correct: Store Resource IDs
+```typescript
+// CORRECT - Store resource IDs, not public keys
+localStorage.setItem('quoteRequestId', response.quoteRequestId);
+localStorage.setItem('stealthAddress', response.stealthAddress);
+// Later...
+const qrId = localStorage.getItem('quoteRequestId');
+const newKeypair = WOTS.wots_generate_pk_sk(); // Generate NEW
+cancelRequest(qrId, newKeypair); // Works!
+```
+
+### Documentation
+
+See `WOTS_OWNERSHIP_GUIDE.md` for complete frontend implementation guide.
+
+---
+
+## BACKEND IMPLEMENTATION STATUS
+
+### ✅ What's Already Implemented
+
+**IMPORTANT**: Backend is COMPLETE and PRODUCTION-READY. Do NOT re-implement existing services!
+
+#### 1. Obscura Client (`src/clients/obscura-llms.client.ts`)
+✅ **Already exists** - Client for Obscura Main API integration
+- Deposit to vault
+- Withdraw from vault
+- Balance checking
+- Support for Solana & EVM chains
+
+**Usage:**
+```typescript
+import { obscuraClient } from '../clients/obscura-llms.client';
+
+// Check balance
+const balance = await obscuraClient.checkBalance(commitment, token);
+
+// Execute withdrawal
+const result = await obscuraClient.withdraw({
+  commitment,
+  nullifierHash,
+  recipient,
+  amount,
+  chainId
+});
+```
+
+#### 2. Settlement Service (`src/services/settlement.service.ts`)
+✅ **Already exists** - Handles atomic settlement between taker and market maker
+- Atomic dual transfer (taker ↔ market maker)
+- Balance verification before settlement
+- Integration with Obscura Main API
+- ZK compression support (Solana)
+- Nullifier generation
+
+**Usage:**
+```typescript
+import { settlementService } from '../services/settlement.service';
+
+const result = await settlementService.executeSettlement({
+  commitment,
+  nullifierHash,
+  recipient,
+  amount,
+  chainId
+});
+```
+
+#### 3. Privacy Service (`src/services/privacy.service.ts`)
+✅ **Already exists** - Privacy operations
+- Stealth address generation
+- Nullifier generation
+- Privacy utilities
+
+**Usage:**
+```typescript
+import { privacyService } from '../services/privacy.service';
+
+// Generate stealth address
+const stealthAddress = privacyService.generateStealthAddress();
+
+// Generate nullifier
+const nullifier = privacyService.generateNullifier();
+```
+
+#### 4. RFQ Service (`src/services/rfq.service.ts`)
+✅ **Already exists** - Complete RFQ operations
+- Create quote request
+- Submit quote
+- **Accept quote with automatic settlement** ← CRITICAL!
+- Cancel quote request
+- Get quotes by request ID
+
+**Accept Quote Flow (Already Implemented):**
+```typescript
+// This is ALREADY in the backend!
+async acceptQuote(params: AcceptQuoteParams) {
+  // 1. Verify signature
+  // 2. Verify ownership
+  // 3. Check quote not expired
+  // 4. Generate nullifier
+  // 5. Execute settlement via settlementService ← Automatic!
+  // 6. Update database
+  // 7. Return result with nullifier
+}
+```
+
+#### 5. Signature Service (`src/services/signature.service.ts`)
+✅ **Already exists** - REAL WOTS+ verification
+- Verify WOTS+ signatures using `mochimo-wots-v2`
+- Signature reuse detection
+- Post-quantum cryptography (REAL, not simulated!)
+
+**Verification Flow:**
+```typescript
+// Backend does this automatically
+async verifySignature(request) {
+  // 1. Hash message with SHA-256
+  // 2. Extract PK, pubSeed, rnd2 from address
+  // 3. Call WOTS.wots_pk_from_sig() ← REAL crypto!
+  // 4. Compare recovered PK with provided PK
+  // 5. Return valid/invalid
+}
+```
+
+#### 6. Whitelist Service (`src/services/whitelist.service.ts`)
+✅ **Already exists** - Market maker authorization
+- Permissionless mode (default): Anyone can be market maker
+- Permissioned mode: Whitelist required
+- Admin management endpoints
+
+#### 7. Database Schema
+✅ **Already complete** - All tables exist
+- `quote_requests` - Quote request storage
+- `quotes` - Quote storage
+- `messages` - Private messaging
+- `whitelist` - Market maker whitelist
+- `used_signatures` - Signature reuse prevention
+
+**Schema includes:**
+- Support for `commitment` field (optional in request body)
+- Support for `chainId` field
+- All privacy fields (stealth addresses, nullifiers)
+
+---
+
+### ❌ What NOT to Do
+
+**DO NOT re-implement these services!** They already exist and are production-ready.
+
+#### ❌ Don't Create New Obscura Client
+```typescript
+// ❌ WRONG - Don't do this!
+export class ObscuraClient {
+  async checkBalance() { ... }
+  async withdraw() { ... }
+}
+```
+
+**Why?** Backend already has `src/clients/obscura-llms.client.ts`
+
+#### ❌ Don't Implement Settlement Logic
+```typescript
+// ❌ WRONG - Don't do this!
+router.post('/quote/:id/accept', async (req, res) => {
+  // 100+ lines of settlement code...
+  const transfer1 = await obscuraClient.withdraw(...);
+  const transfer2 = await obscuraClient.withdraw(...);
+})
+```
+
+**Why?** Backend already has `src/services/settlement.service.ts` and `rfqService.acceptQuote()` calls it automatically!
+
+#### ❌ Don't ALTER TABLE
+```sql
+-- ❌ WRONG - Don't do this!
+ALTER TABLE quote_requests ADD COLUMN taker_commitment VARCHAR(255);
+ALTER TABLE quotes ADD COLUMN mm_commitment VARCHAR(255);
+```
+
+**Why?** Backend accepts `commitment` in request body (optional). No need to store permanently.
+
+#### ❌ Don't Create Nullifier Generator
+```typescript
+// ❌ WRONG - Don't do this!
+export function generateNullifier() { ... }
+```
+
+**Why?** Backend already has `src/services/privacy.service.ts` with `generateNullifier()`
+
+---
+
+### ✅ What Frontend Should Do
+
+#### 1. Deposit to Obscura Vault (Before Trading)
+```typescript
+// Call Obscura Main API directly
+const deposit = await fetch('https://api.obscura-app.com/api/v1/deposit', {
+  method: 'POST',
+  body: JSON.stringify({
+    network: 'solana-devnet',
+    token: 'USDC',
+    amount: '750000000000',
+    walletAddress: userWallet.publicKey.toString()
+  })
+});
+
+const { commitment } = (await deposit.json()).data;
+// Save this commitment for create request/submit quote
+```
+
+#### 2. Include Required Fields in Requests
+
+**Create Quote Request:**
+```typescript
+POST /api/v1/rfq/quote-request
+{
+  "assetPair": "SOL/USDC",
+  "direction": "buy",
+  "amount": "5000000000",
+  "timeout": 1737648000000,
+  "signature": "...",
+  "publicKey": "...",
+  "message": "...",        // ← WAJIB! For WOTS+ verification
+  "commitment": "0xabc...", // ← From Obscura deposit
+  "chainId": "solana-devnet"
+}
+```
+
+**Submit Quote:**
+```typescript
+POST /api/v1/rfq/quote
+{
+  "quoteRequestId": "...",
+  "price": "150000000000",
+  "expirationTime": 1737648000000,
+  "signature": "...",
+  "publicKey": "...",
+  "message": "...",        // ← WAJIB!
+  "commitment": "0xghi...", // ← From Obscura deposit
+  "chainId": "solana-devnet"
+}
+```
+
+**Accept Quote (Settlement Automatic!):**
+```typescript
+POST /api/v1/rfq/quote/:id/accept
+{
+  "signature": "...",
+  "publicKey": "...",
+  "message": "...",        // ← WAJIB!
+  "commitment": "0xabc...", // ← From Obscura deposit
+  "chainId": "solana-devnet"
+}
+
+// Backend automatically:
+// 1. Verifies balances
+// 2. Executes atomic settlement
+// 3. Returns nullifier + txHash
+```
+
+#### 3. Save Nullifier from Settlement
+```typescript
+const result = await acceptQuote(...);
+
+if (result.success) {
+  // SAVE THIS! Needed for future withdrawals
+  const nullifier = result.data.nullifier;
+  localStorage.setItem(`nullifier_${quoteId}`, nullifier);
+}
+```
+
+---
+
+### 📚 Integration Guides
+
+**For Frontend Developers:**
+- `DARK_OTC_CORRECT_INTEGRATION_GUIDE.md` - Complete integration guide
+- `FRONTEND_INTEGRATION_GUIDE.md` - WOTS+ signature implementation
+- `WOTS_FRONTEND_GUIDE.md` - WOTS+ wallet generation
+
+**For Backend Developers:**
+- `INTEGRATION_GUIDE_COMPARISON.md` - What NOT to do
+- `WHITELIST_MODE_GUIDE.md` - Whitelist configuration
+
+**DO NOT USE:**
+- ❌ `DARK_OTC_BACKEND_INTEGRATION_GUIDE.md` - OUTDATED! Contains incorrect instructions
+
+---
+
+### 🎯 Quick Checklist for New Developers
+
+**Before implementing anything, check:**
+
+- [ ] Is there already a service for this? (Check `src/services/`)
+- [ ] Is there already a client for this? (Check `src/clients/`)
+- [ ] Does the database schema support this? (Check `supabase/migrations/`)
+- [ ] Is this already in the API? (Check `src/routes/`)
+
+**If YES to any above:** Don't re-implement! Use existing code.
+
+**Backend is COMPLETE. Frontend only needs to:**
+1. Deposit to Obscura vault
+2. Include `commitment` and `message` fields
+3. Save nullifier from settlement
+
+---
+
+## LICENSE
+
+MIT
+
+## DISCLAIMER
+
+This is a testnet/devnet implementation for development and testing purposes only. Do not use with real funds on mainnet without proper security audits.
+
+---
+
+**A product by Daemon BlockInt Technologies**

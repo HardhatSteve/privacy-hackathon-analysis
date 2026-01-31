@@ -1,0 +1,30 @@
+[package]
+name = "sip-privacy"
+version = "0.1.0"
+description = "SIP Protocol - Privacy-preserving shielded transfers on Solana"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "sip_privacy"
+
+[features]
+default = []
+cpi = ["no-entrypoint"]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+idl-build = ["anchor-lang/idl-build", "anchor-spl/idl-build"]
+anchor-debug = []
+custom-heap = []
+custom-panic = []
+
+
+[dependencies]
+# Use Anchor 0.30.1 for compatibility with solana platform-tools v1.51 (rustc 1.84.1)
+anchor-lang = "0.30.1"
+anchor-spl = "0.30.1"
+bytemuck = { version = "1.19.0", features = ["derive"] }
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(target_os, values("solana"))'] }

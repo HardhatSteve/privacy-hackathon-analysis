@@ -1,0 +1,5 @@
+my_lat = "12"
+my_long = "12"
+radius_sq = "16"
+target_lat = "10"
+target_long = "10"

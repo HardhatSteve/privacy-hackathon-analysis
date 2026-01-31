@@ -1,0 +1,33 @@
+# Simple single-container deployment
+# No blue-green since we only have main branch
+
+name: sip-website
+
+services:
+  web:
+    image: ghcr.io/sip-protocol/sip-website:${IMAGE_TAG:-latest}
+    container_name: sip-website
+    restart: unless-stopped
+    ports:
+      - "5000:3000"
+    environment:
+      - NODE_ENV=production
+      - GITHUB_TOKEN=${GITHUB_TOKEN:-}
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://127.0.0.1:3000/"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+    networks:
+      - sip-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  sip-network:
+    name: sip-network
+    driver: bridge

@@ -1,0 +1,54 @@
+# Anchor
+.anchor
+target/
+**/*.rs.bk
+keypair.json
+
+# Node
+node_modules/
+.env
+.env.local
+
+# Expo
+app/.expo/
+app/dist/
+app/ios/
+npm-debug.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Private keys
+*.pem
+id.json
+
+# Test
+test-ledger/
+
+# Solo dev - no need to push context to remote
+CLAUDE.md
+.dev/
+
+# Build outputs (APKs)
+app/mukon-debug.apk
+app/mukon-release.apk
+app/*.apk

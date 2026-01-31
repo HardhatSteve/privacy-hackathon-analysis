@@ -1,0 +1,31 @@
+{
+  "name": "private-pool",
+  "version": "0.1.0",
+  "description": "Privacy Execution Layer v3.0 - ZK-SNARK privacy mixer on Solana",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint . --ext .ts",
+    "test": "anchor test",
+    "test:unit": "./scripts/test_unit.sh",
+    "test:integration": "./scripts/test_integration.sh",
+    "test:circuits": "./scripts/test_circuits.sh",
+    "test:all": "./scripts/test_all.sh",
+    "deploy:devnet": "./scripts/deploy_devnet.sh",
+    "deploy:ipfs": "./scripts/deploy_ipfs.sh"
+  },
+  "dependencies": {
+    "@coral-xyz/anchor": "^0.29.0",
+    "@solana/web3.js": "^1.87.0",
+    "circomlibjs": "^0.1.7",
+    "snarkjs": "^0.7.0"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.0",
+    "@types/mocha": "^10.0.0",
+    "chai": "^4.3.0",
+    "eslint": "^8.0.0",
+    "mocha": "^10.0.0",
+    "ts-mocha": "^10.0.0",
+    "typescript": "^5.0.0"
+  }
+}

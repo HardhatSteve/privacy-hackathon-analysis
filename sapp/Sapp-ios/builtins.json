@@ -1,0 +1,18 @@
+[
+  "bare-crypto",
+  "bare-path",
+  "bare-fs",
+  "bare-os",
+  "bare-tty",
+  "bare-pipe",
+  "bare-tcp",
+  "bare-udp",
+  "bare-dns",
+  "bare-hrtime",
+  "bare-inspector",
+  "bare-process",
+  "bare-signals",
+  "bare-timers",
+  "bare-url",
+  "bare-env"
+]

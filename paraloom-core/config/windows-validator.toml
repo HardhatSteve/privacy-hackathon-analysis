@@ -1,0 +1,21 @@
+# Windows Validator Node Configuration
+
+[network]
+# Listen on all interfaces
+listen_address = "/ip4/0.0.0.0/tcp/9002"
+
+# Coordinator's local network IP address
+bootstrap_nodes = [
+    "/ip4/192.168.1.15/tcp/9001/p2p/12D3KooWSCw1rxqFcibGkMGJ67VhXnX7nCat3i8gkQeV9Gd1jbgd"
+]
+
+enable_mdns = true
+
+[node]
+node_type = "ResourceProvider"
+max_cpu_usage = 80
+max_memory_usage = 80
+max_storage_usage = 10240
+
+[storage]
+data_dir = "./data/windows-validator"

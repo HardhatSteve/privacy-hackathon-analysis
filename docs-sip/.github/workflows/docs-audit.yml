@@ -1,0 +1,23 @@
+name: Monthly Docs Audit
+
+on:
+  schedule:
+    - cron: '0 9 1 * *'  # 1st of every month at 9am UTC
+  workflow_dispatch:
+
+jobs:
+  create-audit-issue:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Get current date
+        id: date
+        run: echo "month_year=$(date +'%B %Y')" >> $GITHUB_OUTPUT
+
+      - name: Create audit issue
+        uses: peter-evans/create-issue-from-file@v6
+        with:
+          title: "Monthly Docs Audit - ${{ steps.date.outputs.month_year }}"
+          content-filepath: .github/DOCS_AUDIT_TEMPLATE.md
+          labels: documentation,audit

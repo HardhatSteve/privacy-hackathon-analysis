@@ -1,0 +1,24 @@
+{
+  "name": "veil",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Veil - Privacy-focused DeFi infrastructure for Solana",
+  "workspaces": [
+    "packages/*",
+    "apps/*",
+    "apps/*/sdk",
+    "apps/*/app",
+    "apps/*/solver"
+  ],
+  "scripts": {
+    "build": "yarn workspaces run build",
+    "test": "yarn workspaces run test",
+    "lint": "yarn workspaces run lint",
+    "clean": "yarn workspaces run clean"
+  },
+  "devDependencies": {
+    "puppeteer": "^24.36.0",
+    "puppeteer-screen-recorder": "^3.0.6",
+    "typescript": "^5.0.0"
+  }
+}

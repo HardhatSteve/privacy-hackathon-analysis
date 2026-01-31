@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+*.tsbuildinfo
+
+# Environment
+.env
+.env.local
+.env*.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Testing
+coverage/
+
+# VitePress
+docs/.vitepress/cache
+docs/.vitepress/dist
+
+# Example repo (separate git repo)
+solana-privacy-scanner-example/
+solana-privacy-scanner-devtools-example/
+sps-ci-example/

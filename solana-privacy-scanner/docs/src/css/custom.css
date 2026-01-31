@@ -1,0 +1,242 @@
+/**
+ * Solana Privacy Scanner - Custom Styles
+ * Fresh design matching the VitePress theme
+ */
+
+/* Font imports - Using Source Sans 3 for a clean, professional look */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* ===== CSS CUSTOM PROPERTIES ===== */
+
+:root {
+  /* Typography */
+  --ifm-font-family-base: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --ifm-font-family-monospace: 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
+  
+  /* Brand colors - Teal/Cyan accent */
+  --ifm-color-primary: #0d9488;
+  --ifm-color-primary-dark: #0c857b;
+  --ifm-color-primary-darker: #0b7e74;
+  --ifm-color-primary-darkest: #096860;
+  --ifm-color-primary-light: #0ea596;
+  --ifm-color-primary-lighter: #0fac9d;
+  --ifm-color-primary-lightest: #14b8a6;
+  
+  /* Background colors */
+  --ifm-background-color: #ffffff;
+  --ifm-background-surface-color: #f8fafa;
+  
+  /* Text colors */
+  --ifm-font-color-base: #1a1a1a;
+  --ifm-color-emphasis-700: #4a4a4a;
+  --ifm-color-emphasis-600: #8a8a8a;
+  
+  /* Borders */
+  --ifm-color-emphasis-300: #e5e7eb;
+  
+  /* Code */
+  --ifm-code-font-size: 85%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] {
+  /* Text colors */
+  --ifm-font-color-base: #f3f4f6;
+  --ifm-color-emphasis-700: #d1d5db;
+  --ifm-color-emphasis-600: #9ca3af;
+  
+  /* Background colors */
+  --ifm-background-color: #0f1115;
+  --ifm-background-surface-color: #1a1d24;
+  
+  /* Borders */
+  --ifm-color-emphasis-300: #2d333b;
+  
+  /* Brand colors - Brighter in dark mode */
+  --ifm-color-primary: #2dd4bf;
+  --ifm-color-primary-dark: #29c2b0;
+  --ifm-color-primary-darker: #27b7a6;
+  --ifm-color-primary-darkest: #209688;
+  --ifm-color-primary-light: #3ddec9;
+  --ifm-color-primary-lighter: #47e1cd;
+  --ifm-color-primary-lightest: #5eead4;
+  
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* ===== TYPOGRAPHY ===== */
+
+h1 {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--ifm-color-emphasis-300);
+}
+
+h2:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+h3 {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+h4 {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+p {
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+/* ===== INLINE CODE ===== */
+
+code {
+  font-family: var(--ifm-font-family-monospace);
+  padding: 2px 6px;
+  background: var(--ifm-background-surface-color);
+  border-radius: 4px;
+  color: var(--ifm-color-primary-darker);
+  font-weight: 500;
+}
+
+/* ===== CODE BLOCKS ===== */
+
+div[class*='codeBlock'] {
+  border-radius: 8px;
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+}
+
+/* ===== LISTS ===== */
+
+ul, ol {
+  padding-left: 20px;
+}
+
+li {
+  font-size: 15px;
+  line-height: 1.75;
+  margin: 6px 0;
+}
+
+/* ===== TABLES ===== */
+
+table {
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+th {
+  background: var(--ifm-background-surface-color);
+  font-weight: 600;
+  text-align: left;
+  padding: 10px 14px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+}
+
+td {
+  padding: 10px 14px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+}
+
+/* ===== BLOCKQUOTES ===== */
+
+blockquote {
+  margin: 20px 0;
+  padding: 12px 18px;
+  border-left: 3px solid var(--ifm-color-primary);
+  background: var(--ifm-background-surface-color);
+  border-radius: 0 6px 6px 0;
+}
+
+/* ===== NAVBAR ===== */
+
+.navbar {
+  background: var(--ifm-background-color);
+  border-bottom: 1px solid var(--ifm-color-emphasis-300);
+}
+
+.navbar__title {
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+}
+
+/* GitHub icon link */
+.header-github-link::before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  display: flex;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23fff' d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E")
+    no-repeat;
+}
+
+.header-github-link:hover::before {
+  opacity: 0.7;
+}
+
+/* ===== FOOTER ===== */
+
+.footer {
+  background: var(--ifm-background-surface-color);
+  border-top: 1px solid var(--ifm-color-emphasis-300);
+}
+
+/* ===== ADMONITIONS ===== */
+
+.admonition {
+  border-radius: 8px;
+}
+
+/* ===== SCROLLBAR ===== */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ifm-color-emphasis-300);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ifm-color-emphasis-600);
+}
+
+/* ===== POLISH ===== */
+
+::selection {
+  background: rgba(13, 148, 136, 0.2);
+  color: var(--ifm-font-color-base);
+}
+
+
+/* Hide navbar on homepage */
+body[class*="index-page"] .navbar,
+.homepage-wrapper .navbar {
+  display: none !important;
+}

@@ -1,4 +1,4 @@
-# Ignore cloned hackathon repos (only keep analysis)
-*/
-!analyses/
-!.gitignore
+# Common ignores
+node_modules/
+.DS_Store
+*.log

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORRO | Virtual Passport Selection</title>
+    <style>
+        :root {
+            /* ORRO V2.2 Color Palette */
+            --bg-primary: #0a0a0c;
+            --surface: #16161a;
+            --accent-glow: #00f2ff;
+            --text-main: #e4e4e7;
+            --text-dim: #a1a1aa;
+            --border-subtle: #27272a;
+            --transition-speed: 0.25s;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            font-family: 'Inter', -apple-system, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .passport-container {
+            background: var(--surface);
+            border: 1px solid var(--border-subtle);
+            padding: 2rem;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        p.subtitle {
+            color: var(--text-dim);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .subtitle {
+            color: var(--text-dim);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .subtitle .brand {
+            background: var(--bg-primary);
+            color: var(--text-main);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-left: 4px;
+        }
+
+        /* The Custom Radio Group */
+        .identity-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .identity-option {
+            position: relative;
+            cursor: pointer;
+            display: block;
+        }
+
+        .identity-option input {
+            position: absolute;
+            opacity: 0; /* Hide native radio */
+        }
+
+        /* The Visual Card */
+        .option-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-subtle);
+            padding: 1rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all var(--transition-speed);
+        }
+
+        .identity-option:hover .option-card {
+            border-color: rgba(0, 242, 255, 0.3);
+            background: rgba(255,255,255,0.05);
+        }
+
+        /* Checked State Styles */
+        .identity-option input:checked + .option-card {
+            border-color: var(--accent-glow);
+            background: rgba(0, 242, 255, 0.05);
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.1);
+        }
+
+        .role-text {
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        .prefix-badge {
+            font-family: monospace;
+            font-size: 1rem;
+            color: var(--accent-glow);
+            background: rgba(0, 242, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        /* Submit Button */
+        button.action-btn {
+            margin-top: 2rem;
+            width: 100%;
+            padding: 0.875rem;
+            background: var(--text-main);
+            color: var(--bg-primary);
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        button.action-btn:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="passport-container">
+        <h1>How do you want to use orro?</h1>
+        <p class="subtitle">This helps us customize your experience</p>
+
+        <form action="/onboard" method="POST">
+            <div class="identity-group">
+                
+                <label class="identity-option">
+                    <input type="radio" name="key_role" value="0x01" checked>
+                    <div class="option-card">
+                        <span class="role-text">Work</span>
+                    </div>
+                </label>
+
+                <label class="identity-option">
+                    <input type="radio" name="key_role" value="0x02">
+                    <div class="option-card">
+                        <span class="role-text">Personal Life</span>
+                    </div>
+                </label>
+
+                <label class="identity-option">
+                    <input type="radio" name="key_role" value="0x09">
+                    <div class="option-card">
+                        <span class="role-text">Education / Academic</span>
+                    </div>
+                </label>
+
+                <label class="identity-option">
+                    <input type="radio" name="key_role" value="0x09">
+                    <div class="option-card">
+                        <span class="role-text">Non-profit / Government</span>
+                    </div>
+                </label>
+
+                <label class="identity-option">
+                    <input type="radio" name="key_role" value="0x09">
+                    <div class="option-card">
+                        <span class="role-text">Other</span>
+                    </div>
+                </label>
+
+            </div>
+
+            <button type="submit" class="action-btn">Continue</button>
+        </form>
+    </div>
+
+</body>
+</html>

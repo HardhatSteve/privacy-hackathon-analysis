@@ -17,7 +17,6 @@
 | **Noir** | 14 | chameo, shadow, sip-protocol, vapor-tokens, yieldcash, AURORAZK, circuits |
 | **Arcium MPC** | 12 | epoch, hydentity, Arcshield, stealth-rails-SDK, OBSCURA-PRIVACY, Mukon-messenger |
 | **Inco FHE** | 5 | chameo, donatrade, PrivyLocker, IAP |
-| **STARK** | **0** | None - unique opportunity |
 | **None/Other** | 50 | Analysis tools, SDKs, messaging apps, encryption-only |
 
 ---
@@ -160,7 +159,6 @@
 
 | Niche | Competitors | Opportunity |
 |-------|-------------|-------------|
-| **STARK proofs** | 0 | WIDE OPEN |
 | **Verifiable randomness** | 0 | WIDE OPEN |
 | **Gaming/lottery** | 2 (weak) | WIDE OPEN |
 | **Post-quantum claims** | 0 | Narrative edge |
@@ -212,5 +210,5 @@ Each repository analyzed via parallel agents examining:
 
 ## Related Files
 
-- [COMPETITIVE_STRATEGY.md](COMPETITIVE_STRATEGY.md) - Our recommended build strategy
+- [WINNER_PREDICTIONS.md](WINNER_PREDICTIONS.md) - Predicted winners by track
 - [analyses/](analyses/) - Detailed analysis of top competitors

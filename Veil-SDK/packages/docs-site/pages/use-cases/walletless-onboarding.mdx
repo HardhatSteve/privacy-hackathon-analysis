@@ -1,0 +1,41 @@
+# Walletless Onboarding
+
+The biggest friction point in crypto is the wallet connection. You lose users the moment you ask them to "Connect Wallet" or "Save this Seed Phrase" before they have experienced value.
+
+Veil supports an "Auth-First" architecture where the cryptographic complexity is deferred until strictly necessary.
+
+## The Architecture
+
+In this model, your application does not start with a global wallet provider (like Phantom or Solflare). Instead, it starts with an identity derived from the user's device or social login.
+
+### Phase 1: Identity Generation
+
+When a user lands on your app, you generate a scoped key pair or register a passkey. This key is local, ephemeral, or backed by hardware. It is **not** their "main" wallet.
+
+You initialize Veil with a specialized adapter for this key (e.g., a Passkey or Local Storage adapter).
+
+```typescript
+// Initial state: No global wallet, just a local signer
+const veil = createVeil({
+  wallet: localPasskeySigner, 
+  // adapter logic handles the lack of on-chain history
+});
+```
+
+### Phase 2: Deferred Signing
+
+The user interacts with your app. They might "claim" a username or "start" a process. Veil accepts these intents.
+
+Because the `passkey-adapter` is active, Veil knows it cannot perform arbitrary high-value transfers. Instead, it constructs transactions that this specific key *can* sign—typically gas-less meta-transactions or interactions with a specific onboarding contract.
+
+### Phase 3: Upgrading to Assets
+
+Later, when the user wants to withdraw funds or perform a high-value action, you don't rewrite your transaction logic.
+
+You simply re-initialize Veil or update the wallet provider to a full extension wallet. The rest of your application code—the calls to `veil.send()`—remains identical.
+
+## Why this works
+
+Most dApps fail this transition because their "Connect" button is hardcoded to the transaction logic. By separating the **Signer** (the Adapter) from the **Intent** (Veil), you can swap the signer mechanism without breaking the application flow.
+
+The user feels a standard Web2 signup flow. The engineering team builds a standard Web3 transaction flow. Veil bridges the gap.

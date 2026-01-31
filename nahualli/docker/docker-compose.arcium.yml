@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  arcium-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.arcium
+    container_name: nahualli-arcium
+    privileged: true
+    mem_limit: 8g
+    memswap_limit: 16g
+    volumes:
+      # Mount project directory
+      - ../:/app
+      # Persist Solana config
+      - arcium-solana:/root/.config/solana
+      # Persist Cargo cache for faster rebuilds
+      - arcium-cargo:/root/.cargo/registry
+      # Mount Docker socket for Docker-in-Docker
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "8899:8899"  # Solana RPC
+      - "8900:8900"  # Solana WebSocket
+    stdin_open: true
+    tty: true
+    platform: linux/amd64
+
+volumes:
+  arcium-solana:
+  arcium-cargo:

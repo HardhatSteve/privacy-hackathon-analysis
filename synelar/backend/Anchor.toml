@@ -1,0 +1,28 @@
+[features]
+seeds = false
+skip-lint = false
+
+[programs.devnet]
+synid = "SYNiD1111111111111111111111111111111111111"
+
+[programs.mainnet]
+synid = "SYNiD1111111111111111111111111111111111111"
+
+[registry]
+url = "https://api.apr.dev"
+
+[provider]
+cluster = "devnet"
+wallet = "~/.config/solana/id.json"
+
+[scripts]
+test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
+deploy = "anchor deploy --provider.cluster devnet"
+build = "anchor build"
+idl = "anchor idl init --filepath target/idl/synid.json SYNiD1111111111111111111111111111111111111"
+
+[test]
+startup_wait = 5000
+
+[test.validator]
+url = "https://api.devnet.solana.com"

@@ -1,0 +1,8 @@
+{
+  "name": "@veil-labs/templates",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "echo 'Templates are copied, not built'"
+  }
+}

@@ -1,0 +1,66 @@
+[package]
+name = "zelana-core"
+version = { workspace = true }
+edition = { workspace = true }
+
+[[bin]]
+name = "zelana-core"
+path = "src/main.rs"
+
+[dependencies]
+anyhow = {workspace = true}
+blake3 = { workspace = true }
+chacha20poly1305 = {workspace = true}
+dashmap = "6.1.0"                           # Concurrent HashMap for session management
+ed25519-dalek = {workspace = true}
+env_logger = "0.11.8"
+hex = { workspace = true }
+hkdf = "0.12.4"
+log = "0.4.29"
+rocksdb = {workspace = true}
+sha2 = {workspace = true}
+solana-client = "3.1.5"
+solana-commitment-config = "3.1.0"
+solana-compute-budget-interface = "3.0.0"
+solana-sdk = "3.0.0"
+thiserror = { workspace = true }
+tokio = { workspace = true }
+tokio-stream = "0.1.17"
+tokio-util = "0.7.17"
+wincode = { workspace = true }
+x25519-dalek = { workspace = true }
+zephyr = { workspace = true }
+zelana-account = { workspace = true }
+zelana-keypair = { workspace = true }
+zelana-transaction = { workspace = true }
+zelana-block = { workspace = true }
+zelana-privacy = { workspace = true }
+zelana-threshold = { workspace = true }
+prover = { workspace = true }
+txblob = { workspace = true }
+zelana-config = {workspace = true}
+
+# Arkworks for ZK proving
+ark-bn254 = "0.5.0"
+ark-ec = "0.5.0"
+ark-groth16 = "0.5.0"
+ark-snark = "0.5"
+ark-serialize = "0.5.0"
+ark-std = "0.5.0"
+ark-ff = "0.5.0"
+ark-crypto-primitives = { version = "0.5.0", features = ["sponge"] }
+axum = "0.8.8"
+tower-http = { version = "0.6.8", features = ["cors", "trace"] }
+serde = { version = "1.0.228", features = ["derive"] }
+serde_json = "1.0.148"
+toml = "0.8"
+dirs = "5.0"
+tracing = "0.1.44"
+chrono = "0.4.42"
+reqwest = {version = "0.12.15" , features = ["json", "rustls-tls"]}
+
+
+[dev-dependencies]
+borsh = "1.6.0"
+solana-program = "3.0.0"
+tempfile = "3.24.0"

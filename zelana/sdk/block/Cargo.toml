@@ -1,0 +1,11 @@
+[package]
+name = "zelana-block"
+description = "Zelana Block type"
+version = { workspace = true }
+edition = { workspace = true }
+
+[dependencies]
+byteorder = "1.5"
+serde = { workspace = true }
+hex = { workspace = true }
+wincode = {workspace = true, features = ["derive"]}

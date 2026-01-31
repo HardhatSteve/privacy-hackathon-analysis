@@ -1,0 +1,130 @@
+*.md
+!README.md
+
+# ===========================
+# Environment & Secrets
+# ===========================
+.env
+.env.*
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.pem
+*.key
+credentials.json
+secrets.json
+keypair.json
+*-keypair.json
+
+# ===========================
+# Node.js / npm / yarn / pnpm
+# ===========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+package-lock.json
+pnpm-lock.yaml
+
+# ===========================
+# Next.js
+# ===========================
+.next/
+out/
+.vercel
+.turbo
+
+# ===========================
+# Rust / Cargo
+# ===========================
+target/
+Cargo.lock
+**/*.rs.bk
+
+# ===========================
+# Solana
+# ===========================
+test-ledger/
+.anchor/
+*.so
+deploy/
+programs/**/target/
+
+# ===========================
+# Noir (ZK Circuits)
+# ===========================
+proofs/
+target/
+**/Prover.toml
+**/Verifier.toml
+circuits/**/target/
+*.proof
+*.vkey
+
+# ===========================
+# WASM
+# ===========================
+pkg/
+*.wasm
+wasm-pack.log
+
+# ===========================
+# Build & Output
+# ===========================
+dist/
+build/
+*.log
+logs/
+
+# ===========================
+# IDE & Editors
+# ===========================
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+*.sublime-workspace
+*.sublime-project
+
+# ===========================
+# OS Generated
+# ===========================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ===========================
+# Testing & Coverage
+# ===========================
+coverage/
+.nyc_output/
+*.lcov
+jest.config.js.map
+
+# ===========================
+# Misc
+# ===========================
+*.local
+*.cache
+.cache/
+.parcel-cache/
+.eslintcache
+.stylelintcache
+*.tsbuildinfo
+
+# ===========================
+# Privacy Cash SDK Cache
+# ===========================
+cache/

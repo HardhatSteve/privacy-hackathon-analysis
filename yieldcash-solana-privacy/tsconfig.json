@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "types": ["mocha", "chai", "node"],
+    "typeRoots": ["./node_modules/@types"],
+    "outDir": "./dist"
+  },
+  "include": ["tests/**/*"],
+  "exclude": ["node_modules", "dist", "app", "client", "relayer"]
+}

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORRO | Sign In</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* ORRO V2.2 Color Palette */
+            --bg-primary: #0a0a0c;
+            --surface: #16161a;
+            --surface-elevated: #1c1c21;
+            --accent-glow: #00f2ff;
+            --accent-blue: #0ea5e9;
+            --text-main: #e4e4e7;
+            --text-dim: #a1a1aa;
+            --border-subtle: #27272a;
+            --transition-speed: 0.25s;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 1rem;
+        }
+
+        .modal-container {
+            background: var(--surface-elevated);
+            border: 1px solid var(--border-subtle);
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 460px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        /* Close Button */
+        .close-btn {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--text-dim);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            transition: all var(--transition-speed);
+        }
+
+        .close-btn:hover {
+            background: rgba(255,255,255,0.05);
+            color: var(--text-main);
+        }
+
+        /* Avatar */
+        .avatar {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 1.5rem;
+            background: var(--text-main);
+            border-radius: 50%;
+        }
+
+        /* Title Section */
+        .title-section {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .title-section h1 {
+            font-size: 1.5rem;
+            margin: 0;
+            letter-spacing: -0.02em;
+            font-weight: 600;
+            display: inline;
+        }
+
+        .brand {
+            background: var(--bg-primary);
+            color: var(--text-main);
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-weight: 600;
+            margin-left: 8px;
+            display: inline-block;
+        }
+
+        /* Wallet List */
+        .wallet-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .wallet-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.25rem;
+            background: rgba(255,255,255,0.03);
+            border-bottom: 1px solid var(--border-subtle);
+            cursor: pointer;
+            transition: background var(--transition-speed);
+        }
+
+        .wallet-item:last-child {
+            border-bottom: none;
+        }
+
+        .wallet-item:hover {
+            background: rgba(255,255,255,0.06);
+        }
+
+        .wallet-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .wallet-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .wallet-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .installed-badge {
+            background: rgba(255,255,255,0.1);
+            color: var(--text-dim);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* More Options */
+        .more-options {
+            padding: 1rem 1.25rem;
+            text-align: left;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background var(--transition-speed);
+            color: var(--text-main);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .more-options:hover {
+            background: rgba(255,255,255,0.06);
+        }
+
+        /* Divider */
+        .divider {
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Email Continue */
+        .email-continue {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            transition: all var(--transition-speed);
+            cursor: pointer;
+        }
+
+        .email-continue:hover {
+            background: rgba(255,255,255,0.06);
+        }
+
+        .email-continue input {
+            flex: 1;
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .email-continue input::placeholder {
+            color: var(--text-dim);
+        }
+
+        .email-continue button {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-blue);
+            border: none;
+            border-radius: 6px;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity var(--transition-speed);
+            flex-shrink: 0;
+        }
+
+        .email-continue button:hover {
+            opacity: 0.9;
+        }
+
+        @media (max-width: 640px) {
+            .modal-container {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="modal-container">
+        <button class="close-btn" onclick="window.location.href='/'">✕</button>
+
+        <div class="avatar"></div>
+
+        <div class="title-section">
+            <h1>Connect with</h1>
+            <span class="brand">orro</span>
+        </div>
+
+        <div class="wallet-list">
+            <div class="wallet-item" onclick="connectWallet('metamask')">
+                <div class="wallet-info">
+                    <div class="wallet-icon" style="background: linear-gradient(135deg, #f6851b, #e2761b);">
+                        🦊
+                    </div>
+                    <span class="wallet-name">MetaMask</span>
+                </div>
+                <span class="installed-badge">Installed</span>
+            </div>
+
+            <div class="wallet-item" onclick="connectWallet('phantom')">
+                <div class="wallet-info">
+                    <div class="wallet-icon" style="background: linear-gradient(135deg, #ab9ff2, #7c66d6);">
+                        👻
+                    </div>
+                    <span class="wallet-name">Phantom</span>
+                </div>
+                <span class="installed-badge">Installed</span>
+            </div>
+
+            <div class="wallet-item" onclick="connectWallet('trust')">
+                <div class="wallet-info">
+                    <div class="wallet-icon" style="background: linear-gradient(135deg, #3375bb, #2a5f9c);">
+                        🛡️
+                    </div>
+                    <span class="wallet-name">Trust Wallet</span>
+                </div>
+                <span class="installed-badge">Installed</span>
+            </div>
+
+            <div class="wallet-item" onclick="connectWallet('walletconnect')">
+                <div class="wallet-info">
+                    <div class="wallet-icon" style="background: linear-gradient(135deg, #3b99fc, #2980d9);">
+                        🔗
+                    </div>
+                    <span class="wallet-name">WalletConnect</span>
+                </div>
+            </div>
+
+            <div class="wallet-item" onclick="connectWallet('base')">
+                <div class="wallet-info">
+                    <div class="wallet-icon" style="background: linear-gradient(135deg, #0052ff, #0041cc);">
+                        🔵
+                    </div>
+                    <span class="wallet-name">Base Account</span>
+                </div>
+            </div>
+
+            <div class="wallet-item" onclick="connectWallet('coinbase')">
+                <div class="wallet-info">
+                    <div class="wallet-icon" style="background: linear-gradient(135deg, #0052ff, #0041cc);">
+                        💰
+                    </div>
+                    <span class="wallet-name">Coinbase Wallet</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="more-options" onclick="showMoreWallets()">
+            More Wallet Options
+        </div>
+
+        <div class="divider">or continue with email</div>
+
+        <div class="email-continue">
+            <input type="email" placeholder="Continue with email" id="emailInput">
+            <button onclick="continueWithEmail()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function connectWallet(walletName) {
+            console.log('Connecting to', walletName);
+            // Add your wallet connection logic here
+            alert('Connecting to ' + walletName);
+        }
+
+        function showMoreWallets() {
+            console.log('Show more wallet options');
+            // Add your more wallets logic here
+        }
+
+        function continueWithEmail() {
+            const email = document.getElementById('emailInput').value;
+            if (email) {
+                console.log('Continue with email:', email);
+                // Add your email login logic here
+                window.location.href = '/login/email?email=' + encodeURIComponent(email);
+            }
+        }
+
+        // Allow Enter key to submit email
+        document.getElementById('emailInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                continueWithEmail();
+            }
+        });
+    </script>
+
+</body>
+</html>

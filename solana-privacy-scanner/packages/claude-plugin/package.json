@@ -1,0 +1,56 @@
+{
+  "name": "solana-privacy-scanner-plugin",
+  "version": "0.1.0",
+  "description": "Claude Code plugin for Solana privacy analysis",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist/**/*",
+    ".claude-plugin/**/*",
+    "skills/**/*",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist",
+    "type-check": "tsc --noEmit",
+    "test": "npm run build && vitest run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui"
+  },
+  "keywords": [
+    "solana",
+    "privacy",
+    "claude-code",
+    "plugin",
+    "static-analysis"
+  ],
+  "author": "Taylor Ferran",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taylorferran/solana-privacy-scanner.git",
+    "directory": "packages/claude-plugin"
+  },
+  "homepage": "https://taylorferran.github.io/solana-privacy-scanner",
+  "bugs": {
+    "url": "https://github.com/taylorferran/solana-privacy-scanner/issues"
+  },
+  "dependencies": {
+    "solana-privacy-scanner": "^0.4.0",
+    "solana-privacy-scanner-core": "^0.5.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2",
+    "@types/node": "^22.10.5",
+    "vitest": "^2.1.8"
+  }
+}

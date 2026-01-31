@@ -1,0 +1,386 @@
+---
+/**
+ * Privacy Levels interactive section
+ * Shows what's hidden at each privacy level
+ */
+---
+
+<section class="privacy-levels-section">
+  <h2 class="section-title">Privacy Levels</h2>
+  <p class="section-subtitle">Choose your level of privacy with a single toggle</p>
+
+  <div class="levels-container">
+    <div class="level-tabs" role="tablist">
+      <button class="level-tab" data-level="transparent" role="tab" aria-selected="false">
+        Transparent
+      </button>
+      <button class="level-tab active" data-level="shielded" role="tab" aria-selected="true">
+        Shielded
+      </button>
+      <button class="level-tab" data-level="compliant" role="tab" aria-selected="false">
+        Compliant
+      </button>
+    </div>
+
+    <div class="level-content">
+      <div class="level-panel" data-panel="transparent">
+        <div class="visibility-grid">
+          <div class="vis-item visible">
+            <span class="vis-icon">👁</span>
+            <span class="vis-label">Sender</span>
+            <span class="vis-status">Visible</span>
+          </div>
+          <div class="vis-item visible">
+            <span class="vis-icon">👁</span>
+            <span class="vis-label">Amount</span>
+            <span class="vis-status">Visible</span>
+          </div>
+          <div class="vis-item visible">
+            <span class="vis-icon">👁</span>
+            <span class="vis-label">Recipient</span>
+            <span class="vis-status">Visible</span>
+          </div>
+        </div>
+        <p class="level-desc">Standard transaction. All details public on-chain.</p>
+      </div>
+
+      <div class="level-panel active" data-panel="shielded">
+        <div class="visibility-grid">
+          <div class="vis-item hidden">
+            <span class="vis-icon">🛡</span>
+            <span class="vis-label">Sender</span>
+            <span class="vis-status">Hidden</span>
+          </div>
+          <div class="vis-item hidden">
+            <span class="vis-icon">🛡</span>
+            <span class="vis-label">Amount</span>
+            <span class="vis-status">Hidden</span>
+          </div>
+          <div class="vis-item hidden">
+            <span class="vis-icon">🛡</span>
+            <span class="vis-label">Recipient</span>
+            <span class="vis-status">Hidden</span>
+          </div>
+        </div>
+        <p class="level-desc">Full privacy. Only you see your transaction details.</p>
+      </div>
+
+      <div class="level-panel" data-panel="compliant">
+        <div class="visibility-grid">
+          <div class="vis-item hidden">
+            <span class="vis-icon">🛡</span>
+            <span class="vis-label">Sender</span>
+            <span class="vis-status">Hidden*</span>
+          </div>
+          <div class="vis-item hidden">
+            <span class="vis-icon">🛡</span>
+            <span class="vis-label">Amount</span>
+            <span class="vis-status">Hidden*</span>
+          </div>
+          <div class="vis-item hidden">
+            <span class="vis-icon">🛡</span>
+            <span class="vis-label">Recipient</span>
+            <span class="vis-status">Hidden*</span>
+          </div>
+        </div>
+        <p class="level-desc">*Encrypted but auditable with viewing key. Perfect for institutions.</p>
+      </div>
+    </div>
+
+    <div class="code-preview">
+      <div class="code-header">
+        <span class="code-dot red"></span>
+        <span class="code-dot yellow"></span>
+        <span class="code-dot green"></span>
+        <span class="code-title">example.ts</span>
+      </div>
+      <pre class="code-content"><code><span class="kw">const</span> intent = <span class="kw">await</span> sip
+  .<span class="fn">intent</span>()
+  .<span class="fn">input</span>(<span class="str">'solana'</span>, <span class="str">'SOL'</span>, amount)
+  .<span class="fn">output</span>(<span class="str">'ethereum'</span>, <span class="str">'ETH'</span>)
+  .<span class="fn">privacy</span>(PrivacyLevel.<span class="level-value">SHIELDED</span>)
+  .<span class="fn">build</span>()</code></pre>
+    </div>
+  </div>
+</section>
+
+<script>
+  const tabs = document.querySelectorAll('.level-tab')
+  const panels = document.querySelectorAll('.level-panel')
+  const levelValue = document.querySelector('.level-value')
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const level = tab.getAttribute('data-level')
+
+      // Update tabs
+      tabs.forEach(t => {
+        t.classList.remove('active')
+        t.setAttribute('aria-selected', 'false')
+      })
+      tab.classList.add('active')
+      tab.setAttribute('aria-selected', 'true')
+
+      // Update panels
+      panels.forEach(p => p.classList.remove('active'))
+      document.querySelector(`[data-panel="${level}"]`)?.classList.add('active')
+
+      // Update code
+      if (levelValue) {
+        levelValue.textContent = level.toUpperCase()
+      }
+    })
+  })
+</script>
+
+<style>
+  .privacy-levels-section {
+    padding: 4rem 1.5rem;
+    text-align: center;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem;
+    color: var(--sl-color-white);
+  }
+
+  .section-subtitle {
+    font-size: 1.1rem;
+    color: var(--sl-color-gray-3);
+    margin: 0 0 2.5rem;
+  }
+
+  .levels-container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .level-tabs {
+    display: flex;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 0.75rem;
+    padding: 0.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .level-tab {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--sl-color-gray-3);
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid transparent;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .level-tab:hover {
+    color: var(--sl-color-gray-2);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .level-tab.active {
+    background: rgba(139, 92, 246, 0.2);
+    border-color: rgba(139, 92, 246, 0.3);
+    color: #c4b5fd;
+  }
+
+  .level-content {
+    position: relative;
+    min-height: 180px;
+    margin-bottom: 1.5rem;
+  }
+
+  .level-panel {
+    display: none;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .level-panel.active {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .visibility-grid {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .vis-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.25rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0.75rem;
+    width: 110px;
+    height: 110px;
+  }
+
+  .vis-item.visible {
+    border-color: rgba(239, 68, 68, 0.3);
+    background: rgba(239, 68, 68, 0.05);
+  }
+
+  .vis-item.hidden {
+    border-color: rgba(139, 92, 246, 0.3);
+    background: rgba(139, 92, 246, 0.05);
+  }
+
+  .vis-icon {
+    font-size: 1.5rem;
+  }
+
+  .vis-label {
+    font-size: 0.8rem;
+    color: var(--sl-color-gray-3);
+  }
+
+  .vis-status {
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .vis-item.visible .vis-status {
+    color: #f87171;
+  }
+
+  .vis-item.hidden .vis-status {
+    color: #a78bfa;
+  }
+
+  .level-desc {
+    font-size: 0.9rem;
+    color: var(--sl-color-gray-3);
+    margin: 0;
+  }
+
+  .code-preview {
+    background: #1e1e2e;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    text-align: left;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .code-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .code-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .code-dot.red { background: #ff5f57; }
+  .code-dot.yellow { background: #febc2e; }
+  .code-dot.green { background: #28c840; }
+
+  .code-title {
+    font-size: 0.75rem;
+    color: var(--sl-color-gray-4);
+    margin-left: auto;
+  }
+
+  .code-content {
+    margin: 0;
+    padding: 1.25rem;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    overflow-x: auto;
+  }
+
+  .code-content code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+    color: #cdd6f4;
+  }
+
+  .kw { color: #cba6f7; }
+  .fn { color: #89b4fa; }
+  .str { color: #a6e3a1; }
+  .level-value {
+    color: #f9e2af;
+    transition: color 0.2s ease;
+  }
+
+  /* Light theme */
+  :root[data-theme='light'] .section-title {
+    color: var(--sl-color-black);
+  }
+
+  :root[data-theme='light'] .level-tabs {
+    background: rgba(0, 0, 0, 0.02);
+    border-color: rgba(0, 0, 0, 0.08);
+  }
+
+  :root[data-theme='light'] .level-tab {
+    color: var(--sl-color-gray-4);
+  }
+
+  :root[data-theme='light'] .level-tab.active {
+    background: rgba(124, 58, 237, 0.15);
+    color: #7c3aed;
+  }
+
+  :root[data-theme='light'] .vis-item {
+    background: rgba(0, 0, 0, 0.02);
+    border-color: rgba(0, 0, 0, 0.08);
+  }
+
+  :root[data-theme='light'] .vis-item.visible {
+    border-color: rgba(220, 38, 38, 0.3);
+    background: rgba(220, 38, 38, 0.03);
+  }
+
+  :root[data-theme='light'] .vis-item.hidden {
+    border-color: rgba(124, 58, 237, 0.3);
+    background: rgba(124, 58, 237, 0.03);
+  }
+
+  :root[data-theme='light'] .vis-item.visible .vis-status {
+    color: #dc2626;
+  }
+
+  :root[data-theme='light'] .vis-item.hidden .vis-status {
+    color: #7c3aed;
+  }
+
+  @media (max-width: 600px) {
+    .visibility-grid {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .vis-item {
+      width: 100%;
+      max-width: 200px;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .level-tabs {
+      flex-direction: column;
+    }
+  }
+</style>

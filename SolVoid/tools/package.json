@@ -1,0 +1,29 @@
+{
+  "name": "solvoid-tools",
+  "version": "1.0.0",
+  "description": "SolVoid Development Tools - Utilities for privacy development",
+  "main": "dist/indexer.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/indexer.js",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "solana",
+    "privacy",
+    "tools",
+    "development",
+    "indexer"
+  ],
+  "author": "Privacy-Zero Team",
+  "license": "MIT",
+  "dependencies": {
+    "@solana/web3.js": "^1.98.4",
+    "@coral-xyz/anchor": "^0.30.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.30",
+    "typescript": "^5.3.0"
+  }
+}

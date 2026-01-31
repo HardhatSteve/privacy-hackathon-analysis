@@ -1,0 +1,26 @@
+{
+  "name": "test-toolkit",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "description": "Test suite for solana-privacy-scanner toolkit",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "analyze": "solana-privacy-scanner analyze src/fee-payer-bad.ts src/memo-pii-bad.ts",
+    "analyze:fee-payer": "solana-privacy-scanner analyze src/fee-payer-bad.ts",
+    "analyze:memo": "solana-privacy-scanner analyze src/memo-pii-bad.ts",
+    "analyze:good": "solana-privacy-scanner analyze src/good-example.ts",
+    "scan:wallet": "solana-privacy-scanner scan-wallet",
+    "scan:tx": "solana-privacy-scanner scan-transaction"
+  },
+  "dependencies": {
+    "solana-privacy-scanner": "file:../packages/cli",
+    "solana-privacy-scanner-core": "file:../packages/core",
+    "@solana/web3.js": "^1.95.8"
+  },
+  "devDependencies": {
+    "vitest": "^2.1.8",
+    "typescript": "^5.7.2"
+  }
+}

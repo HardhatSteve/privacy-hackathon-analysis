@@ -1,0 +1,59 @@
+// Polyfills must be imported first - ORDER MATTERS!
+import 'react-native-get-random-values';
+import { Buffer } from 'buffer';
+global.Buffer = Buffer;
+import '@ethersproject/shims';
+
+import '../global.css';
+
+import { Stack } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
+import { useEffect } from 'react';
+import { View } from 'react-native';
+import * as SplashScreen from 'expo-splash-screen';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { P01PrivyProvider } from '../providers/PrivyProvider';
+// ZkProverProvider DISABLED - 19MB circuit file freezes app even with lazy loading
+// Metro bundler includes the file in bundle regardless of dynamic import
+// TODO: Host circuits on CDN or use backend prover
+import { AlertProvider } from '../providers/AlertProvider';
+
+// Prevent splash screen from auto-hiding
+SplashScreen.preventAutoHideAsync();
+
+export default function RootLayout() {
+  useEffect(() => {
+    // Hide splash screen after a short delay
+    const timer = setTimeout(() => {
+      SplashScreen.hideAsync();
+    }, 500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <GestureHandlerRootView style={{ flex: 1, backgroundColor: '#050505' }}>
+      <SafeAreaProvider>
+        <P01PrivyProvider>
+            <AlertProvider>
+              <View style={{ flex: 1, backgroundColor: '#050505' }}>
+                <StatusBar style="light" />
+                <Stack
+                  screenOptions={{
+                    headerShown: false,
+                    contentStyle: { backgroundColor: '#050505' },
+                    animation: 'fade',
+                  }}
+                >
+                  <Stack.Screen name="index" />
+                  <Stack.Screen name="(onboarding)" />
+                  <Stack.Screen name="(auth)" />
+                  <Stack.Screen name="(main)" />
+                </Stack>
+              </View>
+            </AlertProvider>
+        </P01PrivyProvider>
+      </SafeAreaProvider>
+    </GestureHandlerRootView>
+  );
+}

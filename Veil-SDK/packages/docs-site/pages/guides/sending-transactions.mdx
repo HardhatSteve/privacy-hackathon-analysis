@@ -1,0 +1,19 @@
+# Sending Private Transactions
+
+This guide walks you through sending a private transaction using the Veil SDK.
+
+## Prerequisites
+
+- Wallet connected
+- SOL balance
+
+## Steps
+
+1. Initialize `VeilClient`.
+2. Select target recipient.
+3. Call `transferPrivate`.
+
+```typescript
+// Example
+await client.transferPrivate(recipient, amount);
+```

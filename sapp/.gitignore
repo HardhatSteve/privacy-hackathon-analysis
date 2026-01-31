@@ -1,0 +1,120 @@
+# Markdown files
+*.md
+
+# Local/legacy directories
+.claude/
+_legacy/
+bare-ios-main/
+bare-kit-main/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+.env.test
+
+# Config files with secrets
+Config.plist
+
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+.build/
+DerivedData/
+prebuilds/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+*.iml
+
+# Xcode
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+*.xccheckout
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+*.xcuserstate
+*.xcscmblueprint
+
+# Swift Package Manager
+.swiftpm/
+Packages/
+Package.resolved
+
+# CocoaPods
+Pods/
+Podfile.lock
+
+# Carthage
+Carthage/Build/
+Carthage/Checkouts/
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+# Archives and binaries
+*.ipa
+*.app.dSYM.zip
+*.zip
+*.tar.gz
+
+# Signing and credentials
+*.mobileprovision
+*.p12
+*.pem
+*.key
+
+# Crashlytics
+crashlytics.settings
+crashlytics-build.properties
+
+# Misc
+*.local
+.cache/
+.turbo/

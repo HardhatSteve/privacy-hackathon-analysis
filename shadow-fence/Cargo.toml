@@ -1,0 +1,21 @@
+[workspace]
+members = [
+    "programs/*"
+]
+resolver = "2"
+
+[profile.release]
+overflow-checks = true
+
+[workspace.dependencies]
+anchor-lang = "0.29.0"
+
+[patch.crates-io]
+# 1. Forge constant_time_eq (Fixes the "Reference not found" crash)
+constant_time_eq = { path = "./libs/constant_time_eq" }
+
+# 2. Forge wit-bindgen (Fixes the "Edition 2024" crash)
+wit-bindgen = { path = "./libs/wit-bindgen" }
+
+# 3. Keep the Git patch for wasm-bindgen (Just in case)
+wasm-bindgen = { git = "https://github.com/rustwasm/wasm-bindgen", tag = "0.2.92" }

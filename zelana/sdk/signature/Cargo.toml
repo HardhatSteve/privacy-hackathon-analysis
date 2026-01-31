@@ -1,0 +1,10 @@
+[package]
+name = "zelana-signature"
+description = "Zelana Signature type"
+version = { workspace = true }
+edition = { workspace = true }
+
+[dependencies]
+serde = { workspace = true }
+serde_bytes = { workspace = true }
+wincode = {workspace = true , features = ["derive"]}

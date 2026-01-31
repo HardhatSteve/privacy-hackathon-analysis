@@ -1,0 +1,29 @@
+name: Privacy Zero Scan
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+jobs:
+  privacy-scan:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Use Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.x'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run Privacy Scan (Demo)
+      # Run against a mock/test transaction if available, or just run unit tests
+      run: npm test
+
+    - name: Build
+      run: npm run build

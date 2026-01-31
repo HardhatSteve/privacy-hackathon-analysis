@@ -1,0 +1,6 @@
+framework module BareKit {
+    umbrella header "BareKit.h"
+
+    export *
+    module * { export * }
+}

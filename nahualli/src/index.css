@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #f5f0e8;
+  --color-cream-dark: #e8e0d4;
+  --color-gold: #c9a962;
+  --color-gold-dark: #a88b4a;
+  --color-teal: #4a9b8c;
+  --color-teal-dark: #3a7b6c;
+  --color-brown: #4a3f35;
+  --color-brown-light: #6b5d4f;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-cream text-brown font-sans antialiased;
+    margin: 0;
+    min-height: 100vh;
+  }
+}

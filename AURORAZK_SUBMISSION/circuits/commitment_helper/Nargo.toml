@@ -1,0 +1,6 @@
+[package]
+name = "commitment_helper"
+type = "bin"
+authors = ["AuroraZK"]
+
+[dependencies]

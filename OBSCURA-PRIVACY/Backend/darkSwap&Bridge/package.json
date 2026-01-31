@@ -1,0 +1,27 @@
+{
+	"name": "obscura-swap",
+	"version": "1.0.0",
+	"description": "Privacy-focused cross-chain swap platform powered by SilentSwap",
+	"private": true,
+	"scripts": {
+		"backend:install": "cd backend && pnpm install",
+		"backend:dev": "cd backend && pnpm dev",
+		"backend:start": "cd backend && pnpm start",
+		"backend:test": "cd backend && pnpm test:api",
+		"mcp:setup": "cd mcp && pwsh setup.ps1",
+		"mcp:server:build": "cd mcp/server && pnpm build",
+		"mcp:client:build": "cd mcp/client && pnpm build",
+		"mcp:client:test": "cd mcp/client && pnpm test",
+		"install:all": "pnpm install && pnpm backend:install"
+	},
+	"keywords": [
+		"silentswap",
+		"cross-chain",
+		"privacy",
+		"swap",
+		"bridge",
+		"defi"
+	],
+	"author": "",
+	"license": "MIT"
+}

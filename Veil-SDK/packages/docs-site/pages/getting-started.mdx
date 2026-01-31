@@ -1,0 +1,50 @@
+# Getting Started
+
+This guide will get you sending transactions with Veil in under 5 minutes.
+
+## Installation
+
+Install the main Veil package.
+
+```bash
+npm install @veil-labs/veil
+```
+
+## Setup
+
+Veil needs a connection to Solana and a wallet adapter to sign transactions.
+
+```typescript
+import { createVeil } from '@veil-labs/veil';
+import { useWallet } from '@solana/wallet-adapter-react'; // or your preferred wallet provider
+
+// Inside your component or hook
+const { wallet } = useWallet();
+
+const veil = createVeil({
+  wallet,
+  // Optional: Override RPC URL (defaults to public nodes)
+  rpcUrl: 'https://api.mainnet-beta.solana.com' 
+});
+```
+
+## Sending a Transaction
+
+To send assets, you don't need to specify *how* the privacy is achieved, only *what* you want to do.
+
+```typescript
+try {
+  const result = await veil.send({
+    recipient: 'BoB...', // Solana Public Key
+    amount: 100,         // Amount in natural units
+    token: 'USDC',       // Token symbol or mint address
+  });
+
+  console.log('Transaction confirmed:', result.signature);
+} catch (error) {
+  console.error('Transaction failed:', error);
+}
+```
+
+### Note on Defaults
+By default, Veil includes the `NoopPrivacyAdapter`. This means if no specific privacy protocol is configured or available for the requested token, Veil may fall back to a standard (non-private) transfer or throw an error depending on your strictness settings. This is intentional to allow for easy development and testing on Devnet.

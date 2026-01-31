@@ -1,0 +1,83 @@
+---
+import BaseHead from '../components/BaseHead.astro'
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+import CopyCodeButton from '../components/CopyCodeButton.astro'
+import BackToTop from '../components/BackToTop.astro'
+import ScrollAnimation from '../components/ScrollAnimation.astro'
+import Toast from '../components/Toast.astro'
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts'
+
+interface Props {
+  title?: string
+  description?: string
+  image?: string
+  noIndex?: boolean
+}
+
+const {
+  title = SITE_TITLE,
+  description = SITE_DESCRIPTION,
+  image,
+  noIndex = false,
+} = Astro.props
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title={title}
+      description={description}
+      image={image}
+      noIndex={noIndex}
+    />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    <Header />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer />
+    <CopyCodeButton />
+    <BackToTop />
+    <ScrollAnimation />
+    <Toast />
+  </body>
+</html>
+
+<style is:global>
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--sip-gradient);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    text-decoration: none;
+    font-weight: 500;
+    z-index: var(--z-modal);
+    transition: top var(--transition-normal) ease;
+  }
+
+  .skip-link:focus {
+    top: 0;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  main {
+    flex: 1;
+    width: 100%;
+    max-width: 75rem;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+</style>

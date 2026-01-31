@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TikTok Overlay Graphics - RentReclaim</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Space Mono', monospace;
+      background: #1a1a2e;
+      color: white;
+      padding: 2rem;
+    }
+    
+    h1 {
+      font-family: 'Syne', sans-serif;
+      margin-bottom: 2rem;
+      color: #00ff88;
+    }
+    
+    h2 {
+      margin: 2rem 0 1rem;
+      color: #9ca3af;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .overlay-container {
+      background: #0a0a0f;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    
+    .overlay-label {
+      padding: 0.75rem 1rem;
+      background: #2a2a3a;
+      font-size: 0.75rem;
+      color: #9ca3af;
+    }
+    
+    /* Overlay Styles */
+    .overlay {
+      padding: 1.5rem;
+      min-height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    
+    /* Hook Overlays */
+    .hook-1 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 800;
+      line-height: 1.2;
+      text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;
+    }
+    
+    .hook-1 .highlight {
+      color: #00ff88;
+    }
+    
+    .hook-2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #00ff88, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    /* Stats Overlays */
+    .stat-overlay {
+      background: rgba(0, 0, 0, 0.8);
+      border: 2px solid #00ff88;
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+      display: inline-block;
+    }
+    
+    .stat-number {
+      font-family: 'Syne', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #00ff88;
+    }
+    
+    .stat-label {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 0.25rem;
+    }
+    
+    /* Badge Overlays */
+    .badge-row {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .badge {
+      background: rgba(0, 255, 136, 0.15);
+      border: 1px solid #00ff88;
+      border-radius: 20px;
+      padding: 0.5rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    
+    .badge-icon {
+      font-size: 1rem;
+    }
+    
+    /* CTA Overlays */
+    .cta-box {
+      background: linear-gradient(135deg, #00ff88, #00cc6a);
+      color: #000;
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .cta-simple {
+      font-size: 1.25rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .cta-simple .arrow {
+      font-size: 1.5rem;
+      animation: bounce 1s infinite;
+    }
+    
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(5px); }
+    }
+    
+    /* Result Overlays */
+    .result-card {
+      background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(59, 130, 246, 0.1));
+      border: 2px solid #00ff88;
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-align: left;
+      min-width: 250px;
+    }
+    
+    .result-header {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-bottom: 0.5rem;
+    }
+    
+    .result-value {
+      font-family: 'Syne', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #00ff88;
+    }
+    
+    .result-subtext {
+      font-size: 0.85rem;
+      color: #9ca3af;
+      margin-top: 0.5rem;
+    }
+    
+    /* Disclaimer */
+    .disclaimer {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      color: #6b7280;
+    }
+    
+    /* Progress Overlay */
+    .progress-overlay {
+      width: 100%;
+      max-width: 280px;
+    }
+    
+    .progress-text {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      font-size: 0.85rem;
+    }
+    
+    .progress-bar {
+      height: 8px;
+      background: #2a2a3a;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      width: 75%;
+      background: linear-gradient(90deg, #00ff88, #3b82f6);
+      border-radius: 4px;
+    }
+    
+    /* Before/After */
+    .before-after {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    
+    .ba-card {
+      background: #1a1a24;
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+      text-align: center;
+    }
+    
+    .ba-label {
+      font-size: 0.7rem;
+      color: #6b7280;
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
+    }
+    
+    .ba-value {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 800;
+    }
+    
+    .ba-before .ba-value { color: #ef4444; }
+    .ba-after .ba-value { color: #00ff88; }
+    
+    .ba-arrow {
+      font-size: 1.5rem;
+      color: #00ff88;
+    }
+    
+    /* Lower Third */
+    .lower-third {
+      background: linear-gradient(90deg, rgba(0, 255, 136, 0.9), rgba(0, 255, 136, 0));
+      padding: 0.75rem 1.5rem;
+      color: #000;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      width: fit-content;
+    }
+    
+    .lower-third-icon {
+      font-size: 1.25rem;
+    }
+    
+    /* Instructions */
+    .instructions {
+      margin-top: 3rem;
+      padding: 1.5rem;
+      background: #2a2a3a;
+      border-radius: 12px;
+    }
+    
+    .instructions h3 {
+      color: #00ff88;
+      margin-bottom: 1rem;
+    }
+    
+    .instructions ol {
+      margin-left: 1.5rem;
+      line-height: 1.8;
+    }
+    
+    .instructions code {
+      background: #0a0a0f;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎬 TikTok Overlay Graphics</h1>
+  <p style="color: #9ca3af; margin-bottom: 2rem;">Screenshot these or recreate in CapCut/Canva</p>
+  
+  <h2>Hook Text (First 3 Seconds)</h2>
+  <div class="grid">
+    <div class="overlay-container">
+      <div class="overlay-label">HOOK 1: Problem Statement</div>
+      <div class="overlay">
+        <div class="hook-1">
+          solana wallets:<br>
+          you probably have<br>
+          <span class="highlight">stuck SOL</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="overlay-container">
+      <div class="overlay-label">HOOK 2: Question</div>
+      <div class="overlay">
+        <div class="hook-1">
+          why is your SOL<br>
+          <span class="highlight">disappearing?</span> 🤔
+        </div>
+      </div>
+    </div>
+    
+    <div class="overlay-container">
+      <div class="overlay-label">HOOK 3: Discovery</div>
+      <div class="overlay">
+        <div class="hook-1">
+          just found<br>
+          <span class="highlight">$47 hidden</span><br>
+          in my wallet
+        </div>
+      </div>
+    </div>
+    
+    <div class="overlay-container">
+      <div class="overlay-label">HOOK 4: Call Out</div>
+      <div class="overlay">
+        <div class="hook-1">
+          traded memecoins?<br>
+          <span class="highlight">check this</span> 👀
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <h2>Stats Overlays</h2>
+  <div class="grid">
+    <div class="overlay-container">
+      <div class="overlay-label">ACCOUNTS FOUND</div>
+      <div class="overlay">
+        <div class="stat-overlay">
+          <div class="stat-number">47</div>
+          <div class="stat-label">empty accounts found</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="overlay-container">
+      <div class="overlay-label">SOL RECOVERABLE</div>
+      <div class="overlay">
+        <div class="stat-overlay">
+          <div class="stat-number">0.18 SOL</div>
+          <div class="stat-label">recoverable (~$27)</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="overlay-container">
+      <div class="overlay-label">RESULT</div>
+      <div class="overlay">
+        <div class="stat-overlay">
+          <div class="stat-number">+0.14 SOL</div>
+          <div class="stat-label">recovered ✅</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <h2>Trust Badges</h2>
+  <div class="grid">
+    <div class="overlay-container">
+      <div class="overlay-label">TRUST BADGE ROW</div>
+      <div class="overlay">
+        <div class="badge-row">
+          <div class="badge"><span class="badge-icon">🔐</span> Non-custodial</div>
+          <div class="badge"><span class="badge-icon">✍️</span> You sign</div>
+          <div class="badge"><span class="badge-icon">🚫</span> No seed phrases</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="overlay-container">
+      <div class="overlay-label">SINGLE BADGE (Large)</div>
+      <div class="overlay">
+        <div class="badge" style="font-size: 1rem; padding: 0.75rem 1.5rem;">
+          <span class="badge-icon">🔐</span> 
+          non-custodial • you sign everything
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <h2>CTA Overlays</h2>
+  <div class="grid">
+    <div class="overlay-container">
+      <div class="overlay-label">CTA BUTTON</div>
+      <div class="overlay">
+        <div class="cta-box">🔍 free scan • link in bio</div>
+      </div>
+    </div>
+    
+    <div class="overlay-container">
+      <div class="overlay-label">CTA WITH ARROW</div>
+      <div class="overlay">
+        <div class="cta-simple">
+          link in bio <span class="arrow">👇</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="overlay-container">
+      <div class="overlay-label">CTA MINIMAL</div>
+      <div class="overlay">
+        <div style="font-size: 1.1rem;">
+          <span style="color: #00ff88; font-weight: 700;">free scan</span> • link in bio
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <h2>Result Cards</h2>
+  <div class="grid">
+    <div class="overlay-container">
+      <div class="overlay-label">RECOVERY RESULT</div>
+      <div class="overlay">
+        <div class="result-card">
+          <div class="result-header">✅ Cleanup Complete</div>
+          <div class="result-value">+0.186 SOL</div>
+          <div class="result-subtext">47 accounts closed • ~$28 recovered</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="overlay-container">
+      <div class="overlay-label">BEFORE / AFTER</div>
+      <div class="overlay">
+        <div class="before-after">
+          <div class="ba-card ba-before">
+            <div class="ba-label">Before</div>
+            <div class="ba-value">0.52 SOL</div>
+          </div>
+          <div class="ba-arrow">→</div>
+          <div class="ba-card ba-after">
+            <div class="ba-label">After</div>
+            <div class="ba-value">0.71 SOL</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <h2>Progress Overlay</h2>
+  <div class="grid">
+    <div class="overlay-container">
+      <div class="overlay-label">CLEANUP PROGRESS</div>
+      <div class="overlay">
+        <div class="progress-overlay">
+          <div class="progress-text">
+            <span>Closing accounts...</span>
+            <span style="color: #00ff88;">36/47</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <h2>Lower Third</h2>
+  <div class="grid">
+    <div class="overlay-container">
+      <div class="overlay-label">LOWER THIRD BANNER</div>
+      <div class="overlay" style="justify-content: flex-start;">
+        <div class="lower-third">
+          <span class="lower-third-icon">🧹</span>
+          <span>RentReclaim • Free Wallet Scan</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <h2>Disclaimer</h2>
+  <div class="grid">
+    <div class="overlay-container">
+      <div class="overlay-label">NFA DISCLAIMER</div>
+      <div class="overlay">
+        <div class="disclaimer">not financial advice • non-custodial • you sign all transactions</div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="instructions">
+    <h3>How to Use These</h3>
+    <ol>
+      <li>Screenshot the overlay you need</li>
+      <li>Import into CapCut as a sticker/overlay</li>
+      <li>Or recreate in Canva with same fonts:
+        <ul>
+          <li>Headlines: <code>Syne Extra Bold</code></li>
+          <li>Body: <code>Space Mono Bold</code></li>
+          <li>Green: <code>#00ff88</code></li>
+          <li>Blue: <code>#3b82f6</code></li>
+        </ul>
+      </li>
+      <li>Position in top or bottom third of video</li>
+      <li>Add animation: Pop, Fade, or Scale In</li>
+    </ol>
+  </div>
+</body>
+</html>

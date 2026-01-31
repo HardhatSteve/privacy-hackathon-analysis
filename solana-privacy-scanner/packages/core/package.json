@@ -1,0 +1,88 @@
+{
+  "name": "solana-privacy-scanner-core",
+  "version": "0.7.0",
+  "type": "module",
+  "description": "Core scanning engine for Solana privacy analysis - analyze on-chain privacy exposure using heuristic-based risk detection",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./matchers": {
+      "types": "./dist/matchers.d.ts",
+      "import": "./dist/matchers.js",
+      "require": "./dist/matchers.cjs"
+    },
+    "./narrative": {
+      "types": "./dist/narrative.d.ts",
+      "import": "./dist/narrative.js",
+      "require": "./dist/narrative.cjs"
+    },
+    "./normalizer": {
+      "types": "./dist/normalizer.d.ts",
+      "import": "./dist/normalizer.js",
+      "require": "./dist/normalizer.cjs"
+    },
+    "./scanner": {
+      "types": "./dist/scanner.d.ts",
+      "import": "./dist/scanner.js",
+      "require": "./dist/scanner.cjs"
+    }
+  },
+  "files": [
+    "dist/**/*",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "node build.js",
+    "dev": "node build.js --watch",
+    "type-check": "tsc --noEmit",
+    "test": "vitest",
+    "test:ci": "vitest run"
+  },
+  "keywords": [
+    "solana",
+    "privacy",
+    "blockchain",
+    "analysis",
+    "security",
+    "privacy-analysis",
+    "on-chain",
+    "heuristics",
+    "risk-detection",
+    "wallet-analysis"
+  ],
+  "author": "Taylor Ferran",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taylorferran/solana-privacy-scanner.git",
+    "directory": "packages/core"
+  },
+  "homepage": "https://taylorferran.github.io/solana-privacy-scanner",
+  "bugs": {
+    "url": "https://github.com/taylorferran/solana-privacy-scanner/issues"
+  },
+  "dependencies": {
+    "@solana/web3.js": "^1.95.8",
+    "@typescript-eslint/typescript-estree": "^7.0.0",
+    "glob": "^10.3.10",
+    "zod": "^3.24.1"
+  },
+  "peerDependencies": {
+    "vitest": "^2.0.0"
+  },
+  "peerDependenciesMeta": {
+    "vitest": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2",
+    "esbuild": "^0.24.2"
+  }
+}

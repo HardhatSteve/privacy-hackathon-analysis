@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+@import "@solana/wallet-adapter-react-ui/styles.css";
+@import "tailwindcss";
+
+:root {
+  /* Brutalist color palette */
+  --background: #09090b;
+  --foreground: #fafafa;
+  --accent-sky: #38bdf8;
+  --accent-emerald: #10b981;
+  --accent-rose: #f43f5e;
+  --accent-amber: #f59e0b;
+  
+  /* Zinc scale for neutrals */
+  --zinc-950: #09090b;
+  --zinc-900: #18181b;
+  --zinc-800: #27272a;
+  --zinc-700: #3f3f46;
+  --zinc-600: #52525b;
+  --zinc-500: #71717a;
+  --zinc-400: #a1a1aa;
+  --zinc-300: #d4d4d8;
+  --zinc-200: #e4e4e7;
+  --zinc-100: #f4f4f5;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-mono: ui-monospace, 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: ui-monospace, 'JetBrains Mono', 'Fira Code', monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Brutalist scrollbar - sharp edges */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--zinc-900);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--zinc-700);
+  /* No border-radius for brutalist */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--zinc-600);
+}
+
+/* Subtle noise texture */
+.noise-texture::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.015;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Aurora glow - subtle */
+.aurora-glow {
+  position: fixed;
+  pointer-events: none;
+  opacity: 0.03;
+  background: radial-gradient(ellipse at center, var(--accent-sky), transparent 70%);
+}
+
+/* Shimmer animation for loading states */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+@keyframes dataFlow {
+  0%, 100% {
+    opacity: 0;
+    transform: translateY(-50%) translateX(-10px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-50%) translateX(10px);
+  }
+}
+
+@keyframes scanPulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scaleX(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scaleX(1.1);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 1.5s infinite;
+}
+
+/* Pulse animation for status indicators */
+@keyframes pulse-dot {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+/* Grid pattern background */
+.grid-pattern {
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Number input spinners - hide */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Brutalist input focus */
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--accent-sky) !important;
+}
+
+/* Wallet adapter overrides - brutalist style */
+.wallet-adapter-button {
+  background: transparent !important;
+  border: 1px solid var(--zinc-700) !important;
+  border-radius: 0 !important;
+  font-family: ui-monospace, monospace !important;
+  font-weight: 400 !important;
+  font-size: 12px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  padding: 10px 16px !important;
+  transition: all 0.15s ease !important;
+}
+
+.wallet-adapter-button:hover {
+  background: var(--zinc-800) !important;
+  border-color: var(--zinc-600) !important;
+  transform: none !important;
+}
+
+.wallet-adapter-button-trigger {
+  background: var(--zinc-800) !important;
+}
+
+.wallet-adapter-modal-wrapper {
+  background: var(--zinc-900) !important;
+  border: 1px solid var(--zinc-700) !important;
+  border-radius: 0 !important;
+}
+
+.wallet-adapter-modal-title {
+  font-family: ui-monospace, monospace !important;
+  color: var(--foreground) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+}
+
+.wallet-adapter-modal-list li {
+  background: var(--zinc-800) !important;
+  border-radius: 0 !important;
+  border: 1px solid var(--zinc-700) !important;
+}
+
+.wallet-adapter-modal-list li:hover {
+  background: var(--zinc-700) !important;
+}
+
+.wallet-adapter-modal-button-close {
+  background: var(--zinc-800) !important;
+  border-radius: 0 !important;
+}
+
+/* Depth bar animations */
+@keyframes depthGrow {
+  from {
+    width: 0%;
+  }
+}
+
+.depth-bar-buy {
+  animation: depthGrow 0.5s ease-out forwards;
+  background: linear-gradient(90deg, rgba(16, 185, 129, 0.3), rgba(16, 185, 129, 0.1));
+}
+
+.depth-bar-sell {
+  animation: depthGrow 0.5s ease-out forwards;
+  background: linear-gradient(270deg, rgba(244, 63, 94, 0.3), rgba(244, 63, 94, 0.1));
+}
+
+/* Match flash animation */
+@keyframes matchFlash {
+  0% {
+    background-color: rgba(16, 185, 129, 0.3);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.match-flash {
+  animation: matchFlash 1s ease-out;
+}
+
+/* Button press effect */
+.btn-press:active {
+  transform: translateY(1px);
+}
+
+/* Status badge pulse */
+.status-live::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--accent-emerald);
+  margin-right: 6px;
+  animation: pulse-dot 2s ease-in-out infinite;
+}

@@ -1,0 +1,17 @@
+[package]
+name = "debug-db"
+version = { workspace = true }
+edition = { workspace = true }
+
+[dependencies]
+anyhow ={ workspace = true}
+tokio = { workspace = true}
+rocksdb = "0.24.0"
+dotenvy = "0.15"
+wincode = {workspace = true}
+hex = {workspace = true}
+chrono = {version = "0.4", features = ["clock"]}
+zelana-account ={ workspace = true}
+crossterm = "0.29"
+zelana-transaction ={ workspace = true}
+ratatui = "0.30"

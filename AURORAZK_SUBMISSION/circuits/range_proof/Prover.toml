@@ -1,0 +1,12 @@
+# Private inputs
+price = "95000000"
+size = "5000000000"
+nonce = "123456789"
+
+# Public inputs
+# Commitment = pedersen_hash([95000000, 5000000000, 123456789])
+commitment = "0x1c458568ae231c212eb5e353e9269e8754463fe08db16c1cb2eafa0ef6913b17"
+min_price = "1000000"
+max_price = "1000000000"
+min_size = "100000000"
+max_size = "100000000000"

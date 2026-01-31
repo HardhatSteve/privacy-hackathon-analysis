@@ -1,0 +1,51 @@
+name: 💬 Technical Discussion
+description: Start a technical discussion
+title: "[DISCUSSION] "
+labels: ["discussion", "technical"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Technical Discussion
+        
+        This is for technical discussions about the protocol.
+        
+        **Rules:**
+        1. Technical topics only
+        2. No marketing/hype
+        3. Constructive criticism welcome
+        4. English or Russian
+
+  - type: textarea
+    id: topic
+    attributes:
+      label: Topic
+      description: What do you want to discuss?
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: |
+        Which aspect of the protocol?
+        What questions do you have?
+        What are your thoughts?
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - Cryptography
+        - Smart Contracts
+        - Economics
+        - Security
+        - Architecture
+        - Other
+    validations:
+      required: true

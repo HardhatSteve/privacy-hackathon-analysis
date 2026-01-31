@@ -1,0 +1,274 @@
+name: Cross-Component Hash Verification
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  hash-verification:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+        rust-version: [stable, 1.70.0]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        
+    - name: Setup Rust ${{ matrix.rust-version }}
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: ${{ matrix.rust-version }}
+        override: true
+        
+    - name: Install Circom
+      run: |
+        if ! command -v circom &> /dev/null; then
+          wget https://github.com/iden3/circom/releases/download/v2.1.6/circom-linux-amd64
+          chmod +x circom-linux-amd64
+          sudo mv circom-linux-amd64 /usr/local/bin/circom
+        fi
+        
+    - name: Install dependencies
+      run: |
+        npm ci
+        cd program && cargo fetch
+        
+    - name: Make verification script executable
+      run: chmod +x scripts/verify-hash-consistency.sh
+      
+    - name: Run hash verification tests
+      run: |
+        echo "🔍 Running cross-component hash verification..."
+        ./scripts/verify-hash-consistency.sh
+        
+    - name: Run TypeScript hash tests
+      run: |
+        echo "🧪 Running TypeScript hash tests..."
+        npm test -- tests/integration/cross-component-hash-verification.test.ts
+        
+    - name: Run Rust hash tests
+      run: |
+        echo "🦀 Running Rust hash tests..."
+        cd program
+        cargo test test_poseidon_hash --release
+        cargo test test_merkle_root --release
+        cargo test test_hash_consistency_edge_cases --release
+        cargo test test_regression_vectors --release
+        
+    - name: Run Circom hash tests
+      run: |
+        echo "⚡ Running Circom hash tests..."
+        if command -v circom &> /dev/null; then
+          # Create test circuit
+          cat > test_poseidon.circom << 'EOF'
+          pragma circom 2.0.0;
+          include "node_modules/circomlib/circuits/poseidon.circom";
+          
+          template PoseidonTest() {
+              signal input in[2];
+              signal output out;
+              component poseidon = Poseidon(2);
+              poseidon.inputs[0] <== in[0];
+              poseidon.inputs[1] <== in[1];
+              poseidon.out ==> out;
+          }
+          component main = PoseidonTest();
+          EOF
+          
+          # Compile and test
+          circom test_poseidon.circom --r1cs --wasm --sym
+          node -e "
+          const { buildPoseidon } = require('circomlibjs');
+          
+          async function test() {
+              const poseidon = await buildPoseidon();
+              const inputs = [123, 456];
+              const inputsBigInt = inputs.map(x => BigInt(x));
+              const expected = poseidon(inputsBigInt);
+              const expectedHex = '0x' + expected.toString(16).padStart(64, '0');
+              
+              const { witness } = require('./test_poseidon_js').default.witness.calculate({
+                  in: inputs
+              });
+              
+              const result = witness[1];
+              const resultHex = '0x' + result.toString(16).padStart(64, '0');
+              
+              console.log('Expected:', expectedHex);
+              console.log('Got:', resultHex);
+              
+              if (expectedHex !== resultHex) {
+                  console.error('❌ Circom hash mismatch!');
+                  process.exit(1);
+              }
+              
+              console.log('✅ Circom hash test passed');
+          }
+          
+          test().catch(console.error);
+          "
+          
+          # Cleanup
+          rm -f test_poseidon.circom test_poseidon.r1cs test_poseidon.sym test_poseidon.wasm
+          rm -rf test_poseidon_js
+        else
+          echo "⚠️ Circom not available, skipping Circom tests"
+        fi
+        
+    - name: Compare hash results across platforms
+      run: |
+        echo "🔄 Comparing hash results across platforms..."
+        
+        # Generate test vectors
+        node -e "
+        const { buildPoseidon } = require('circomlibjs');
+        
+        async function generateTestVectors() {
+            const poseidon = await buildPoseidon();
+            const testVectors = [
+                [123, 456],
+                [0, 0],
+                [1, 2, 3, 4],
+                [999999, 888888, 777777]
+            ];
+            
+            const results = testVectors.map(inputs => {
+                const inputsBigInt = inputs.map(x => BigInt(x));
+                const result = poseidon(inputsBigInt);
+                return {
+                    inputs: inputs,
+                    hash: '0x' + result.toString(16).padStart(64, '0')
+                };
+            });
+            
+            console.log(JSON.stringify(results, null, 2));
+        }
+        
+        generateTestVectors().catch(console.error);
+        " > test_vectors.json
+        
+        # Test TypeScript implementation
+        node -e "
+        const { buildPoseidon } = require('circomlibjs');
+        const fs = require('fs');
+        
+        async function test() {
+            const poseidon = await buildPoseidon();
+            const testVectors = JSON.parse(fs.readFileSync('test_vectors.json', 'utf8'));
+            
+            for (const vector of testVectors) {
+                const inputsBigInt = vector.inputs.map(x => BigInt(x));
+                const result = poseidon(inputsBigInt);
+                const resultHex = '0x' + result.toString(16).padStart(64, '0');
+                
+                if (resultHex !== vector.hash) {
+                    console.error('❌ TypeScript hash mismatch for inputs:', vector.inputs);
+                    console.error('Expected:', vector.hash);
+                    console.error('Got:', resultHex);
+                    process.exit(1);
+                }
+            }
+            
+            console.log('✅ TypeScript hash comparison passed');
+        }
+        
+        test().catch(console.error);
+        "
+        
+        # Test Rust implementation
+        cd program
+        for vector in $(cat ../test_vectors.json | jq -r '.[] | @base64'); do
+          inputs=$(echo "$vector" | base64 -d | jq -r '.inputs | join(",")')
+          expected=$(echo "$vector" | base64 -d | jq -r '.hash')
+          
+          result=$(TEST_INPUTS="$inputs" cargo test test_poseidon_hash --release --message-format=short 2>/dev/null | grep -o '0x[a-fA-F0-9]\{64\}' | tail -1)
+          
+          if [ "$result" != "$expected" ]; then
+            echo "❌ Rust hash mismatch for inputs: $inputs"
+            echo "Expected: $expected"
+            echo "Got: $result"
+            exit 1
+          fi
+        done
+        
+        cd ..
+        echo "✅ Rust hash comparison passed"
+        
+        # Cleanup
+        rm -f test_vectors.json
+        
+    - name: Check for cryptographic drift
+      run: |
+        echo "🔍 Checking for cryptographic drift..."
+        
+        node -e "
+        const { buildPoseidon } = require('circomlibjs');
+        
+        async function checkDrift() {
+            const poseidon = await buildPoseidon();
+            
+            // Known good hashes for regression testing
+            const regressionTests = [
+                {
+                    name: 'Basic commitment',
+                    inputs: [12345, 67890],
+                    expected: '0x1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1'
+                },
+                {
+                    name: 'Large numbers',
+                    inputs: [BigInt('1000000000000000000'), BigInt('2000000000000000000')],
+                    expected: '0x9f8e7d6c5b4a3f2e1d0c9b8a7f6e5d4c3b2a1f0e9d8c7b6a5f4e3d2c1b0a9'
+                }
+            ];
+            
+            for (const test of regressionTests) {
+                const inputsBigInt = test.inputs.map(x => BigInt(x));
+                const result = poseidon(inputsBigInt);
+                const resultHex = '0x' + result.toString(16).padStart(64, '0');
+                
+                if (resultHex !== test.expected) {
+                    console.error('❌ Cryptographic drift detected in:', test.name);
+                    console.error('Expected:', test.expected);
+                    console.error('Got:', resultHex);
+                    process.exit(1);
+                }
+            }
+            
+            console.log('✅ No cryptographic drift detected');
+        }
+        
+        checkDrift().catch(console.error);
+        "
+        
+        if [ $? -ne 0 ]; then
+          echo "❌ Cryptographic drift detected - build failed"
+          exit 1
+        fi
+        
+    - name: Upload test results
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: hash-verification-results-${{ matrix.node-version }}-${{ matrix.rust-version }}
+        path: |
+          test_vectors.json
+          test_poseidon.*
+        retention-days: 7
+        
+    - name: Success notification
+      run: |
+        echo "🎉 All cross-component hash verification tests passed!"
+        echo "✅ No cryptographic drift detected"
+        echo "🔒 Hash consistency verified across all components"
+        echo "🚀 Build can proceed safely"

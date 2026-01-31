@@ -1,0 +1,84 @@
+# --------------------
+# Python
+# --------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.env
+*.env
+*.bak
+*Test.py
+*_test.py
+
+# --------------------
+# Editors / IDE
+# --------------------
+.vscode/
+.idea/
+
+# --------------------
+# OS
+# --------------------
+.DS_Store
+
+# --------------------
+# Tests / Coverage / Misc
+# --------------------
+.ipynb_checkpoints
+.coverage*
+.pytest_cache/
+.cache
+*.log
+
+# --------------------
+# Databases
+# --------------------
+*.db
+*.sqlite
+
+# --------------------
+# Receipts & Local State
+# --------------------
+receipts/
+merkle_state.json
+pool_merkle_state.json
+notes/  # Credential files (NEVER commit - contains secrets!)
+
+# --------------------
+# Solana / Anchor / Rust
+# --------------------
+target/
+.anchor/
+.programs/
+.idl/
+.solana/
+Cargo.lock
+
+# --------------------
+# Node (future)
+# --------------------
+node_modules/
+dist/
+build/
+
+# --------------------
+# Project-specific (critical)
+# --------------------
+keys/
+blind_keys/
+
+# Keys & secrets (NEVER commit)
+*.key
+*.pem
+*.p12
+*.der
+*.b58
+*.json
+
+# Ledger / RocksDB (large, local)
+ops/ledger/
+ops/ledger/**
+*.sst
+*.ldb
+*.log

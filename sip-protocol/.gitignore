@@ -1,0 +1,113 @@
+# ========================================
+# SIP Protocol - Git Ignore Configuration
+# ========================================
+
+# ----------------------------------------
+# PRIVATE STRATEGY (NEVER COMMIT)
+# ----------------------------------------
+# Internal strategy, hackathon tactics, competitive analysis
+.strategy/
+.private/
+*.strategy.md
+STRATEGY.md
+TACTICS.md
+COMPETITIVE.md
+
+# ----------------------------------------
+# Dependencies
+# ----------------------------------------
+node_modules/
+.pnpm-store/
+
+# ----------------------------------------
+# Build outputs
+# ----------------------------------------
+dist/
+build/
+.next/
+out/
+*.tsbuildinfo
+
+# ----------------------------------------
+# Generated docs (synced via CI)
+# ----------------------------------------
+docs/reference/
+
+# ----------------------------------------
+# Environment & Secrets
+# ----------------------------------------
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+*.pem
+*.key
+
+# Secrets directory (decrypted keys for deployment)
+secrets/*
+!secrets/README.md
+*.secret.json
+
+# ----------------------------------------
+# IDE & Editor
+# ----------------------------------------
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ----------------------------------------
+# Testing & Coverage
+# ----------------------------------------
+coverage/
+.nyc_output/
+*.lcov
+
+# ----------------------------------------
+# Logs
+# ----------------------------------------
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ----------------------------------------
+# Turbo
+# ----------------------------------------
+.turbo/
+
+# ----------------------------------------
+# Vercel
+# ----------------------------------------
+.vercel/
+
+# ----------------------------------------
+# Foundry (Solidity)
+# ----------------------------------------
+contracts/**/cache/
+contracts/**/out/
+contracts/**/lib/
+
+# ----------------------------------------
+# Rust (Halo2 POC)
+# ----------------------------------------
+research/**/target/
+research/**/Cargo.lock
+
+# ----------------------------------------
+# Misc
+# ----------------------------------------
+*.local
+.cache/
+tmp/
+temp/
+packages/sdk/benchmarks/results.json
+.claude/
+.playwright-mcp/
+**/package-lock.json

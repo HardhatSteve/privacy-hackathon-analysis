@@ -1,0 +1,35 @@
+# Introduction
+
+Veil is a privacy aggregation layer for Solana.
+
+It provides a single, unified interface for sending private transactions, abstracting away the complexity of underlying privacy protocols.
+
+Developers use Veil to build privacy-preserving applications without locking themselves into a single provider or maintaining multiple disparate SDK integrations.
+
+## The Problem
+
+Privacy on Solana is fragmented. To support multiple privacy solutions, you typically have to:
+
+-   Manage multiple dependencies with conflicting versions.
+-   Learn unique SDK patterns for each protocol.
+-   Handle different compliance and proof generation flows.
+-   Rewire your UI whenever a protocol updates or deprecates a feature.
+
+Veil solves this by treating privacy protocols as **interchangeable adapters**. Your application expresses an *intent* ("Send 100 USDC privately"), and Veil handles the *execution* via the most appropriate available adapter.
+
+## What Veil Is Not
+
+-   **Veil is not a new zero-knowledge proof system.** It leverages existing, battle-tested protocols.
+-   **Veil is not a compliance tool.** While adapters may enforce compliance, Veil itself is a neutral routing layer.
+-   **Veil is not a wallet.** It integrates with existing wallet adapters to sign transactions.
+
+## When To Use Veil
+
+**Use Veil if:**
+-   You want to offer privacy features (like private payments or payroll) in your app.
+-   You want to switch between privacy providers without rewriting application logic.
+-   You prefer a stable, high-level API over low-level cryptographic plumbing.
+
+**Do NOT use Veil if:**
+-   You are building a custom ZK protocol from scratch and need raw access to the proving circuit.
+-   You need features specific to one protocol that aren't generalized (e.g., protocol-specific staking mechanisms).

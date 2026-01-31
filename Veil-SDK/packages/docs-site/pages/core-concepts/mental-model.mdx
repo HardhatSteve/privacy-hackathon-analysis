@@ -1,0 +1,34 @@
+# How Veil Works
+
+Veil separates **intent** from **mechanism**.
+
+In a standard Solana application, you build transactions directly. If you want privacy, you typically have to import a specific SDK, generate a proof, and construct a protocol-specific transaction.
+
+Veil changes this mental model.
+
+## The Adapter Pattern
+
+Veil operates like a universal travel adapter.
+
+1.  **The Socket (Your App):** You simply want to plug in and get power (send assets). You don't care about the shape of the outlet.
+2.  **The Adapter (Privacy Protocol):** This component knows how to talk to the wall (the specific on-chain program).
+3.  **Veil:** The casing that holds the adapter and ensures your plug fits.
+
+When you initialize Veil, you load it with a set of **Adapters**. Each adapter corresponds to a specific underlying technology (like Light Protocol, Elusiv, or a simple Noop for testing).
+
+## The Flow
+
+When you call `veil.send()`, the following happens:
+
+1.  **Selection:** Veil looks at your request (token, amount, network).
+2.  **Resolution:** It asks the registered adapters: "Can you handle this?"
+3.  **Execution:** The chosen adapter generates the necessary proofs and instructions.
+4.  **Signing:** The resulting transaction is handed to your connected wallet for approval.
+
+This means your frontend code looks exactly the same whether you are sending a transparent transaction on Devnet or a shielded transaction on Mainnet.
+
+## The Core SDK
+
+The `@veil-labs/core-sdk` is the brain. It manages the **Registry** of adapters.
+
+Most of the time, you won't interact with the Core SDK directly. You will use the high-level `@veil-labs/veil` package, which pre-configures the registry for you. You only need the Core SDK if you are building your own custom adapter.

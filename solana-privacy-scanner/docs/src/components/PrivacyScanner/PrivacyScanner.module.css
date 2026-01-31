@@ -1,0 +1,620 @@
+.scannerUI {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.scannerHeader {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.scannerHeader h1 {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0 0 12px 0;
+  color: #fff;
+}
+
+.tagline {
+  font-size: 17px;
+  font-weight: 400;
+  color: #86868b;
+  margin: 0 0 8px 0;
+}
+
+.poweredBy {
+  font-size: 13px;
+  font-weight: 400;
+  color: #86868b;
+  margin: 0 0 12px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.poweredBy a {
+  color: #0d9488;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.poweredBy a:hover {
+  color: #0ea596;
+}
+
+.description {
+  font-size: 17px;
+  line-height: 1.47;
+  color: #86868b;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.scannerInputs {
+  margin-bottom: 16px;
+}
+
+.inputGroup {
+  margin-bottom: 12px;
+}
+
+.inputLabelRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.inputGroup label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #f5f5f7;
+}
+
+.manageNicknamesButton {
+  font-size: 12px;
+  color: #86868b;
+  background: transparent;
+  border: 1px solid #2a2a2a;
+  padding: 4px 12px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.manageNicknamesButton:hover {
+  color: #0d9488;
+  border-color: #0d9488;
+}
+
+.inputGroup input {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 1px solid #2a2a2a;
+  background: #0a0a0a;
+  color: #fff;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  font-weight: 400;
+}
+
+.inputGroup input:focus {
+  outline: none;
+  border-color: #0d9488;
+}
+
+.inputHint {
+  display: block;
+  font-size: 12px;
+  color: #86868b;
+  margin-top: 6px;
+}
+
+.scannerInputs button {
+  width: 100%;
+  padding: 12px 24px;
+  font-size: 17px;
+  font-weight: 600;
+  background: #0d9488;
+  color: white;
+  border: 2px solid #0d9488;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.scannerInputs button:hover:not(:disabled) {
+  background: #0ea596;
+  border-color: #0ea596;
+}
+
+.scannerInputs button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.privacyNote {
+  text-align: center;
+  padding: 12px;
+  background: #0a0a0a;
+  border: 1px solid #1a1a1a;
+  margin-top: 12px;
+}
+
+.privacyNote p {
+  font-size: 12px;
+  color: #86868b;
+  margin: 0;
+  font-weight: 400;
+}
+
+.errorMessage {
+  padding: 12px 16px;
+  background: #2a1a1a;
+  border: 1px solid #ff3b30;
+  color: #ff3b30;
+  text-align: center;
+  margin-bottom: 12px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.results {
+  margin-top: 32px;
+}
+
+.riskScore {
+  text-align: center;
+  padding: 32px;
+  background: #0a0a0a;
+  border: 2px solid #0d9488;
+  margin-bottom: 24px;
+}
+
+.riskBadge {
+  display: inline-block;
+  padding: 8px 24px;
+  color: white;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  border: 2px solid;
+}
+
+.riskSummary {
+  color: #86868b;
+  font-size: 15px;
+  margin: 0;
+  font-weight: 400;
+}
+
+.targetAddress {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #2a2a2a;
+  display: flex;
+  justify-content: center;
+}
+
+.knownEntities {
+  margin-bottom: 32px;
+}
+
+.knownEntities h3 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+  color: #fff;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #0d9488;
+}
+
+.entityList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+.entityCard {
+  padding: 20px;
+  background: #0a0a0a;
+  border: 1px solid #1a1a1a;
+  transition: border-color 0.2s ease;
+}
+
+.entityCard:hover {
+  border-color: #0d9488;
+}
+
+.entityType {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #0d9488;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.entityName {
+  font-size: 15px;
+  font-weight: 600;
+  color: #f5f5f7;
+  margin-bottom: 6px;
+}
+
+.entityDesc {
+  font-size: 13px;
+  color: #86868b;
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+.entityAddress {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #1a1a1a;
+}
+
+.signals h3 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+  color: #fff;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #0d9488;
+}
+
+.signalCard {
+  padding: 24px;
+  background: #0a0a0a;
+  border: 1px solid #1a1a1a;
+  margin-bottom: 12px;
+  transition: border-color 0.2s ease;
+}
+
+.signalCard:hover {
+  border-color: #0d9488;
+}
+
+.signalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.signalHeader h4 {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+
+.severityBadge {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.signalReason {
+  font-size: 15px;
+  color: #86868b;
+  margin-bottom: 16px;
+  line-height: 1.47;
+  font-weight: 400;
+}
+
+.signalSection {
+  margin-bottom: 16px;
+}
+
+.signalSection h5 {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #0d9488;
+  margin-bottom: 8px;
+}
+
+.signalSection p {
+  font-size: 15px;
+  line-height: 1.47;
+  color: #86868b;
+  margin: 0;
+  font-weight: 400;
+}
+
+.signalSection ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.signalSection li {
+  font-size: 15px;
+  line-height: 1.47;
+  color: #86868b;
+  margin: 4px 0;
+  font-weight: 400;
+}
+
+.confidence {
+  font-size: 13px;
+  color: #86868b;
+  margin-top: 12px;
+  font-weight: 400;
+}
+
+.noRisks {
+  text-align: center;
+  padding: 48px 32px;
+  background: #0a0a0a;
+  border: 1px solid #1a1a1a;
+  margin-bottom: 24px;
+}
+
+.checkmark {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 16px;
+  background: #34c759;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+
+.noRisks h3 {
+  font-size: 21px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+  color: #f5f5f7;
+}
+
+.noRisks p {
+  font-size: 15px;
+  color: #86868b;
+  margin: 0;
+  font-weight: 400;
+}
+
+.recommendations {
+  margin-bottom: 32px;
+}
+
+.recommendations h3 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+  color: #fff;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #0d9488;
+}
+
+.recommendations ul {
+  list-style: none;
+  padding: 0;
+}
+
+.recommendations li {
+  padding: 16px 20px;
+  background: #0a0a0a;
+  border: 1px solid #1a1a1a;
+  margin-bottom: 8px;
+  font-size: 15px;
+  line-height: 1.47;
+  color: #f5f5f7;
+  font-weight: 400;
+  transition: border-color 0.2s ease;
+}
+
+.recommendations li:hover {
+  border-color: #0d9488;
+}
+
+.educational {
+  margin-bottom: 32px;
+}
+
+.educational h3 {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  text-align: center;
+  letter-spacing: -0.02em;
+  color: #f5f5f7;
+}
+
+.eduGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.eduCard {
+  padding: 20px;
+  background: #0a0a0a;
+  border: 1px solid #1a1a1a;
+}
+
+.eduCard h4 {
+  font-size: 17px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.01em;
+  color: #f5f5f7;
+}
+
+.eduCard p {
+  font-size: 15px;
+  line-height: 1.47;
+  color: #86868b;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Narrative Section Styles */
+.narrativeSection {
+  margin-bottom: 32px;
+  background: #0a0a0a;
+  border: 1px solid #1a1a1a;
+  overflow: hidden;
+}
+
+.narrativeHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.narrativeHeader:hover {
+  background: #111;
+}
+
+.narrativeHeader h3 {
+  font-size: 21px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+
+.narrativeToggle {
+  font-size: 13px;
+  color: #0d9488;
+  font-weight: 500;
+}
+
+.narrativeContent {
+  padding: 0 24px 24px;
+  border-top: 1px solid #1a1a1a;
+}
+
+.narrativeIntro {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #f5f5f7;
+  margin: 20px 0;
+  padding: 16px;
+  background: #111;
+  border-left: 3px solid #0d9488;
+}
+
+.narrativeParagraph {
+  margin-bottom: 24px;
+}
+
+.narrativeParagraph h4 {
+  font-size: 17px;
+  font-weight: 600;
+  color: #0d9488;
+  margin: 0 0 12px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.narrativeOpening {
+  font-size: 14px;
+  color: #86868b;
+  margin: 0 0 16px 0;
+  font-style: italic;
+}
+
+.narrativeStatement {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding: 12px 16px;
+  background: #111;
+  border-left: 2px solid #2a2a2a;
+}
+
+.severityIcon {
+  font-family: monospace;
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.statementText {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #d1d1d6;
+}
+
+.narrativeClosing {
+  font-size: 13px;
+  color: #86868b;
+  margin: 16px 0 0 0;
+  font-style: italic;
+}
+
+.narrativeConclusion {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #2a2a2a;
+}
+
+.narrativeConclusion h4 {
+  font-size: 17px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 12px 0;
+}
+
+.narrativeConclusion p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #d1d1d6;
+  margin: 0 0 16px 0;
+}
+
+.identifiabilityBadge {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #111;
+  border: 1px solid #2a2a2a;
+  font-size: 13px;
+  color: #86868b;
+}
+
+.identifiabilityBadge strong {
+  color: #0d9488;
+  margin-left: 4px;
+}
+
+@media (max-width: 734px) {
+  .scannerUI {
+    padding: 0;
+  }
+
+  .scannerHeader h1 {
+    font-size: 28px;
+  }
+
+  .tagline {
+    font-size: 15px;
+  }
+
+  .eduGrid {
+    grid-template-columns: 1fr;
+  }
+}
