@@ -1,6 +1,0 @@
-export { PrivacyScoreInput } from "./PrivacyScoreInput"
-export { ScoreGauge } from "./ScoreGauge"
-export { RiskBreakdown } from "./RiskBreakdown"
-export { Recommendations } from "./Recommendations"
-export { SIPComparison } from "./SIPComparison"
-export { AnalysisLoading } from "./AnalysisLoading"

@@ -1,6 +1,0 @@
-[package]
-name = "funding_proof"
-type = "bin"
-authors = ["SIP Protocol"]
-
-[dependencies]

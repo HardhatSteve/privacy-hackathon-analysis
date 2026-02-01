@@ -1,5 +1,0 @@
-# Bare native addons configuration
-# These are compiled into BareKit.xcframework and don't need external linking
-targets:
-  Sapp:
-    dependencies: []

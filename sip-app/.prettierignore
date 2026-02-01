@@ -1,7 +1,0 @@
-node_modules
-.next
-.git
-pnpm-lock.yaml
-coverage
-dist
-build

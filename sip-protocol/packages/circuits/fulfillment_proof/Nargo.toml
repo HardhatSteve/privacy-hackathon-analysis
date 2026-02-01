@@ -1,6 +1,0 @@
-[package]
-name = "fulfillment_proof"
-type = "bin"
-authors = ["SIP Protocol Team"]
-
-[dependencies]

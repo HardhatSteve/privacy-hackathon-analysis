@@ -1,5 +1,0 @@
-{
-  "name": "Solana Exposure Scanner",
-  "description": "A privacy-focused dashboard that analyzes Solana wallet addresses for potential privacy leaks and exposure risks using Gemini AI.",
-  "requestFramePermissions": []
-}

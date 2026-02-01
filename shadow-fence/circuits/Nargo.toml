@@ -1,7 +1,0 @@
-[package]
-name = "shadow_fence"
-type = "bin"
-authors = ["HardHatTechBones"]
-compiler_version = "1.0.0"
-
-[dependencies]

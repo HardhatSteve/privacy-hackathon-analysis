@@ -1,4 +1,0 @@
-project_id = "beqosfenxsozqbxbfvmq"
-
-[functions.analyze-wallet]
-verify_jwt = false

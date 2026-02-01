@@ -1,0 +1,1706 @@
+{
+  "last_full_sync": "2026-02-01T07:13:29Z",
+  "hackathon_window": {
+    "start": "2026-01-12",
+    "end": "2026-02-01",
+    "last_minute_start": "2026-01-30"
+  },
+  "repos": {
+    "AgenC_Moltbook_Agent": {
+      "remote_url": "https://github.com/tetsuo-ai/AgenC_Moltbook_Agent.git",
+      "head_commit": "68da7b0149376777f3db9098728b12735a141c9a",
+      "head_commit_short": "68da7b0",
+      "last_commit_date": "2026-01-31T22:47:19-05:00",
+      "last_synced": "2026-02-01T07:13:29Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 45,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "anamnesis": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:59:03",
+      "last_synced": "2026-02-01T07:13:29Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 40,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Has Solana dependencies (+10)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "anoma.cash": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T09:02:01",
+      "last_synced": "2026-02-01T07:13:29Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 30,
+      "likelihood_classification": "LOW",
+      "likelihood_reasons": ["Last-minute activity (+30)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "anon0mesh": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:58:48",
+      "last_synced": "2026-02-01T07:13:30Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 50,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Has Solana dependencies (+10)", "Has Anchor program (+5)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 1
+      }
+    }
+,
+    "anonset": {
+      "remote_url": "https://github.com/anonset/anonset.git",
+      "head_commit": "aab076237b59675b117011698e4c9923362ac8a6",
+      "head_commit_short": "aab0762",
+      "last_commit_date": "2026-01-31T20:04:25-05:00",
+      "last_synced": "2026-02-01T07:13:30Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 45,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "arcium-dev-skill": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T09:01:09",
+      "last_synced": "2026-02-01T07:13:30Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 30,
+      "likelihood_classification": "LOW",
+      "likelihood_reasons": ["Last-minute activity (+30)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "Arcium-poker": {
+      "remote_url": "https://github.com/dharmanan/Arcium-poker.git",
+      "head_commit": "c8b9f3f642c96141db05cd75dada048d0027aa64",
+      "head_commit_short": "c8b9f3f",
+      "last_commit_date": "2026-01-31T15:50:35Z",
+      "last_synced": "2026-02-01T07:13:30Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 75,
+      "likelihood_classification": "HIGH",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "README mentions hackathon (+10)", "Has Solana dependencies (+10)", "Has Anchor program (+5)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 1
+      }
+    }
+,
+    "Arcshield": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:58:48",
+      "last_synced": "2026-02-01T07:13:31Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 55,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "README mentions hackathon (+10)", "Has Solana dependencies (+10)", "Has Anchor program (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 1
+      }
+    }
+,
+    "Attesta-Kit": {
+      "remote_url": "https://github.com/iBrainiac/Attesta-Kit.git",
+      "head_commit": "4ed595dd1951d51aa7ad36460a9b89809be6bc20",
+      "head_commit_short": "4ed595d",
+      "last_commit_date": "2026-02-01T04:25:40+03:00",
+      "last_synced": "2026-02-01T07:13:31Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 60,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "Has Solana dependencies (+10)", "Has Anchor program (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 1
+      }
+    }
+,
+    "Auction-App-Data-Processing_AWS-Pipeline": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:59:03",
+      "last_synced": "2026-02-01T07:13:31Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 30,
+      "likelihood_classification": "LOW",
+      "likelihood_reasons": ["Last-minute activity (+30)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "AURORAZK_SUBMISSION": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:58:42",
+      "last_synced": "2026-02-01T07:13:31Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 65,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "README mentions hackathon (+10)", "Has Solana dependencies (+10)", "Has ZK circuits (+5)", "Has Anchor program (+5)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "Noir",
+        "solana_programs": 1
+      }
+    }
+,
+    "awesome-privacy-on-solana": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T09:01:09",
+      "last_synced": "2026-02-01T07:13:31Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 40,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "README mentions hackathon (+10)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "Axtral-priv": {
+      "remote_url": "https://github.com/web3-engineer/Axtral-priv.git",
+      "head_commit": "66484377db6b1f53da6d2cdf99478fb7830baf4f",
+      "head_commit_short": "6648437",
+      "last_commit_date": "2026-01-29T19:41:46-03:00",
+      "last_synced": "2026-02-01T07:13:32Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 35,
+      "likelihood_classification": "LOW",
+      "likelihood_reasons": ["Hackathon window activity (+20)", "Created during hackathon (+15)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "blog-sip": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T22:16:53",
+      "last_synced": "2026-02-01T07:13:32Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 35,
+      "likelihood_classification": "LOW",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "chameo": {
+      "remote_url": "https://github.com/chigozzdevv/chameo.git",
+      "head_commit": "e7b1c760b296850d3e7cd260df13f6e29d3cfa8b",
+      "head_commit_short": "e7b1c76",
+      "last_commit_date": "2026-01-30T15:29:28-08:00",
+      "last_synced": "2026-02-01T07:13:32Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 70,
+      "likelihood_classification": "HIGH",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "Has Solana dependencies (+10)", "Has ZK circuits (+5)", "Has Anchor program (+5)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "Noir",
+        "solana_programs": 1
+      }
+    }
+,
+    "circuits": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:58:48",
+      "last_synced": "2026-02-01T07:13:32Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 45,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "README mentions hackathon (+10)", "Has ZK circuits (+5)"],
+      "technical_summary": {
+        "zk_system": "Noir",
+        "solana_programs": 0
+      }
+    }
+,
+    "cleanproof-frontend": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:58:42",
+      "last_synced": "2026-02-01T07:13:32Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 55,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "README mentions hackathon (+10)", "Has Solana dependencies (+10)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "cloakcraft": {
+      "remote_url": "https://github.com/craft-ec/cloakcraft.git",
+      "head_commit": "bccda8740e0ef4253a9f07d3b138d3144db0fee7",
+      "head_commit_short": "bccda87",
+      "last_commit_date": "2026-01-30T23:18:49+08:00",
+      "last_synced": "2026-02-01T07:13:32Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 70,
+      "likelihood_classification": "HIGH",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "Has Solana dependencies (+10)", "Has ZK circuits (+5)", "Has Anchor program (+5)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "Noir",
+        "solana_programs": 1
+      }
+    }
+,
+    "confpay": {
+      "remote_url": "https://github.com/Somtiee/confpay.git",
+      "head_commit": "723b44c05e5f2fdf971e6efff00eb425a62a1e36",
+      "head_commit_short": "723b44c",
+      "last_commit_date": "2026-01-31T07:20:22+01:00",
+      "last_synced": "2026-02-01T07:13:33Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 75,
+      "likelihood_classification": "HIGH",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "README mentions hackathon (+10)", "Has Solana dependencies (+10)", "Has Anchor program (+5)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 1
+      }
+    }
+,
+    "core": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:58:42",
+      "last_synced": "2026-02-01T07:13:33Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 30,
+      "likelihood_classification": "LOW",
+      "likelihood_reasons": ["Last-minute activity (+30)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "custos-cli": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T09:01:09",
+      "last_synced": "2026-02-01T07:13:33Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 30,
+      "likelihood_classification": "LOW",
+      "likelihood_reasons": ["Last-minute activity (+30)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "Dark-Null-Protocol": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:59:03",
+      "last_synced": "2026-02-01T07:13:33Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 55,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "README mentions hackathon (+10)", "Has Solana dependencies (+10)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "DarkTip": {
+      "remote_url": "https://github.com/UncleTom29/DarkTip.git",
+      "head_commit": "3290c13479618124733b1b740fb9057f97777d29",
+      "head_commit_short": "3290c13",
+      "last_commit_date": "2026-01-30T16:15:34+01:00",
+      "last_synced": "2026-02-01T07:13:33Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 60,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "Has Solana dependencies (+10)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "deploy-shield": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T22:16:53",
+      "last_synced": "2026-02-01T07:13:34Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 45,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Has Solana dependencies (+10)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "docs-sip": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:59:03",
+      "last_synced": "2026-02-01T07:13:34Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 40,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "README mentions hackathon (+10)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "donatrade": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:58:48",
+      "last_synced": "2026-02-01T07:13:34Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 60,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "README mentions hackathon (+10)", "Has Solana dependencies (+10)", "Has Anchor program (+5)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 3
+      }
+    }
+,
+    "ECHO": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:58:42",
+      "last_synced": "2026-02-01T07:13:34Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 50,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "README mentions hackathon (+10)", "Has Solana dependencies (+10)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "encryptedMessagingChat": {
+      "remote_url": "https://github.com/rchak007/encryptedMessagingChat.git",
+      "head_commit": "8a3ed7d663869d61ae3696bc1234b89f4d00c45b",
+      "head_commit_short": "8a3ed7d",
+      "last_commit_date": "2026-01-30T17:57:17-08:00",
+      "last_synced": "2026-02-01T07:13:34Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 60,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "Has Solana dependencies (+10)", "Has Anchor program (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 1
+      }
+    }
+,
+    "epoch": {
+      "remote_url": "https://github.com/sub-aka-labs/epoch.git",
+      "head_commit": "b9ee51ddbbe71559f7117d9553a86f2168ba4d64",
+      "head_commit_short": "b9ee51d",
+      "last_commit_date": "2026-01-30T18:47:52+05:30",
+      "last_synced": "2026-02-01T07:13:35Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 65,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "Has Solana dependencies (+10)", "Has Anchor program (+5)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 1
+      }
+    }
+,
+    "ExposureCheck": {
+      "remote_url": "https://github.com/ajanaku1/ExposureCheck.git",
+      "head_commit": "13cdfd4beaf766c6e7e1e08bd47e7463d0bd3c9d",
+      "head_commit_short": "13cdfd4",
+      "last_commit_date": "2026-01-30T09:54:26+01:00",
+      "last_synced": "2026-02-01T07:13:35Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 60,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "Has Solana dependencies (+10)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "hushfold": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T09:01:09",
+      "last_synced": "2026-02-01T07:13:35Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 30,
+      "likelihood_classification": "LOW",
+      "likelihood_reasons": ["Last-minute activity (+30)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "hydentity": {
+      "remote_url": "https://github.com/hydex-org/hydentity.git",
+      "head_commit": "b78f12c7bd9cd32c511a767cc0903bca14f12676",
+      "head_commit_short": "b78f12c",
+      "last_commit_date": "2026-01-31T21:24:44-06:00",
+      "last_synced": "2026-02-01T07:13:35Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 65,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "Has Solana dependencies (+10)", "Has Anchor program (+5)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 1
+      }
+    }
+,
+    "IAP": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:58:48",
+      "last_synced": "2026-02-01T07:13:35Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 35,
+      "likelihood_classification": "LOW",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "incognito-protocol": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:59:03",
+      "last_synced": "2026-02-01T07:13:35Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 35,
+      "likelihood_classification": "LOW",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "Iris-QuickNode-Kotlin-SDK": {
+      "remote_url": "https://github.com/QuarksBlueFoot/Iris-QuickNode-Kotlin-SDK.git",
+      "head_commit": "45c0ccb205859528c8ca8689b0a8baa959fde2e7",
+      "head_commit_short": "45c0ccb",
+      "last_commit_date": "2026-01-29T10:39:05-06:00",
+      "last_synced": "2026-02-01T07:13:35Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 35,
+      "likelihood_classification": "LOW",
+      "likelihood_reasons": ["Hackathon window activity (+20)", "Created during hackathon (+15)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "Keyed": {
+      "remote_url": "https://github.com/rutts29/Keyed.git",
+      "head_commit": "199d464b028e46b0772f31aef7736ff601388bf2",
+      "head_commit_short": "199d464",
+      "last_commit_date": "2026-02-01T05:05:57+05:30",
+      "last_synced": "2026-02-01T07:13:36Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 65,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "Has Solana dependencies (+10)", "Has Anchor program (+5)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 4
+      }
+    }
+,
+    "LeakLens": {
+      "remote_url": "https://github.com/MatthewSullivn/LeakLens.git",
+      "head_commit": "317b8f723a767cd047a5a260721697df3386c2ec",
+      "head_commit_short": "317b8f7",
+      "last_commit_date": "2026-01-31T17:21:17-04:00",
+      "last_synced": "2026-02-01T07:13:36Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 55,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "README mentions hackathon (+10)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "Mukon-messenger": {
+      "remote_url": "https://github.com/Mirokugang/Mukon-messenger.git",
+      "head_commit": "4a3aac930465c3bf556fb39b309afc71227edc17",
+      "head_commit_short": "4a3aac9",
+      "last_commit_date": "2026-01-31T23:16:43+07:00",
+      "last_synced": "2026-02-01T07:13:36Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 75,
+      "likelihood_classification": "HIGH",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "README mentions hackathon (+10)", "Has Solana dependencies (+10)", "Has Anchor program (+5)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 1
+      }
+    }
+,
+    "n8n-nodes-trezor": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:58:48",
+      "last_synced": "2026-02-01T07:13:36Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 35,
+      "likelihood_classification": "LOW",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "nahualli": {
+      "remote_url": "https://github.com/jazminewrooman/nahualli.git",
+      "head_commit": "a9a50b57e9e85c1de307217cbdc0d0f33e78d470",
+      "head_commit_short": "a9a50b5",
+      "last_commit_date": "2026-01-31T09:44:11-06:00",
+      "last_synced": "2026-02-01T07:13:36Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 80,
+      "likelihood_classification": "HIGH",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "README mentions hackathon (+10)", "Has Solana dependencies (+10)", "Has ZK circuits (+5)", "Has Anchor program (+5)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "Noir",
+        "solana_programs": 1
+      }
+    }
+,
+    "OBSCURA_APP": {
+      "remote_url": "https://github.com/protocoldaemon-sec/OBSCURA_APP.git",
+      "head_commit": "40691c8047050c9e338d8876142aa9796a8cb409",
+      "head_commit_short": "40691c8",
+      "last_commit_date": "2026-02-01T01:22:17+07:00",
+      "last_synced": "2026-02-01T07:13:37Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 60,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "Has Solana dependencies (+10)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "OBSCURA-PRIVACY": {
+      "remote_url": "https://github.com/protocoldaemon-sec/OBSCURA-PRIVACY.git",
+      "head_commit": "c07ad2eff6c053e39039426a1cdb3272d8de8719",
+      "head_commit_short": "c07ad2e",
+      "last_commit_date": "2026-01-31T23:51:09+07:00",
+      "last_synced": "2026-02-01T07:13:37Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 60,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "Has Solana dependencies (+10)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "Obsidian": {
+      "remote_url": "https://github.com/michealimuse777/Obsidian.git",
+      "head_commit": "c506f3bbcf82875ca5a069dead2a6888ddfa3263",
+      "head_commit_short": "c506f3b",
+      "last_commit_date": "2026-02-01T00:23:12+01:00",
+      "last_synced": "2026-02-01T07:13:37Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 75,
+      "likelihood_classification": "HIGH",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "README mentions hackathon (+10)", "Has Solana dependencies (+10)", "Has Anchor program (+5)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 1
+      }
+    }
+,
+    "opencoins": {
+      "remote_url": "https://github.com/PHalla0/opencoins.git",
+      "head_commit": "de7d8ccefc9296b464b578738b07c251ec378443",
+      "head_commit_short": "de7d8cc",
+      "last_commit_date": "2026-02-01T12:34:59+07:00",
+      "last_synced": "2026-02-01T07:13:37Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 60,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "Has Solana dependencies (+10)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "paraloom-core": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:59:03",
+      "last_synced": "2026-02-01T07:13:38Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 50,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Has Solana dependencies (+10)", "Has Anchor program (+5)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 1
+      }
+    }
+,
+    "pigeon": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:58:42",
+      "last_synced": "2026-02-01T07:13:38Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 50,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Has Solana dependencies (+10)", "Has Anchor program (+5)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 1
+      }
+    }
+,
+    "PNPFUCIUS": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:58:48",
+      "last_synced": "2026-02-01T07:13:38Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 45,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Has Solana dependencies (+10)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "privacy-execution-layer": {
+      "remote_url": "https://github.com/Abstract36/privacy-execution-layer.git",
+      "head_commit": "16ea378b3f99a7e013e999f48dd8e068d27241c5",
+      "head_commit_short": "16ea378",
+      "last_commit_date": "2026-01-31T19:05:30+02:00",
+      "last_synced": "2026-02-01T07:13:41Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 70,
+      "likelihood_classification": "HIGH",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "Has Solana dependencies (+10)", "Has ZK circuits (+5)", "Has Anchor program (+5)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "Groth16/Circom",
+        "solana_programs": 1
+      }
+    }
+,
+    "privacy-pay": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:58:48",
+      "last_synced": "2026-02-01T07:13:41Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 55,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "README mentions hackathon (+10)", "Has Solana dependencies (+10)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "privacy-vault": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:59:03",
+      "last_synced": "2026-02-01T07:13:41Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 60,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "README mentions hackathon (+10)", "Has Solana dependencies (+10)", "Has ZK circuits (+5)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "Groth16/Circom",
+        "solana_programs": 0
+      }
+    }
+,
+    "privacylens": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:58:48",
+      "last_synced": "2026-02-01T07:13:41Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 45,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Has Solana dependencies (+10)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "Privatepay": {
+      "remote_url": "https://github.com/ck2010317/Privatepay.git",
+      "head_commit": "6cd511fc184e6e34f8242a92b7e6446e7422c881",
+      "head_commit_short": "6cd511f",
+      "last_commit_date": "2026-01-31T02:32:30-08:00",
+      "last_synced": "2026-02-01T07:13:41Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 65,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "README mentions hackathon (+10)", "Has Solana dependencies (+10)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "PrivyLocker": {
+      "remote_url": "https://github.com/Nitish-d-Great/PrivyLocker.git",
+      "head_commit": "70511283a8bf661ba9bc1029f2252ecf198e9fb1",
+      "head_commit_short": "7051128",
+      "last_commit_date": "2026-01-31T12:31:30+05:30",
+      "last_synced": "2026-02-01T07:13:41Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 70,
+      "likelihood_classification": "HIGH",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "README mentions hackathon (+10)", "Has Solana dependencies (+10)", "Has Anchor program (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 1
+      }
+    }
+,
+    "Protocol-01": {
+      "remote_url": "https://github.com/IsSlashy/Protocol-01.git",
+      "head_commit": "56418da850a07e0deb9d61e96255ba8908450dc8",
+      "head_commit_short": "56418da",
+      "last_commit_date": "2026-01-31T20:00:13+01:00",
+      "last_synced": "2026-02-01T07:13:42Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 80,
+      "likelihood_classification": "HIGH",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "README mentions hackathon (+10)", "Has Solana dependencies (+10)", "Has ZK circuits (+5)", "Has Anchor program (+5)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "Groth16/Circom",
+        "solana_programs": 6
+      }
+    }
+,
+    "PublicTesting": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T09:01:09",
+      "last_synced": "2026-02-01T07:13:42Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 30,
+      "likelihood_classification": "LOW",
+      "likelihood_reasons": ["Last-minute activity (+30)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "QN-Privacy-Gateway": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T22:16:53",
+      "last_synced": "2026-02-01T07:13:43Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 45,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "README mentions hackathon (+10)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "rentreclaim-privacy": {
+      "remote_url": "https://github.com/ayubeay/rentreclaim-privacy.git",
+      "head_commit": "f3c0a8f95813eee41ccc0dbdf1859ef543b2a324",
+      "head_commit_short": "f3c0a8f",
+      "last_commit_date": "2026-02-01T00:08:12-05:00",
+      "last_synced": "2026-02-01T07:13:43Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 70,
+      "likelihood_classification": "HIGH",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "README mentions hackathon (+10)", "Has Solana dependencies (+10)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "ruka0911": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T09:01:09",
+      "last_synced": "2026-02-01T07:13:43Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 30,
+      "likelihood_classification": "LOW",
+      "likelihood_reasons": ["Last-minute activity (+30)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "safesol": {
+      "remote_url": "https://github.com/mesayanroy/safesol.git",
+      "head_commit": "f90764a8a8241114635863f202b193be6166ecd8",
+      "head_commit_short": "f90764a",
+      "last_commit_date": "2026-02-01T05:43:14Z",
+      "last_synced": "2026-02-01T07:13:43Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 80,
+      "likelihood_classification": "HIGH",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "README mentions hackathon (+10)", "Has Solana dependencies (+10)", "Has ZK circuits (+5)", "Has Anchor program (+5)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "Groth16/Circom",
+        "solana_programs": 3
+      }
+    }
+,
+    "sapp": {
+      "remote_url": "https://github.com/CWYRenee/sapp.git",
+      "head_commit": "93122f3f165da219c8c4e747d7cf8750652a7d4a",
+      "head_commit_short": "93122f3",
+      "last_commit_date": "2026-01-31T23:32:19+08:00",
+      "last_synced": "2026-02-01T07:13:43Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 55,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "Has Solana dependencies (+10)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "Scope-privacy-engine": {
+      "remote_url": "https://github.com/xxpopielxx/Scope-privacy-engine.git",
+      "head_commit": "1e1c9ef878643d18d039975ea041d3d1141f9758",
+      "head_commit_short": "1e1c9ef",
+      "last_commit_date": "2026-01-30T13:44:19+01:00",
+      "last_synced": "2026-02-01T07:13:43Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 65,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "README mentions hackathon (+10)", "Has Solana dependencies (+10)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "seedpay-solana-privacy-hack": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:58:48",
+      "last_synced": "2026-02-01T07:13:44Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 45,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Has Solana dependencies (+10)", "Has Anchor program (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 1
+      }
+    }
+,
+    "shadow-fence": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:58:48",
+      "last_synced": "2026-02-01T07:13:44Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 65,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "README mentions hackathon (+10)", "Has Solana dependencies (+10)", "Has ZK circuits (+5)", "Has Anchor program (+5)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "Noir",
+        "solana_programs": 1
+      }
+    }
+,
+    "shadow-tracker": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:59:03",
+      "last_synced": "2026-02-01T07:13:44Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 55,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "README mentions hackathon (+10)", "Has Solana dependencies (+10)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "shadow": {
+      "remote_url": "https://github.com/Some1Uknow/shadow.git",
+      "head_commit": "c0c9ca3ba3db04d0f2c100e7b8f3cdf0c9d44788",
+      "head_commit_short": "c0c9ca3",
+      "last_commit_date": "2026-01-31T19:01:42+05:30",
+      "last_synced": "2026-02-01T07:13:44Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 80,
+      "likelihood_classification": "HIGH",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "README mentions hackathon (+10)", "Has Solana dependencies (+10)", "Has ZK circuits (+5)", "Has Anchor program (+5)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "Noir",
+        "solana_programs": 1
+      }
+    }
+,
+    "shielded-pool-pinocchio-solana": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:58:42",
+      "last_synced": "2026-02-01T07:13:44Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 50,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Has Solana dependencies (+10)", "Has ZK circuits (+5)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "Noir",
+        "solana_programs": 0
+      }
+    }
+,
+    "shieldedremit": {
+      "remote_url": "https://github.com/UncleTom29/shieldedremit.git",
+      "head_commit": "92935417b2df6546e642974c66290368d7206146",
+      "head_commit_short": "9293541",
+      "last_commit_date": "2026-01-30T01:18:15+01:00",
+      "last_synced": "2026-02-01T07:13:44Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 60,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "Has Solana dependencies (+10)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "Silent-Rails": {
+      "remote_url": "https://github.com/NorthArchitecture/Silent-Rails.git",
+      "head_commit": "ef66a3fbcc68398f15d56c196965bfa84957bdde",
+      "head_commit_short": "ef66a3f",
+      "last_commit_date": "2026-02-01T07:33:12+01:00",
+      "last_synced": "2026-02-01T07:13:44Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 60,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "README mentions hackathon (+10)", "Has Anchor program (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 1
+      }
+    }
+,
+    "sip-app": {
+      "remote_url": "https://github.com/sip-protocol/sip-app.git",
+      "head_commit": "f87e05945e20743ffa4fb4cda0e84953e1ccaa1f",
+      "head_commit_short": "f87e059",
+      "last_commit_date": "2026-02-01T09:51:53+07:00",
+      "last_synced": "2026-02-01T07:13:44Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 70,
+      "likelihood_classification": "HIGH",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "README mentions hackathon (+10)", "Has Solana dependencies (+10)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "sip-mobile": {
+      "remote_url": "https://github.com/sip-protocol/sip-mobile.git",
+      "head_commit": "c79eeb09da1b91c04d83a00cbad3cdd8604e0e68",
+      "head_commit_short": "c79eeb0",
+      "last_commit_date": "2026-02-01T09:42:28+07:00",
+      "last_synced": "2026-02-01T07:13:45Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 70,
+      "likelihood_classification": "HIGH",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "README mentions hackathon (+10)", "Has Solana dependencies (+10)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "sip-protocol": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:58:42",
+      "last_synced": "2026-02-01T07:13:45Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 50,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "README mentions hackathon (+10)", "Has ZK circuits (+5)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "Noir",
+        "solana_programs": 0
+      }
+    }
+,
+    "sip-website": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:58:42",
+      "last_synced": "2026-02-01T07:13:45Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 55,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "README mentions hackathon (+10)", "Has Solana dependencies (+10)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "solana-exposure-scanner-2": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T09:01:09",
+      "last_synced": "2026-02-01T07:13:45Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 30,
+      "likelihood_classification": "LOW",
+      "likelihood_reasons": ["Last-minute activity (+30)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "solana-exposure-scanner": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:58:48",
+      "last_synced": "2026-02-01T07:13:45Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 30,
+      "likelihood_classification": "LOW",
+      "likelihood_reasons": ["Last-minute activity (+30)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "Solana-Privacy-CLI": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:58:48",
+      "last_synced": "2026-02-01T07:13:45Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 35,
+      "likelihood_classification": "LOW",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "Solana-Privacy-Hack-": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:58:48",
+      "last_synced": "2026-02-01T07:13:45Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 40,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "README mentions hackathon (+10)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "solana-privacy-hack-frontend": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:59:03",
+      "last_synced": "2026-02-01T07:13:45Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 40,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Has Solana dependencies (+10)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "solana-privacy-hack": {
+      "remote_url": "https://github.com/devbh04/solana-privacy-hack.git",
+      "head_commit": "75adf0fbce5fa669b3384c520040cba2fe90e688",
+      "head_commit_short": "75adf0f",
+      "last_commit_date": "2026-01-30T03:12:29+05:30",
+      "last_synced": "2026-02-01T07:13:45Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 60,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "Has Solana dependencies (+10)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "Solana-Privacy-Hackathon-2026": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:59:03",
+      "last_synced": "2026-02-01T07:13:46Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 45,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Has Solana dependencies (+10)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "solana-privacy-rpc": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:58:42",
+      "last_synced": "2026-02-01T07:13:46Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 55,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "README mentions hackathon (+10)", "Has Solana dependencies (+10)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "solana-privacy-scanner": {
+      "remote_url": "https://github.com/taylorferran/solana-privacy-scanner.git",
+      "head_commit": "4e864c1f995be1b96088cf40ed5b7875a181d34c",
+      "head_commit_short": "4e864c1",
+      "last_commit_date": "2026-01-31T14:54:12Z",
+      "last_synced": "2026-02-01T07:13:46Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 70,
+      "likelihood_classification": "HIGH",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "README mentions hackathon (+10)", "Has Solana dependencies (+10)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "solana-privacy-shield": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:58:48",
+      "last_synced": "2026-02-01T07:13:46Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 45,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Has Solana dependencies (+10)", "Has Anchor program (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 1
+      }
+    }
+,
+    "SolanaPrivacyHackathon2026": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:58:48",
+      "last_synced": "2026-02-01T07:13:47Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 65,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "README mentions hackathon (+10)", "Has Solana dependencies (+10)", "Has ZK circuits (+5)", "Has Anchor program (+5)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "Noir",
+        "solana_programs": 2
+      }
+    }
+,
+    "SolanaPrivacyKit": {
+      "remote_url": "https://github.com/pDubey7/SolanaPrivacyKit.git",
+      "head_commit": "7afdcb2a33b00f513da7aece60c6bd476fb5594b",
+      "head_commit_short": "7afdcb2",
+      "last_commit_date": "2026-02-01T01:52:13+05:30",
+      "last_synced": "2026-02-01T07:13:47Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 75,
+      "likelihood_classification": "HIGH",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "README mentions hackathon (+10)", "Has Solana dependencies (+10)", "Has Anchor program (+5)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 1
+      }
+    }
+,
+    "solprivacy-cli": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T09:01:09",
+      "last_synced": "2026-02-01T07:13:47Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 45,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "README mentions hackathon (+10)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "solShare": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:59:03",
+      "last_synced": "2026-02-01T07:13:47Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 50,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Has Solana dependencies (+10)", "Has Anchor program (+5)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 3
+      }
+    }
+,
+    "SolsticeProtocol": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:58:42",
+      "last_synced": "2026-02-01T07:13:47Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 55,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Has Solana dependencies (+10)", "Has ZK circuits (+5)", "Has Anchor program (+5)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "Groth16/Circom",
+        "solana_programs": 1
+      }
+    }
+,
+    "SolVoid": {
+      "remote_url": "https://github.com/brainless3178/SolVoid.git",
+      "head_commit": "f421dd97810578309fe398f148e91b620fac74d9",
+      "head_commit_short": "f421dd9",
+      "last_commit_date": "2026-02-01T03:44:08+05:30",
+      "last_synced": "2026-02-01T07:13:48Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 70,
+      "likelihood_classification": "HIGH",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "Has Solana dependencies (+10)", "Has ZK circuits (+5)", "Has Anchor program (+5)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "Groth16/Circom",
+        "solana_programs": 1
+      }
+    }
+,
+    "stealth-rails-SDK": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:58:42",
+      "last_synced": "2026-02-01T07:13:48Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 45,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Has Solana dependencies (+10)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "StealthPay": {
+      "remote_url": "https://github.com/KeldrickD/StealthPay.git",
+      "head_commit": "860c1ce4578b67734e03c05375e18dbb0c1df426",
+      "head_commit_short": "860c1ce",
+      "last_commit_date": "2026-01-30T17:32:55-05:00",
+      "last_synced": "2026-02-01T07:13:48Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 65,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "README mentions hackathon (+10)", "Has Solana dependencies (+10)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "styx-stack-Solana-": {
+      "remote_url": "https://github.com/QuarksBlueFoot/styx-stack-Solana-.git",
+      "head_commit": "692fc5c3e4945198773af59f15a654273446a551",
+      "head_commit_short": "692fc5c",
+      "last_commit_date": "2026-01-31T22:03:26-06:00",
+      "last_synced": "2026-02-01T07:13:48Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 60,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "Has Solana dependencies (+10)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "synelar": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:58:48",
+      "last_synced": "2026-02-01T07:13:48Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 35,
+      "likelihood_classification": "LOW",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Has Anchor program (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 1
+      }
+    }
+,
+    "triton-privacy-solana": {
+      "remote_url": "https://github.com/Jakisheff/triton-privacy-solana.git",
+      "head_commit": "9c9c02c201ca93403f811c85be54d3dc3c2a2e14",
+      "head_commit_short": "9c9c02c",
+      "last_commit_date": "2026-02-01T01:51:29+05:00",
+      "last_synced": "2026-02-01T07:13:49Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 60,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "README mentions hackathon (+10)", "Has Anchor program (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 1
+      }
+    }
+,
+    "unified-trust-protocol-sdk": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T09:01:09",
+      "last_synced": "2026-02-01T07:13:49Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 30,
+      "likelihood_classification": "LOW",
+      "likelihood_reasons": ["Last-minute activity (+30)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "unstoppable-wallet-android": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:58:42",
+      "last_synced": "2026-02-01T07:13:49Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 30,
+      "likelihood_classification": "LOW",
+      "likelihood_reasons": ["Last-minute activity (+30)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "vapor-tokens": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:59:03",
+      "last_synced": "2026-02-01T07:13:49Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 65,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "README mentions hackathon (+10)", "Has Solana dependencies (+10)", "Has ZK circuits (+5)", "Has Anchor program (+5)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "Noir",
+        "solana_programs": 2
+      }
+    }
+,
+    "Veil-SDK": {
+      "remote_url": "https://github.com/PascalThePundit/Veil-SDK.git",
+      "head_commit": "60195d6fda3321e247251d5f10546f84b37d2df2",
+      "head_commit_short": "60195d6",
+      "last_commit_date": "2026-02-01T02:38:43+01:00",
+      "last_synced": "2026-02-01T07:13:50Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 65,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "README mentions hackathon (+10)", "Has Solana dependencies (+10)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "veil": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:59:03",
+      "last_synced": "2026-02-01T07:13:50Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 55,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "README mentions hackathon (+10)", "Has Solana dependencies (+10)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "veilvote": {
+      "remote_url": "https://github.com/Esimuda/veilvote.git",
+      "head_commit": "015dcf9c27f4f50f570eb406cf15be3e569aa4ad",
+      "head_commit_short": "015dcf9",
+      "last_commit_date": "2026-02-01T00:48:07+01:00",
+      "last_synced": "2026-02-01T07:13:50Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 75,
+      "likelihood_classification": "HIGH",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "README mentions hackathon (+10)", "Has Solana dependencies (+10)", "Has Anchor program (+5)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 1
+      }
+    }
+,
+    "velum": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:58:48",
+      "last_synced": "2026-02-01T07:13:50Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 40,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Has Solana dependencies (+10)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "vex-zk": {
+      "remote_url": "https://github.com/TomHarrington1221/vex-zk.git",
+      "head_commit": "f0f3c694aeeba8467e10047246856290be290ecd",
+      "head_commit_short": "f0f3c69",
+      "last_commit_date": "2026-01-31T22:57:05-05:00",
+      "last_synced": "2026-02-01T07:13:50Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 80,
+      "likelihood_classification": "HIGH",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Created during hackathon (+15)", "README mentions hackathon (+10)", "Has Solana dependencies (+10)", "Has ZK circuits (+5)", "Has Anchor program (+5)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "Noir",
+        "solana_programs": 2
+      }
+    }
+,
+    "wavis-protocol": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:59:03",
+      "last_synced": "2026-02-01T07:13:51Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 60,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "README mentions hackathon (+10)", "Has Solana dependencies (+10)", "Has Anchor program (+5)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 1
+      }
+    }
+,
+    "yieldcash-solana-privacy": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:58:48",
+      "last_synced": "2026-02-01T07:13:51Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 65,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "README mentions hackathon (+10)", "Has Solana dependencies (+10)", "Has ZK circuits (+5)", "Has Anchor program (+5)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "Noir",
+        "solana_programs": 1
+      }
+    }
+,
+    "zelana": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:58:42",
+      "last_synced": "2026-02-01T07:13:52Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 45,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Has Solana dependencies (+10)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "none",
+        "solana_programs": 0
+      }
+    }
+,
+    "zkprof": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T21:59:03",
+      "last_synced": "2026-02-01T07:13:52Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 50,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Has Solana dependencies (+10)", "Has ZK circuits (+5)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "Groth16/Circom",
+        "solana_programs": 0
+      }
+    }
+,
+    "zmix": {
+      "remote_url": "unknown",
+      "head_commit": "no-git-metadata",
+      "head_commit_short": "no-git",
+      "last_commit_date": "2026-01-31T09:01:09",
+      "last_synced": "2026-02-01T07:13:52Z",
+      "analysis_file": null,
+      "hackathon_likelihood": 50,
+      "likelihood_classification": "MEDIUM",
+      "likelihood_reasons": ["Last-minute activity (+30)", "Has Solana dependencies (+10)", "Has ZK circuits (+5)", "Privacy keywords in code (+5)"],
+      "technical_summary": {
+        "zk_system": "Groth16/Circom",
+        "solana_programs": 0
+      }
+    }
+
+  }
+}

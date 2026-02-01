@@ -1,7 +1,0 @@
-node_modules
-target
-.anchor
-.next
-dist
-build
-*.log

@@ -1,6 +1,0 @@
-src/
-tsconfig.json
-__tests__/
-*.test.ts
-.turbo/
-node_modules/

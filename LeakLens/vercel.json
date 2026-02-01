@@ -1,9 +1,0 @@
-{
-  "version": 2,
-  "framework": "nextjs",
-  "functions": {
-    "api/analyze-wallet.py": {
-      "maxDuration": 120
-    }
-  }
-}

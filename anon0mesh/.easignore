@@ -1,6 +1,0 @@
-test-ledger/
-**/test-ledger/
-*.rpc
-*.sock
-*.socket
-/ios

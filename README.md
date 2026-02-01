@@ -312,7 +312,52 @@ Each repository analyzed via parallel agents examining:
 
 ---
 
+## Repo Sync Index
+
+**Last Full Sync**: 2026-02-01T06:41:04Z
+
+| Classification | Count | Description |
+|----------------|-------|-------------|
+| **HIGH** | 38 | Very likely hackathon submission (score 70-100) |
+| **MEDIUM** | 50 | Possibly hackathon submission (score 40-69) |
+| **LOW** | 18 | Unlikely hackathon submission (score 0-39) |
+| **Total** | 106 | All tracked repositories |
+
+### Top 10 by Hackathon Likelihood
+
+| Repo | Score | Key Signals |
+|------|-------|-------------|
+| vex-zk | 100 | Hackathon activity, README, Solana deps, ZK circuits, Anchor, privacy keywords, created during hackathon |
+| shadow | 100 | Hackathon activity, README, Solana deps, ZK circuits, Anchor, privacy keywords, created during hackathon |
+| safesol | 100 | Hackathon activity, README, Solana deps, ZK circuits, Anchor, privacy keywords, created during hackathon |
+| Protocol-01 | 100 | Hackathon activity, README, Solana deps, ZK circuits, Anchor, privacy keywords, created during hackathon |
+| nahualli | 100 | Hackathon activity, README, Solana deps, ZK circuits, Anchor, privacy keywords, created during hackathon |
+| veilvote | 90 | Hackathon activity, README, Anchor, privacy keywords, created during hackathon |
+| SolanaPrivacyKit | 90 | Hackathon activity, README, Solana deps, Anchor, privacy keywords, created during hackathon |
+| Obsidian | 90 | Hackathon activity, README, Solana deps, Anchor, privacy keywords, created during hackathon |
+| Mukon-messenger | 90 | Hackathon activity, README, Solana deps, Anchor, privacy keywords, created during hackathon |
+| confpay | 90 | Hackathon activity, README, Solana deps, Anchor, privacy keywords, created during hackathon |
+
+### Likelihood Heuristics
+
+| Heuristic | Points | Description |
+|-----------|--------|-------------|
+| Hackathon window activity | +25 | Last commit between Jan 12 - Feb 1, 2026 |
+| README mentions hackathon | +20 | Contains "hackathon", "privacy hack", "solana privacy" |
+| Has Solana dependencies | +15 | Cargo.toml/package.json references Solana |
+| Created during hackathon | +15 | First commit after Jan 12, 2026 |
+| Has ZK circuits | +10 | Contains .circom, .noir, Nargo.toml, or circuits/ |
+| Has Anchor program | +10 | Contains programs/*/src/lib.rs |
+| Privacy keywords | +5 | Code contains shielded, nullifier, commitment, stealth |
+
+**Full index**: See [repo-index.json](repo-index.json) for complete tracking data including HEAD commit hashes.
+
+**Sync command**: Run `/sync-hackathon-repos` to refetch all repositories from GitHub.
+
+---
+
 ## Related Files
 
 - [WINNER_PREDICTIONS.md](WINNER_PREDICTIONS.md) - Predicted winners by track
 - [analyses/](analyses/) - Detailed analysis of top competitors
+- [repo-index.json](repo-index.json) - Repository sync index with commit hashes

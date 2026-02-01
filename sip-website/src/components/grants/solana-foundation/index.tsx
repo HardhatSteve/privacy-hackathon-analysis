@@ -1,6 +1,0 @@
-export { HeroSection } from './hero-section'
-export { VisionSection } from './vision-section'
-export { ProblemSection } from './problem-section'
-export { SolutionSection } from './solution-section'
-export { WhySolanaSection } from './why-solana-section'
-export { TractionSection } from './traction-section'

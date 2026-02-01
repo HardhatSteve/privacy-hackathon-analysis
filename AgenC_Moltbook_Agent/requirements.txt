@@ -1,7 +1,0 @@
-# Core (always required)
-httpx>=0.25.0
-
-# Solana / AgenC protocol (optional - for on-chain task queries)
-# Uncomment to enable:
-# solders>=0.21.0
-# solana>=0.34.0

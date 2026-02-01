@@ -1,9 +1,0 @@
-[package]
-name = "join_split"
-type = "bin"
-authors = ["YieldCash Team"]
-compiler_version = ">=0.36.0"
-
-[dependencies]
-# Using noir-lang/poseidon which uses the same sponge construction as bn254_blackbox_solver
-poseidon = { tag = "v0.2.0", git = "https://github.com/noir-lang/poseidon" }

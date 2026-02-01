@@ -1,6 +1,0 @@
-.next
-dist
-build
-*.log
-node_modules/.cache
-.turbo
