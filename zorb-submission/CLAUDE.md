@@ -14,8 +14,10 @@ These files define what the final submission looks like. Treat as authoritative:
 
 | File | Purpose |
 |------|---------|
-| `FINAL_SUBMISSION.md` | Final submission input values to the Solana Privacy Hackathon Submission Form. Answers ready to input into Typeform |
-| `PRESENTATION_VIDEO_SCRIPT.md` | 3-minute demo video script and specification with narration and timing. Will be used to generate the presentation video from. |
+| `FINAL_SUBMISSION.md` | **Formal specification** for the Solana Privacy Hackathon submission. Contains all form answers, project claims, and technical descriptions. This is the canonical source of truth. |
+| `PRESENTATION_VIDEO_SCRIPT.md` | 3-minute demo video script with narration and timing. **Must be consistent with FINAL_SUBMISSION.md** — all claims, numbers, and messaging should match. |
+
+> **Consistency Rule**: `FINAL_SUBMISSION.md` is the spec. When updating claims, features, or messaging, update `FINAL_SUBMISSION.md` first, then propagate changes to `PRESENTATION_VIDEO_SCRIPT.md` and other assets.
 | `SOLANA_PRIVACY_HACK_SUBMISSION_FORM.md` | Typeform field reference (IDs, types, requirements) of the Solana Privacy Hacakthon Submission Form |
 | `docs/ZORB_TECHNICAL_CAPABILITIES.md` | Deep technical overview of ZORB architecture |
 | `README.md` | Submission overview and quick links |
