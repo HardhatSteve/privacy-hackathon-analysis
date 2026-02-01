@@ -18,7 +18,7 @@ Solana Privacy Hackathon 2026 workspace - organized for submission and competiti
 
 ## Our Submission
 
-See `zorb-submission/docs/FINAL_SUBMISSION.md` for the official submission.
+See `zorb-submission/FINAL_SUBMISSION.md` for the official submission.
 
 ## Competition Intel
 

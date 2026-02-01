@@ -146,7 +146,7 @@
 **NARRATION**:
 > "We're a ZK team from Polygon. This isn't our first protocol.
 >
-> ZORB is open source: github.com/zorb-protocol/zorb
+> ZORB is open source: github.com/zorb-labs/solana-privacy-hackathon-2026
 >
 > Privacy shouldn't cost $0.13 per transaction. With ZORB, it's free.
 >

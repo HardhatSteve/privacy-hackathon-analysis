@@ -11,17 +11,12 @@ This repository contains our hackathon submission materials and competitive inte
 ```
 .
 ├── zorb-submission/          # Our Zorb Protocol submission
-│   ├── docs/                 # Submission documentation
-│   │   ├── FINAL_SUBMISSION.md
-│   │   ├── VIDEO_SCRIPT.md
-│   │   ├── SPONSOR_INTEGRATION_GUIDE.md
-│   │   └── ...
-│   ├── public-repo/          # Public-facing code (zorb-public)
-│   │   ├── circuits/         # Noir ZK circuits
-│   │   ├── programs/         # Solana programs
-│   │   └── README.md
-│   ├── video/                # Video submission assets
-│   └── ZORB_TECHNICAL_CAPABILITIES.md
+│   ├── FINAL_SUBMISSION.md   # Form answers ready to paste
+│   ├── PRESENTATION_VIDEO_SCRIPT.md
+│   ├── docs/                 # Technical documentation
+│   │   └── ZORB_TECHNICAL_CAPABILITIES.md
+│   ├── research/             # Strategy & sponsor analysis
+│   └── presentation-video/   # Video assets
 │
 ├── competition-intel/        # Hackathon competitor analysis
 │   ├── repos/                # 200+ cloned competitor repos
@@ -45,10 +40,9 @@ This repository contains our hackathon submission materials and competitive inte
 ## Quick Links
 
 ### Our Submission
-- [Final Submission](zorb-submission/docs/FINAL_SUBMISSION.md)
-- [Technical Capabilities](zorb-submission/ZORB_TECHNICAL_CAPABILITIES.md)
-- [Video Script](zorb-submission/docs/VIDEO_SCRIPT.md)
-- [Public Repository](zorb-submission/public-repo/)
+- [Final Submission](zorb-submission/FINAL_SUBMISSION.md)
+- [Technical Capabilities](zorb-submission/docs/ZORB_TECHNICAL_CAPABILITIES.md)
+- [Video Script](zorb-submission/PRESENTATION_VIDEO_SCRIPT.md)
 
 ### Competition Intel
 - [Winner Predictions](competition-intel/WINNER_PREDICTIONS.md)
