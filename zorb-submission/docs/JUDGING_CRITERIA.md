@@ -230,8 +230,8 @@ Judges will likely reject submissions with:
 
 For detailed competitor analysis, see:
 
-- `../analyses/JUDGES_REFERENCE_GUIDE.md` - Qualitative analysis of 81 submissions
-- `../analyses/WINNING_LIKELIHOOD.md` - Quantitative scoring of 106 submissions
+- `../../competition-intel/analyses/JUDGES_REFERENCE_GUIDE.md` - Qualitative analysis of 81 submissions
+- `../../competition-intel/analyses/WINNING_LIKELIHOOD.md` - Quantitative scoring of 106 submissions
 - `SPONSOR_BOUNTY_ANALYSIS.md` - Sponsor eligibility for ZORB
 
 ---

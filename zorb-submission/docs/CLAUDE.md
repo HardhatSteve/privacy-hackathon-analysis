@@ -24,7 +24,6 @@ Files that inform our submission angle and competitive positioning:
 
 | File | Purpose |
 |------|---------|
-| `COMPETITOR_VIDEOS.md` | Analysis of competitor videos, what works, recommended strategy |
 | `JUDGING_CRITERIA.md` | Hackathon judging rubric and how ZORB scores against it |
 | `ZORB_HACKATHON_SUBMISSION_PLAN.md` | Full submission strategy and timeline |
 | `ZORB_SUBMISSION_TRACKER.md` | Task checklist for submission completion |
