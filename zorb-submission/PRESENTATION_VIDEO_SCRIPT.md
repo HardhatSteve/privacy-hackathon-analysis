@@ -11,22 +11,20 @@
 The video must hit all messages below (in order):
 
 0. **Introduction — ZORB**
-   1. ZORB is exploring programmable privacy on Solana
-   2. We started with private payments — fully unlinkable transactions using commitments and nullifiers (the ZEXE model)[^1]
+   1. ZORB is exploring programmable privacy on Solana similar to Aztec and Miden
+   2. We're starting with private payments — fully unlinkable transactions using commitments and nullifiers (the ZEXE model)[^1]
    3. Architecturally similar to Zcash shielded payments[^2]
-   4. This problem space is largely unexplored on Solana
 
 1. **Free Shielded Transfers**
-   - **TODO:** Two birds, one stone — bring STARKs and Circle-FRI onto Solana through Groth16 (recursive verification)
    1. ZEXE model[^1] requires nullifiers to prevent double-spending
    2. On Solana, nullifiers stored as PDAs = $0.13 rent locked per tx
-   3. "Other protocols charge $0.13 per private transaction" — e.g., PrivacyCash has $X locked in nullifier PDAs (show on-chain data)
+   3. "Other protocols charge $0.13 per private transaction" — e.g., PrivacyCash has $X locked in nullifier PDAs (data: `../privacy-cash-analysis/`)
    4. ZORB solution: indexed merkle tree (67M nullifiers in ~1KB)
    5. "ZORB transfers are free — no nullifier rent"
    6. "Send privately without fees eating your balance"
    7. Stress test demo: show throughput as % of Solana TPS + total $ saved (rent that would have been locked)
 
-2. **Yield-Bearing Shielded SOL**
+2. **Yield-Bearing Shielded SOL** (**)
    1. Introduce **Unified SOL** — the product name (show icon)
    2. Groups SOL-equivalents (SOL, vSOL, jitoSOL, mSOL) into a single fungible unit for shielded payments
    3. Yield-bearing: underlying LSTs continue earning staking rewards while shielded — "Your shielded SOL earns 7-8% APY"
@@ -34,6 +32,7 @@ The video must hit all messages below (in order):
    5. Technical: ZK circuit computes yield share using global reward accumulator (amount never revealed)
    6. Technical: `unified-sol-pool` Solana program handles LST vaults, exchange rates, harvest-finalize cycle
    7. "Unified pool = larger anonymity set" (separate pools per LST would fragment privacy)
+   8. The value of a privacy network is its useful state — here, that's the anonymity set you get to use
 
 3. **zorb.cash — The Product**
    1. zorb.cash is an early product that combines both: free transfers + yield-bearing privacy
@@ -47,10 +46,13 @@ The video must hit all messages below (in order):
       1. Demo environment: devnet / localnet (specify which)
       2. Infrastructure: [X instances of Y] — mention prover setup
       3. Throughput verified: [X tx/sec] achieved (test before recording)
-   3. "Shield your SOL. Send for free. Earn while hidden."
-   4. **Note (do not claim, just frame correctly):**
+   5. "Shield your SOL. Send for free. Earn while hidden."
+   6. **Note (do not claim, just frame correctly):**
       - Decentralized protocol — no operators, no custody, permissionless
       - Compliance path exists: proof of innocence / association sets
+
+4. **Future — Two Birds, One Stone**
+   - **TODO:** Bring STARKs and Circle-FRI onto Solana through Groth16 (recursive verification)
 
 </video_outline>
 
@@ -108,100 +110,110 @@ The video must hit all messages below (in order):
 
 ## SCRIPT
 
-### [0:00-0:30] HOOK - "Private Store of Value" ⭐
-
-**VISUAL**: Animation — ZORB logo reveal, shielded vault concept
-
-**NARRATION**:
-> "What if your SOL could be invisible?
->
-> ZORB is a private store of value on Solana.
->
-> Shield your SOL. Send it privately. Earn yield while it's hidden.
->
-> No one sees your balance. No one tracks your transactions.
->
-> Let me show you how it works."
+> **TODO: Match tone/presentation format to ETH hackathon finalists**
+> Review winning ETHGlobal/Devcon demo videos for pacing, energy, and production style before finalizing.
 
 ---
 
-### [0:30-1:00] THE PROBLEM - "Privacy Shouldn't Cost You"
+### [0:00-0:25] Introduction — ZORB
 
-**VISUAL**: Animation — Cost comparison, other protocols charging per tx
+**VISUAL**: ZORB logo animation, Solana logo
 
 **NARRATION**:
-> "Every other privacy protocol on Solana charges you per transaction.
+> "ZORB is exploring programmable privacy on Solana similar to Aztec and Miden.
 >
-> They store nullifiers as PDAs — that's $0.13 locked forever, every time you send.
+> We're starting with private payments — fully unlinkable transactions using commitments and nullifiers. If you know Zcash, this is architecturally similar. The ZEXE model.
 >
-> 100 transactions? $13 gone. 1,000? $130 you'll never get back.
->
-> Privacy shouldn't drain your wallet. ZORB fixes this."
+> This problem space is largely unexplored on Solana. Let me show you what we've built."
 
 ---
 
-### [1:00-1:30] FREE TRANSFERS - "Send Without Fees"
+### [0:25-1:10] Free Shielded Transfers
 
-**VISUAL**: Animation — Zero cost transfers, simple flow diagram
+**Privacy Hackathon Angles** (points judges value):
+- Novel approach to a known problem (nullifier storage cost)
+- Real cryptographic implementation (Groth16 on-chain verification)
+- Comparison to existing protocols with on-chain evidence
+- Scalability claim with concrete numbers (67M nullifiers)
+- Working demo, not just theory
+
+**VISUAL**: Animation showing PDA costs, then indexed merkle tree solution
 
 **NARRATION**:
-> "ZORB transfers are free.
+> "Private transactions need nullifiers — they prevent double-spending. On Solana, every protocol stores these as PDAs. Each one locks thirteen cents in rent. Forever.
 >
-> We use an indexed merkle tree instead of per-transaction PDAs.
-> One structure holds millions of nullifiers — no rent per send.
+> [Show on-chain data]
 >
-> Shield your SOL once. Send as many times as you want.
-> Your balance stays yours."
+> Look at PrivacyCash — they've locked $X in nullifier PDAs. That money is gone.
+>
+> ZORB takes a different approach. We use an indexed merkle tree — the same structure Aztec uses in production. Sixty-seven million nullifiers in about one kilobyte.
+>
+> The result? ZORB transfers are free. No nullifier rent eating your balance.
+>
+> [Show stress test counter]
+>
+> Watch this — every transaction you see would have cost thirteen cents elsewhere. That counter shows real money saved."
 
 ---
 
-### [1:30-2:00] LIVE DEMO - "See It Work"
+### [1:10-1:50] Yield-Bearing Shielded SOL
 
-**VISUAL**: Screen recording — zorb.cash/stress-test
+**VISUAL**: Unified SOL icon, LST logos (jitoSOL, mSOL, vSOL), anonymity set diagram
 
 **NARRATION**:
-> "This is zorb.cash running live.
+> "Now here's what makes ZORB different: Unified SOL.
 >
-> [Click Start Stress Test]
+> We group SOL-equivalents — native SOL, jitoSOL, mSOL, vSOL — into a single fungible unit for shielded payments.
 >
-> Watch — private transactions flowing. Real ZK proofs. Zero transfer fees.
+> Why does this matter? Privacy networks derive value from their anonymity set. Separate pools for each token would fragment that. Five small pools are easier to trace than one large pool.
 >
-> [Point to counter]
+> Unified SOL combines them all. Larger anonymity set, stronger privacy.
 >
-> See this savings counter? That's money other protocols would take from you.
-> On ZORB, you keep it all."
+> And here's the bonus: your shielded SOL earns yield. The underlying LSTs keep earning staking rewards — seven to eight percent APY — while fully private.
+>
+> Privacy plus yield. No tradeoff."
 
 ---
 
-### [2:00-2:30] YIELD - "Earn While You Hide"
+### [1:50-2:45] zorb.cash — The Product
 
-**VISUAL**: Animation — Yield accumulating, LST logos (vSOL, jitoSOL, mSOL)
+**VISUAL**: Screen recording of zorb.cash wallet interface
 
 **NARRATION**:
-> "Here's what makes ZORB different: your shielded SOL earns yield.
+> "zorb.cash is our early product that brings this together.
 >
-> We pool liquid staking tokens — vSOL, jitoSOL, mSOL.
-> Your private balance grows at 7-8% APY.
+> [Demo: Generate shielded address]
 >
-> Other projects promise this. Check their code — it's TODOs and stubs.
-> ZORB actually works.
+> Create a shielded address.
 >
-> Privacy that pays you."
+> [Demo: Shield]
+>
+> Shield your SOL — deposit into the private pool.
+>
+> [Demo: Send]
+>
+> Send to another shielded address. No one sees the amount. No one sees the recipient.
+>
+> [Demo: Unshield]
+>
+> Unshield when you need to — withdraw back to any Solana address.
+>
+> [Show Break ZORB stress test]
+>
+> And here's our stress test running on devnet. Real ZK proofs. Real throughput. That's X transactions per second — Y percent of Solana's capacity, dedicated to private payments.
+>
+> Every one of those would have cost rent elsewhere. Here, it's free."
 
 ---
 
-### [2:30-3:00] CALL TO ACTION
+### [2:45-3:00] Close
 
-**VISUAL**: Animation — ZORB logo, links, tagline
+**VISUAL**: ZORB logo, links, tagline
 
 **NARRATION**:
-> "ZORB: Private store of value on Solana.
+> "ZORB. Shield your SOL. Send for free. Earn while hidden.
 >
-> Free transfers. Yield-bearing privacy. Real ZK proofs.
->
-> Try it now at zorb.cash
->
-> GitHub: github.com/zorb-labs/solana-privacy-hackathon-2026
+> Try it at zorb.cash. Code is open source on GitHub.
 >
 > Privacy should be free. ZORB makes it possible."
 
