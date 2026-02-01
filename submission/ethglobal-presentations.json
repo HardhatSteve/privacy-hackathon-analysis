@@ -1,0 +1,352 @@
+{
+  "metadata": {
+    "compiled": "2026-02-01",
+    "total_hackathons": 10,
+    "total_projects_listed": 330,
+    "detailed_analyses": 40
+  },
+  "presentation_patterns": {
+    "winning_structure": {
+      "hook": {"time": "0:00-0:10", "content": "Bold claim or live demo start"},
+      "demo": {"time": "0:10-1:30", "content": "Working product walkthrough"},
+      "problem": {"time": "1:30-2:00", "content": "Why this matters"},
+      "solution": {"time": "2:00-2:30", "content": "Technical innovation"},
+      "close": {"time": "2:30-3:00", "content": "Differentiators + CTA"}
+    },
+    "pattern_distribution": {
+      "demo_first": "65%",
+      "problem_solution": "25%",
+      "technical_first": "10%"
+    },
+    "video_metrics": {
+      "average_length": "2:45",
+      "range": "1:30-4:00",
+      "time_to_first_demo": "0:12",
+      "sections": "4-5"
+    }
+  },
+  "projects": [
+    {
+      "name": "DAOGenie",
+      "event": "Bangkok 2024",
+      "category": "DeFi/Governance",
+      "one_liner": "Turn community decisions into real-world actions with AI agents",
+      "problem": "Traditional DAOs only handle digital transactions",
+      "solution": "AI agents executing real-world tasks based on governance votes",
+      "tech_stack": ["Next.js", "React", "Dynamics wallet", "Hardhat", "Playwright", "Tesseract OCR"],
+      "prizes": ["Flow Foundation 1st", "Hedera EVM", "Rome Protocol 3rd", "Linea/MetaMask Best"],
+      "video_url": "https://stream.mux.com/QztDu1aTrBkAqT01suT7r7Zb6JMHYKtvelK2g3lYZ2ds/high.mp4",
+      "demo_url": "https://daogenie.app",
+      "finalist": true
+    },
+    {
+      "name": "Zubernetes",
+      "event": "Bangkok 2024",
+      "category": "Infrastructure/ZK",
+      "one_liner": "First TEE ZK container orchestrator for verifiable execution",
+      "problem": "Need secure containerized workloads with ZK verification",
+      "solution": "Intel SGX enclaves + ZK proof verification + Phala Dstack",
+      "tech_stack": ["Phala Dstack", "Next.js", "Solidity", "Foundry", "Python FastAPI", "Gramine LibOS", "Intel SGX", "Rust"],
+      "prizes": ["Blockscout Pool", "Phala Best General Use"],
+      "video_url": "https://youtu.be/BDjioH9vYmg",
+      "finalist": true
+    },
+    {
+      "name": "Priv8",
+      "event": "Bangkok 2024",
+      "category": "Privacy/Social",
+      "one_liner": "Decentralized private social network - Reddit with privacy",
+      "problem": "Existing social platforms lack privacy features",
+      "solution": "Token-gated communities using Lit Protocol encryption",
+      "tech_stack": ["Lit Protocol", "Web3Auth", "Arweave", "Scroll", ".NET Blazor"],
+      "prizes": [],
+      "video_url": "https://stream.mux.com/F5LxKRRdXvgioXH01jwGaC6OY4eeE00oUpUjaM601zWocM/high.mp4",
+      "finalist": false
+    },
+    {
+      "name": "FHEmix",
+      "event": "Brussels 2024",
+      "category": "Privacy/DeFi",
+      "one_liner": "FHE-powered crosschain crypto mixer for anonymity",
+      "problem": "FHE networks can't privately handle native assets",
+      "solution": "Mixer-exchange wrapping native assets into encrypted assets",
+      "tech_stack": ["Fhenix Network", "Hyperlane", "FHE"],
+      "prizes": [],
+      "video_url": null,
+      "finalist": false
+    },
+    {
+      "name": "MaskD",
+      "event": "New York 2023",
+      "category": "Privacy/Identity",
+      "one_liner": "ZKP protocol for obfuscating wallet address from spendings",
+      "problem": "Wallet addresses can be tracked, revealing spending patterns",
+      "solution": "Dark pool aggregating payments with ZK verification",
+      "tech_stack": ["Polygon ID", "Node.js", "Express.js", "Next.js", "Zokrates"],
+      "prizes": ["Scroll Pool", "Polygon Best Use of ID", "Arbitrum Pool"],
+      "video_url": null,
+      "demo_url": "https://maskd.sag17.com",
+      "finalist": false
+    },
+    {
+      "name": "zkFlex",
+      "event": "Sydney 2024",
+      "category": "Privacy/Identity",
+      "one_liner": "Verify Ethereum asset ownership without revealing wallet address",
+      "problem": "Users risk exposing wallet info when proving ownership",
+      "solution": "ZK-SNARK proofs confirming ownership without disclosure",
+      "tech_stack": ["Circom", "snarkjs", "Solidity", "Ethereum"],
+      "prizes": ["Mantle Best NFT", "dabl.club ZK 1st", "Base 3rd"],
+      "video_url": null,
+      "finalist": false
+    },
+    {
+      "name": "1shield",
+      "event": "Paris 2023",
+      "category": "Privacy/DeFi",
+      "one_liner": "Private transactions within DeFi apps using Railgun",
+      "problem": "Open blockchain transactions expose business data",
+      "solution": "Railgun integration concealing swap/loan/payment details",
+      "tech_stack": ["Railgun", "1inch API", "TypeScript"],
+      "prizes": ["Neon EVM Pool"],
+      "video_url": null,
+      "finalist": false
+    },
+    {
+      "name": "StealthMail",
+      "event": "Waterloo 2023",
+      "category": "Privacy/Communication",
+      "one_liner": "Untraceable encrypted emails through stealth addresses",
+      "problem": "Data breaches in digital communications",
+      "solution": "Stealth address technology for anonymous email",
+      "tech_stack": ["Solidity", "Next.js", "MetaMask SDK", "Ethers.js", "web3.storage", "Polygon"],
+      "prizes": ["Protocol Labs FVM Top 8"],
+      "video_url": null,
+      "finalist": false
+    },
+    {
+      "name": "ZK Governance",
+      "event": "Tokyo 2023",
+      "category": "Privacy/Governance",
+      "one_liner": "Anonymous governance voting with humanness verification",
+      "problem": "Voting participants need privacy while proving participation",
+      "solution": "Worldcoin + Semaphore for anonymous verified voting",
+      "tech_stack": ["Worldcoin ID", "Semaphore", "Smart contracts"],
+      "prizes": ["Worldcoin Pool"],
+      "video_url": null,
+      "finalist": false
+    },
+    {
+      "name": "Zkcord",
+      "event": "Bangkok 2024",
+      "category": "Privacy/Social",
+      "one_liner": "Private NFT ownership verification for Discord",
+      "problem": "NFT-gated communities need privacy-preserving verification",
+      "solution": "ZK proofs + Merkle trees for ownership without wallet exposure",
+      "tech_stack": ["Protokit", "O1js", "Next.js", "Discord bot"],
+      "prizes": [],
+      "video_url": "https://stream.mux.com/bIx6YKYa00vYvqAwUxzjdzy4MkNSnna6B02mJL016v612E/high.mp4",
+      "finalist": false
+    },
+    {
+      "name": "Privacy Avengers",
+      "event": "Sydney 2024",
+      "category": "Privacy/AI",
+      "one_liner": "Verifiable machine unlearning for AI privacy",
+      "problem": "AI users can't detect privacy compromises or remove data",
+      "solution": "Backdoor attack verification + ML unlearning + ZK proofs",
+      "tech_stack": ["World ID", "L2 smart contracts", "Statistical inference"],
+      "prizes": ["Worldcoin Pool"],
+      "video_url": "https://studio.youtube.com/video/OgbSf73Z2Iw/edit",
+      "finalist": false
+    },
+    {
+      "name": "visibleDarkBox",
+      "event": "Waterloo 2023",
+      "category": "Privacy/Identity",
+      "one_liner": "On-chain secure password for NFT-based account recovery",
+      "problem": "Private key management creates theft/loss risks",
+      "solution": "2-of-3 secret sharing with ERC-6551 and Merkle trees",
+      "tech_stack": ["Solidity", "React.js", "ethers.js", "ERC-6551"],
+      "prizes": ["Polygon Pool", "Linea Best Use"],
+      "video_url": null,
+      "finalist": false
+    },
+    {
+      "name": "RugStop",
+      "event": "Brussels 2024",
+      "category": "DeFi/Security",
+      "one_liner": "Time-locked liquidity to prevent rug pulls",
+      "problem": "Meme coin liquidity providers have no protection",
+      "solution": "Uniswap V4 hook with time-locked LP provisions",
+      "tech_stack": ["Uniswap V4 hooks", "React", "Next.js", "PancakeSwap"],
+      "prizes": ["The Graph Best New Subgraph 2nd"],
+      "video_url": "mux_stream_available",
+      "finalist": false
+    },
+    {
+      "name": "Bob the Solver",
+      "event": "Paris 2023",
+      "category": "Infrastructure/UX",
+      "one_liner": "Intent-based transactions for better wallet UX",
+      "problem": "Complex multi-step blockchain transactions",
+      "solution": "ML intent classification + AA wallet + automatic execution",
+      "tech_stack": ["Machine Learning", "1inch contracts", "Account Abstraction"],
+      "prizes": ["1inch 3rd", "ETHGlobal Paris Finalist"],
+      "video_url": "https://stream.mux.com/H5SmtXiPZFGRa2Hn5HtuHucFIYsHmzXmzgnpGT8k4ps/high.mp4",
+      "finalist": true
+    },
+    {
+      "name": "Croissant Protocol",
+      "event": "Paris 2023",
+      "category": "DeFi/Yield",
+      "one_liner": "Yield generation for future payments using Maker/sDAI",
+      "problem": "DAOs/users need yield while saving for future expenses",
+      "solution": "Maker Conduits + sDAI + EigenLayer integration",
+      "tech_stack": ["React Native", "Foundry", "Maker Conduits", "sDAI", "WalletConnect"],
+      "prizes": ["WalletConnect Top 10", "NounsDAO Best Art", "MakerDAO 1st sDAI"],
+      "video_url": "https://stream.mux.com/B2MpwDFe70000t00T87RFPVS8Ovtv51LCv00E19DEpDtlDc/high.mp4",
+      "finalist": false
+    },
+    {
+      "name": "DeFi Guardian",
+      "event": "Tokyo 2023",
+      "category": "DeFi/Security",
+      "one_liner": "Smart contract security with rate limiting to prevent hacks",
+      "problem": "No proactive mechanism to detect/prevent large token theft",
+      "solution": "Proxy monitoring token flows, rate-limiting suspicious outflows",
+      "tech_stack": ["Solidity", "Push Protocol", "Scroll"],
+      "prizes": ["Scroll Just Deploy", "Push Top 10", "Polygon Pool", "Taiko 2nd"],
+      "video_url": null,
+      "finalist": false
+    },
+    {
+      "name": "Luban the Paymaster",
+      "event": "Waterloo 2023",
+      "category": "Infrastructure/AA",
+      "one_liner": "Hold assets on one chain, sponsor gas on all chains",
+      "problem": "Need token balances on multiple chains for gas",
+      "solution": "Cross-chain sponsorship via AccountEscrow + CrosschainPaymaster",
+      "tech_stack": ["Solidity", "Rust", "ERC4337"],
+      "prizes": ["Polygon Best Public Good AA", "Hyperlane Most Innovative", "XDC Best Use"],
+      "video_url": "google_drive_available",
+      "finalist": false
+    },
+    {
+      "name": "Zook",
+      "event": "Paris 2023",
+      "category": "DeFi/Payments",
+      "one_liner": "Payment channels with yield generation",
+      "problem": "High gas fees, no incentive for payment channel funds",
+      "solution": "Batch settlement + Spark/MakerDAO yield + EAS attestations",
+      "tech_stack": ["EAS", "WalletConnect", "XMTP", "Safe", "Spark/MakerDAO"],
+      "prizes": [],
+      "video_url": "https://stream.mux.com/rMCfqOQx502dDq2sVqiAyNSsLavnJ5FxyVwOdkgUP2sc/high.mp4",
+      "finalist": false
+    },
+    {
+      "name": "ZK Vendor Credentialing",
+      "event": "Tokyo 2023",
+      "category": "Privacy/Identity",
+      "one_liner": "ZK credential verification for healthcare workers",
+      "problem": "Redundant credentialing uploads to multiple hospital systems",
+      "solution": "Share only needed info via ZK proofs, off-chain Merkle trees",
+      "tech_stack": ["MINA zkApp CLI", "TypeScript", "SnarkyJS", "zk-SNARKs"],
+      "prizes": ["Mina Pool"],
+      "video_url": "https://stream.mux.com/eAGiIrAgL80102xV00ed01HPOmknC81cfZgyrhAM5Mi4ULQ/high.mp4",
+      "finalist": false
+    },
+    {
+      "name": "Confide.id",
+      "event": "Tokyo 2023",
+      "category": "Identity/Trust",
+      "one_liner": "Decentralized trust network based on human relationships",
+      "problem": "Establishing digital trust without centralized authorities",
+      "solution": "Peer-to-peer trust declarations with transitive trust",
+      "tech_stack": ["React", "TypeScript", "Next.js", "Solidity"],
+      "prizes": ["NETH Ecosystem Impact"],
+      "video_url": null,
+      "finalist": false
+    },
+    {
+      "name": "Shin Protocol",
+      "event": "Tokyo 2023",
+      "category": "Identity/Privacy",
+      "one_liner": "Prove human credibility on-chain without losing anonymity",
+      "problem": "Decentralized identity verification with privacy",
+      "solution": "Trust score through completing decentralized quests",
+      "tech_stack": ["Next.js", "Chakra UI", "Solidity", "Polygon", "ENS", "LENS", "Push Protocol"],
+      "prizes": ["The Graph Pool", "Polygon Pool"],
+      "video_url": null,
+      "demo_url": "https://shin-protocol.up.railway.app/",
+      "finalist": false
+    },
+    {
+      "name": "ZK TicTacToe",
+      "event": "New York 2023",
+      "category": "Gaming/ZK",
+      "one_liner": "Tic-Tac-Toe on Aleo with all game state in ZK",
+      "problem": "No accessible examples of ZK in web games",
+      "solution": "Leo programs as backend, React frontend, ZK-verified state",
+      "tech_stack": ["React", "Tailwind", "Leo", "Aleo"],
+      "prizes": ["Aleo Best Use of Leo 3rd"],
+      "video_url": null,
+      "finalist": false
+    },
+    {
+      "name": "Chameleon",
+      "event": "Waterloo 2023",
+      "category": "NFT/AI",
+      "one_liner": "AI text-to-image NFT generation",
+      "problem": "NFT creation requires artistic skills",
+      "solution": "Stable Diffusion + ControlNet for prompt-based NFT minting",
+      "tech_stack": ["Next.js", "React", "Flask", "Stable Diffusion", "Polygon", "Worldcoin ID", "IPFS"],
+      "prizes": ["Worldcoin Pool", "Polygon Pool"],
+      "video_url": "https://stream.mux.com/F4oxeLoExdHtRxT8011yTiEAeliVvkPq02LdS7ujVMiPs/high.mp4",
+      "finalist": false
+    },
+    {
+      "name": "Widget Protocol",
+      "event": "Tokyo 2023",
+      "category": "Mobile/UX",
+      "one_liner": "iPhone widgets for dApps",
+      "problem": "DApp developers face user retention challenges",
+      "solution": "Customizable iOS widgets for blockchain interactions",
+      "tech_stack": ["SwiftUI", "TCA", "Express"],
+      "prizes": ["QuickNode Best NFT/Token API", "Push Top 10"],
+      "video_url": "https://stream.mux.com/nJhXc1js00PVL2XeGqUJhdCZiqlblTSqajGgytqYtEUo/high.mp4",
+      "demo_url": "https://testflight.apple.com/join/kwObycZ4",
+      "finalist": false
+    },
+    {
+      "name": "zk-checkpoint",
+      "event": "San Francisco 2024",
+      "category": "Infrastructure/ZK",
+      "one_liner": "ZK proofs for Polygon PoS settlement to save gas",
+      "problem": "Settlement costs $250+ due to 105 validator signatures",
+      "solution": "ZK proof of >2/3 validator majority reduces L1 gas 86%",
+      "tech_stack": ["SP1", "Solidity", "Tendermint"],
+      "prizes": ["Polygon Best zk App 2nd"],
+      "video_url": null,
+      "finalist": false
+    }
+  ],
+  "tech_stack_frequency": {
+    "Next.js": "45%",
+    "React": "60%",
+    "Solidity": "75%",
+    "TypeScript": "55%",
+    "Circom/snarkjs": "25%",
+    "Polygon": "40%",
+    "Account_Abstraction": "20%",
+    "Worldcoin": "15%"
+  },
+  "prize_correlation": {
+    "working_demo": "100%",
+    "novel_approach": "90%",
+    "clear_problem": "85%",
+    "sponsor_integration": "80%",
+    "video_under_3min": "75%",
+    "quantified_benefits": "70%"
+  }
+}

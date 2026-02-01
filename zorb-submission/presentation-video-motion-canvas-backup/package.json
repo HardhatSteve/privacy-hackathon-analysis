@@ -1,0 +1,27 @@
+{
+  "name": "zorb-presentation-video",
+  "version": "1.0.0",
+  "description": "Motion Canvas animations for ZORB hackathon demo video",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "render": "echo 'Open http://localhost:9000, select scene, click Export > Render Video' && npm run dev",
+    "assemble": "bash scripts/assemble-video.sh"
+  },
+  "keywords": [
+    "zorb",
+    "motion-canvas",
+    "animation"
+  ],
+  "author": "",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "@motion-canvas/2d": "^3.17.2",
+    "@motion-canvas/core": "^3.17.2",
+    "@motion-canvas/ffmpeg": "^3.17.2",
+    "@motion-canvas/ui": "^3.17.2",
+    "@motion-canvas/vite-plugin": "^3.17.2",
+    "vite": "^5.4.21"
+  }
+}

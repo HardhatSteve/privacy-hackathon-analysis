@@ -1,0 +1,9 @@
+Trying to work with the maker, can't do it here, it's written as a solidity file, we call it the Quasant Protocol and the test will run through the various scenarios and be running this as a full test.
+Giving it a second, it will try to do the conduit first and then it will try to do the restaking and work through that.
+The idea is we get a bunch of die tokens from the conduit as you can see we gave ourselves some mock die.
+It's deposited through the conduit right here and we are trying to do LST restaking.
+So we are working with Aigel there and you can see that we are referencing Aigel there's smart contracts here.
+This right there is an Aigel there smart contract and it is a restaking protocol and right now the protocol is frozen as you can see from here it is paused.
+So when the protocol doesn't limit its TVL anymore we can make this deposits and we can also withdraw once the protocol is unposted.
+The idea is we make more yield from restaking and we can use that yield to like swap back the die and pay back the conduit.
+We have all the code available here and on the github which is right here.

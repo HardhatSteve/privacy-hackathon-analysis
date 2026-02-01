@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Zubernetes",
+    "event": "Bangkok 2024",
+    "video_id": "BDjioH9vYmg",
+    "youtube_url": "https://youtube.com/watch?v=BDjioH9vYmg",
+    "transcript": "Error: \nCould not retrieve a transcript for the video https://www.youtube.com/watch?v=BDjioH9vYmg! This is most likely caused by:\n\nSubtitles are disabled for this video\n\nIf you are sure that the described cause is not responsible for this error and that a transcript should be retrievable, please create an issue at https://github.com/jdepoix/youtube-transcript-api/issues. Please add which version of youtube_transcript_api you are using and provide the information needed to replicate the error. Also make sure that there are no open issues which already describe your problem!"
+  },
+  {
+    "name": "Hanseek",
+    "event": "Singapore 2024",
+    "video_id": "YXiSfdBZOxA",
+    "youtube_url": "https://youtube.com/watch?v=YXiSfdBZOxA",
+    "transcript": "Error: \nCould not retrieve a transcript for the video https://www.youtube.com/watch?v=YXiSfdBZOxA! This is most likely caused by:\n\nSubtitles are disabled for this video\n\nIf you are sure that the described cause is not responsible for this error and that a transcript should be retrievable, please create an issue at https://github.com/jdepoix/youtube-transcript-api/issues. Please add which version of youtube_transcript_api you are using and provide the information needed to replicate the error. Also make sure that there are no open issues which already describe your problem!"
+  },
+  {
+    "name": "fheProxies",
+    "event": "Singapore 2024",
+    "video_id": "LSvUDMd_Be8",
+    "youtube_url": "https://youtube.com/watch?v=LSvUDMd_Be8",
+    "transcript": "hello from E Global Singapore we are excited to introduce our submission the FH VPN what's up Welcome to our website so the idea of our hackaton project was basically to revolutionize online privacy with proxy as a service allowing users to browse the web securely and anonymously you might think what makes us different so we leverage fully homomorphic encryption or FH to encrypt note provider details only clients who have paid for Access will be able to view these details so future plans include us basically making an extension to allow for a more user experience that they can use in their browsers and we you integrating Phoenix for this project so this is a high level overview of our tax T so for the client what they will do is that they will access the front end first then through the front end we will actually retrieve all the server lease from the smart contracts on Phoenix and once the client has actually selected which server they want to go uh connect to like maybe a specific country they can actually pay through the smart contract to the note provider and when the smart contract has received payment it will actually emit out an event to tell the no provider that they have been paid and what the no provider will do is that they will then update the smart contract for white list so only when the client is white listed then they are able to build details about the noes such as the IB address and for the client once it has been wi listed right they can actually view the details on the front end and through the front end the client can actually key into their system for like Mac OS or even windows so we are using socks 5 to actually reroute all traffic onto the note provider so this is actually like it would look like so if there's any connection that the client would like to make to the internet you actually have to go through the note provider first before rerouting to the internet and any data passed from the internet will actually be routed back to the note provider then to the client so all in all when the internet receives all this data it looks like it's actually coming from the note provider only and the client is hiding behind them thank you all right so here is our proof of concept so we are connecting currently to our local node that is running on the Phoenix Network so we running Phoenix locally and we are connected to this account here is our balance so this is just a helper function to means tokens this is the main part here so here you basically have uh what is the server account and when it connects to the this is a proof of concept of course but when it connects to the contract it can see what's all the different server list and we can add and connect to our server thank you very much we are super happy bye okay"
+  }
+]

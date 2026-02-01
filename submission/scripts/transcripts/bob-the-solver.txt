@@ -1,0 +1,35 @@
+Welcome to Bobbi solver, which is an infrastructure for intent based transactions.
+So, what are intents? Intents are basically desired outcomes that users want. And by transactions
+which is the current paradigm through which we interact with blockchain are the actions that
+must be performed. So, an example would be for intent that a user wants to buy xyznft on
+polygon. But then to execute this, if the user just has assets on Ethereum, they first have to swap
+and then do again as then perform another swap and then buy the NFT and define the tribe that
+they want to. But initially they just had this intent that they want to buy this NFT or they
+would want to buy the NFT when it's raining or with a cross on whatever.
+But why do we really need intents? Users currently need to define transactions but like
+defining transactions is complicated. Users need to know about all protocols and how to interact
+with them. They need to know about gas management, non-smanagement and they also need to know about
+all kinds of transactions, hoping to resume etc etc. Users, even though if even they figured out
+they do it in an unoptimized way and they don't get the best traits, they get front-run,
+and it's also time-taking and frustrating. A solution here is that you outsource the transaction
+creation to a trusted third party and then enable transaction execution through an account
+abstraction wallet. In reducing Bob the intents or Bob is an sophisticated solver that basically
+picks up intents and generates transactions from intents without taking the full control from the
+user and then it gets executed through an account abstraction wallet. This paradigm basically
+enables us to get a better UX and better efficiency.
+So this is the demo of an implementation of Bob running at the back end of a chat-based UI.
+Let's give Bob and Prompt where we ask him to give the best maximum USD tokens against point
+1, and Bob does it figures out that it will require a swap of point 1 and then once the user is
+fine with this transaction it then goes ahead and executes it. It also asks for a second
+factor authentication through Touch ID which is powered by bananas SDKs app and extraction
+wallet and as we can see after a while that the transaction happened. Now let's
+pick a more sophisticated example where which would require bridging and stating multiple
+transactions at the same. So here we ask Bob to stake point 002 for the best yield and Bob does
+its magic and it figures out that this will require to get the best yield, this will require a
+bridging and then staking on an obvious looking contract and once the user authenticates that he's
+fine with this to factor authentication we go ahead and see that the transaction is executed and
+then we can also confirm that there was a bridge transaction as well between polygon and avalanche.
+Now given Rob is a sophisticated solver it can also identify certain things which might be
+harmful for the user. For example here the user wants to bid 10 ETH but then Bob for an
+NFT but then Bob realizes that the current price is just 5.6 ETH so it just wants the user that
+this might not be the most optimal thing to do.

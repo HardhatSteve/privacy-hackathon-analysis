@@ -1,0 +1,24 @@
+Hi, this is Dow Ginny. It enables you to create a doubt that has the ability to
+control a wet browser on behalf of the entire Dow without trusting any human
+player. This means that it can do things like donate to charities that are not
+on chain already. Let's open up our current Dow called test
+Dow and in here we're going to create a new proposal. We're going to propose
+donating 0.001 ETH to the water project. This is a project that offers crypto
+donations but only through a web-to-interface where a different wallet address is
+generated for each donation.
+Now that we've created a proposal we can vote yes on it. This is going to pass
+immediately since we're currently the only down member. Of course this would be
+a regular voting process if there are multiple members.
+Now you're going to see the Dow controlling a web browser. It's using AI to
+navigate to different pages and click through the payment process in order to
+complete this donation. You can see the highlighted clicks where the AI decides
+to click on the page. It's feeding screenshots to the LLM to achieve this.
+You can see here that it's even able to handle complex interactions like
+understanding that it needs to clear out an existing text box before entering
+the new amount. At each step it looks at the screenshot both before and after
+performing the action to make sure that it's on the right track.
+Now we're on the final step and we just need to get the payment address so that
+the Dow can send funds. Now you can see that the AI has reached the web page
+that has the address that the Dow should donate to. This is all without
+trusting any human or any human intervention. In the background the Dow is
+sending funds to this address.

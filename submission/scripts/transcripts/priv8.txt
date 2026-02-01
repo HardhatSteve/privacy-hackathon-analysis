@@ -1,0 +1,43 @@
+Hi, this is Private. It's a decentralized platform where you can create private communities.
+Think of it like a decentralized version of Private. Let's log in.
+So in the system, all of the data is stored decentralized. So for example,
+here you can see the communities and you can add a community here as well.
+So if you look into those communities, you can join the community.
+Or if you're already joined, you can load the messages.
+So what's special about it is that all of the data comes from either blockchain,
+the graph or from decentralized storage in an encrypted form.
+So when it comes in, it's actually decrypted and displayed to the user.
+So some content actually, you can see here, is still encrypted.
+So this is using a leads capability that allows you to token gate the encryption.
+So in this case, I don't have yet 20 private tokens.
+So when people upvote me or upvote my posts, then I will earn more.
+But so in this case, I can only see two hours back.
+If I want to see more, then I need to have a better score, basically pretty much.
+Here I can also add more posts and submit them.
+So what is private and how did it come about?
+These are the features.
+It allows you to create encrypted private communities,
+like a decentralized private credit.
+You can create communities, you can post and upvote posts to earn karma points.
+So if you're in enough karma points, you are able to decrypt more content.
+The architecture is as follows.
+So storage is in a common.
+Inclusion is done by the lead protocol.
+And logging and authentication by VFRIOV.
+Now all of the smart contracts and there's profile, community,
+participation, posts and tokens are running on scroll testnet.
+So the future would be to actually extend the extensibility side
+to allow either Forecaster or Lens to be up top as the graph layer.
+And then have more token gating and logic in the encryption layer.
+And also wrap it inside the WhatsApp application to be able to spin up your private
+community straight in WhatsApp.
+And of course, add more rules, like I said.
+Right, so let's check out the contracts and a little bit of code as well.
+So here you can see these are the contracts that host the main graph of the application.
+So there's not much data stored here.
+Most of the posts are actually encrypted and stored elsewhere, right?
+But the graph itself, the simple posts are stored here in contracts.
+Now I'll also show the index file, JavaScript file.
+And I want to show you this part.
+So that's the access control conditions for any post.
+RPG much like this.

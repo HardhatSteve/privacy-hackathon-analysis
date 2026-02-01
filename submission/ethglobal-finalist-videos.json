@@ -1,0 +1,92 @@
+{
+  "metadata": {
+    "compiled": "2026-02-01",
+    "total_projects": 38,
+    "projects_with_video": 20,
+    "video_rate": "52.6%"
+  },
+  "hackathons": {
+    "bangkok_2024": {
+      "finalists": [
+        {"name": "DAOGenie", "video": "https://stream.mux.com/QztDu1aTrBkAqT01suT7r7Zb6JMHYKtvelK2g3lYZ2ds/high.mp4", "platform": "mux"},
+        {"name": "Zubernetes", "video": "https://youtu.be/BDjioH9vYmg", "platform": "youtube"},
+        {"name": "Industry AI", "video": "https://stream.mux.com/VyqRzgJxiRYG8yUmg102PG02dpKsxkDIAZm7Z02sqtDkok/high.mp4", "platform": "mux"},
+        {"name": "LootGO", "video": "https://stream.mux.com/BUOv3RVsWEE3aHnyvmGt02kRdqabZUoKmmory8iUczmI/high.mp4", "platform": "mux"},
+        {"name": "minidao", "video": "https://stream.mux.com/h57NjWz01i2Z14jpr00jm1zp20002rXIYH4ZFpgpZykCDWI/high.mp4", "platform": "mux"},
+        {"name": "Cat In A Box", "video": null, "platform": null},
+        {"name": "BubbleWars", "video": "https://stream.mux.com/EjSIkDnwHEWRukXamp1Kk7u86rCZge4z5ekdwMOOdTg/high.mp4", "platform": "mux"},
+        {"name": "ETHPark-QR", "video": "https://stream.mux.com/qcbU41021meqRpBGeR6wAreoCgixdVgGlaD00eYvGjlyg/high.mp4", "platform": "mux"},
+        {"name": "Dark Factory", "video": "https://stream.mux.com/WQ01WZuPUNmJRzjo1WOoTAEbqkeFBzPykpo00pDoIJbXY/high.mp4", "platform": "mux"},
+        {"name": "Metaloot", "video": "https://stream.mux.com/qv56TZ59qxYXzaXCQ3K8eNRgV024TNLOKE8YGRmZtrKE/high.mp4", "platform": "mux"}
+      ],
+      "video_rate": "90%"
+    },
+    "singapore_2024": {
+      "finalists": [
+        {"name": "Clarity", "video": "https://stream.mux.com/jLK8TPR5xqgnTkC6eHDY8c8cSJv02KnYtbPV01pO1XJHI/high.mp4", "platform": "mux"},
+        {"name": "Memora", "video": "https://stream.mux.com/m5JmezM02IGBvzVMdZMTULmXdUzLW02aGzNGs3D01VUgEY/high.mp4", "platform": "mux"},
+        {"name": "Fill Me Up", "video": "https://stream.mux.com/P4oKW02ng1lqsxZIL8OnRNlJP6UoP014fZpfsEFgpND500/high.mp4", "platform": "mux"},
+        {"name": "Angpao Money", "video": "https://stream.mux.com/Yt7EIHpOPeuTlqaCOj8b02uW00tV7SnsdljgjUgO8yEg8/high.mp4", "platform": "mux"},
+        {"name": "Geist", "video": null, "platform": null},
+        {"name": "Hanseek", "video": "https://youtu.be/YXiSfdBZOxA", "platform": "youtube"},
+        {"name": "fheProxies", "video": "https://youtu.be/LSvUDMd_Be8", "platform": "youtube", "tags": ["privacy", "fhe"]},
+        {"name": "SQUIDL", "video": "https://stream.mux.com/BEUanmt0100GYnMoMMjqItzAfPxhpXFmu02XrUNcXcBZl8/high.mp4", "platform": "mux"},
+        {"name": "Nifi", "video": "https://stream.mux.com/CHmVEHw58efLf3v7ZI6fc7qJUU3Nz02lbfw5wwlRVaUA/high.mp4", "platform": "mux"},
+        {"name": "Marina Royale", "video": null, "platform": null}
+      ],
+      "video_rate": "80%"
+    },
+    "brussels_2024": {
+      "finalists": [
+        {"name": "RugStop", "video": "https://stream.mux.com/hCLoQ5f3lTBIYZrZOyVPbnUvY3pLjVdFSG2JJkFO4c8/high.mp4", "platform": "mux"},
+        {"name": "Threeo", "video": null, "platform": null},
+        {"name": "SafeRisk", "video": null, "platform": null}
+      ],
+      "video_rate": "33%",
+      "note": "Sample of finalists checked"
+    },
+    "london_2024": {
+      "finalists": [
+        {"name": "ddMesh", "video": "https://stream.mux.com/oRLUYmT1Sr3007K01HDVvO1Og3KlgIWlUGN01QMEt6Rj5o/high.mp4", "platform": "mux"},
+        {"name": "Scorpion", "video": "https://stream.mux.com/Z02kxCEvh01rKAaI01bZUsIQPH8yAqzHwnWqgQSSUN01MR00/high.mp4", "platform": "mux"},
+        {"name": "0xMedusa", "video": null, "platform": null},
+        {"name": "Tensor Royale", "video": "https://k00.fr/8lh1f33r", "platform": "external", "note": "password: 901376"}
+      ],
+      "video_rate": "50%",
+      "note": "Sample of finalists checked"
+    },
+    "istanbul_2023": {
+      "finalists": [
+        {"name": "Private Token Rollup", "video": null, "platform": null, "tags": ["privacy", "zk"]},
+        {"name": "zkPOAP", "video": null, "platform": null, "tags": ["privacy", "zk"]},
+        {"name": "LendingZK", "video": null, "platform": null, "tags": ["privacy", "zk"]},
+        {"name": "private equity", "video": null, "platform": null, "tags": ["privacy"]},
+        {"name": "FHE Project", "video": null, "platform": null, "tags": ["privacy", "fhe"]}
+      ],
+      "video_rate": "0%",
+      "note": "Privacy-focused projects sampled; videos not required in 2023"
+    }
+  },
+  "recommended_for_study": [
+    {
+      "name": "fheProxies",
+      "video": "https://youtu.be/LSvUDMd_Be8",
+      "reason": "Privacy-focused (FHE), most relevant for ZORB positioning"
+    },
+    {
+      "name": "DAOGenie",
+      "video": "https://stream.mux.com/QztDu1aTrBkAqT01suT7r7Zb6JMHYKtvelK2g3lYZ2ds/high.mp4",
+      "reason": "Bangkok 2024 finalist, strong demo structure"
+    },
+    {
+      "name": "Clarity",
+      "video": "https://stream.mux.com/jLK8TPR5xqgnTkC6eHDY8c8cSJv02KnYtbPV01pO1XJHI/high.mp4",
+      "reason": "Singapore 2024 finalist structure example"
+    },
+    {
+      "name": "Scorpion",
+      "video": "https://stream.mux.com/Z02kxCEvh01rKAaI01bZUsIQPH8yAqzHwnWqgQSSUN01MR00/high.mp4",
+      "reason": "Clean technical demo presentation"
+    }
+  ]
+}
