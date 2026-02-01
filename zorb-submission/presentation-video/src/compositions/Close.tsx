@@ -6,7 +6,7 @@ import {
   spring,
   useVideoConfig,
 } from "remotion";
-import { colors } from "../styles";
+import { colors, typography } from "../styles";
 
 /**
  * [2:45-3:00] Close
@@ -69,11 +69,9 @@ export const Close: React.FC = () => {
       {/* Brand */}
       <h1
         style={{
-          fontSize: 100,
-          fontWeight: 800,
+          ...typography.hero,
           color: colors.text,
           margin: 0,
-          letterSpacing: "-0.02em",
         }}
       >
         ZORB
@@ -82,7 +80,7 @@ export const Close: React.FC = () => {
       {/* Tagline */}
       <p
         style={{
-          fontSize: 32,
+          ...typography.h3,
           color: colors.zorbCyan,
           opacity: taglineOpacity,
           marginTop: 20,
@@ -102,14 +100,14 @@ export const Close: React.FC = () => {
         }}
       >
         <div style={{ textAlign: "center" }}>
-          <div style={{ fontSize: 24, color: colors.textMuted }}>Try it</div>
-          <div style={{ fontSize: 28, color: colors.text, fontWeight: 600 }}>
+          <div style={{ ...typography.bodySmall, color: colors.textMuted }}>Try it</div>
+          <div style={{ ...typography.body, color: colors.text }}>
             zorb.cash
           </div>
         </div>
         <div style={{ textAlign: "center" }}>
-          <div style={{ fontSize: 24, color: colors.textMuted }}>Code</div>
-          <div style={{ fontSize: 28, color: colors.text, fontWeight: 600 }}>
+          <div style={{ ...typography.bodySmall, color: colors.textMuted }}>Code</div>
+          <div style={{ ...typography.body, color: colors.text }}>
             github.com/zorb-labs
           </div>
         </div>
@@ -118,7 +116,7 @@ export const Close: React.FC = () => {
       {/* Closing tagline */}
       <p
         style={{
-          fontSize: 28,
+          ...typography.body,
           color: colors.solutionGreen,
           opacity: closingOpacity,
           marginTop: 60,

@@ -8,7 +8,7 @@ import {
   spring,
   Easing,
 } from "remotion";
-import { colors } from "../styles";
+import { colors, typography } from "../styles";
 
 /**
  * [0:25-1:10] Free Shielded Transfers (1350 frames / 45s)
@@ -100,11 +100,10 @@ const ProblemSection: React.FC<{ frame: number }> = ({ frame }) => {
       {/* Title */}
       <h2
         style={{
-          fontSize: 56,
+          ...typography.h1,
           color: colors.problemRed,
           opacity: titleOpacity,
           marginBottom: 20,
-          fontWeight: 700,
         }}
       >
         The Problem: Nullifier Rent
@@ -113,7 +112,7 @@ const ProblemSection: React.FC<{ frame: number }> = ({ frame }) => {
       {/* Subtitle explaining nullifiers */}
       <p
         style={{
-          fontSize: 24,
+          ...typography.bodySmall,
           color: colors.textMuted,
           opacity: titleOpacity,
           marginBottom: 40,
@@ -175,7 +174,7 @@ const ProblemSection: React.FC<{ frame: number }> = ({ frame }) => {
       >
         <p
           style={{
-            fontSize: 28,
+            ...typography.body,
             color: colors.text,
             margin: 0,
           }}
@@ -185,7 +184,7 @@ const ProblemSection: React.FC<{ frame: number }> = ({ frame }) => {
             style={{
               color: colors.problemRed,
               fontWeight: "bold",
-              fontFamily: "monospace",
+              fontFamily: typography.statSmall.fontFamily,
             }}
           >
             $0.13
@@ -195,10 +194,8 @@ const ProblemSection: React.FC<{ frame: number }> = ({ frame }) => {
 
         <p
           style={{
-            fontSize: 48,
+            ...typography.statSmall,
             color: colors.problemRed,
-            fontWeight: "bold",
-            fontFamily: "monospace",
             margin: "20px 0",
           }}
         >
@@ -207,7 +204,7 @@ const ProblemSection: React.FC<{ frame: number }> = ({ frame }) => {
 
         <p
           style={{
-            fontSize: 24,
+            ...typography.bodySmall,
             color: colors.problemRed,
             opacity: foreverOpacity,
             fontStyle: "italic",

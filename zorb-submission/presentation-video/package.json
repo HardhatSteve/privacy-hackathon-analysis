@@ -5,8 +5,16 @@
   "scripts": {
     "dev": "remotion studio",
     "build": "remotion bundle",
-    "render": "remotion render ZorbDemo out/zorb-demo.mp4",
+    "render": "remotion render ZorbDemo out/zorb-demo.mp4 --concurrency=12",
+    "render:fast": "remotion render ZorbDemo out/preview.mp4 --concurrency=12 --scale=0.5 --jpeg-quality=80",
     "render:all": "remotion render",
+    "still": "remotion still ZorbDemo out/still.png",
+    "still:frame": "remotion still ZorbDemo out/frame.png --frame",
+    "preview:intro": "remotion render Introduction out/intro.mp4 --concurrency=12",
+    "preview:free": "remotion render FreeShieldedTransfers out/free.mp4 --concurrency=12",
+    "preview:yield": "remotion render YieldBearingSOL out/yield.mp4 --concurrency=12",
+    "preview:product": "remotion render ZorbCashProduct out/product.mp4 --concurrency=12",
+    "preview:close": "remotion render Close out/close.mp4 --concurrency=12",
     "upgrade": "remotion upgrade"
   },
   "type": "module",

@@ -6,7 +6,7 @@ import {
   interpolate,
   spring,
 } from "remotion";
-import { colors } from "../styles";
+import { colors, typography } from "../styles";
 
 /**
  * [0:00-0:25] Introduction — ZORB
@@ -77,12 +77,10 @@ export const Introduction: React.FC<IntroductionProps> = ({
       {/* Title */}
       <h1
         style={{
-          fontSize: 120,
-          fontWeight: 800,
+          ...typography.hero,
           color: colors.text,
           opacity: titleOpacity,
           margin: 0,
-          letterSpacing: "-0.02em",
         }}
       >
         {title}
@@ -91,7 +89,7 @@ export const Introduction: React.FC<IntroductionProps> = ({
       {/* Subtitle */}
       <h2
         style={{
-          fontSize: 36,
+          ...typography.h2,
           fontWeight: 400,
           color: colors.textMuted,
           opacity: subtitleOpacity,
@@ -104,7 +102,7 @@ export const Introduction: React.FC<IntroductionProps> = ({
       {/* Tagline */}
       <p
         style={{
-          fontSize: 24,
+          ...typography.body,
           color: colors.zorbCyan,
           opacity: taglineOpacity,
           marginTop: 60,

@@ -9,8 +9,11 @@ Visualizes:
 """
 
 from manim import *
+import os
 import sys
-sys.path.append('..')
+
+# Add parent directory to path for imports
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 from zorb_animations.styles import *
 
 
@@ -76,8 +79,8 @@ class RewardAccumulatorScene(Scene):
         )
         formula_bg.to_edge(DOWN, buff=1)
 
-        formula = MathTex(
-            r"\text{yield} = \text{amount} \times \frac{\text{current} - \text{entry}}{10^{18}}",
+        formula = Text(
+            "yield = amount × (current - entry) / 10¹⁸",
             font_size=SUBTITLE_SIZE, color=TEXT_WHITE
         )
         formula.move_to(formula_bg.get_center())
@@ -190,7 +193,7 @@ class AccumulatorGrowthScene(Scene):
         title.to_edge(UP, buff=0.5)
         self.play(Write(title))
 
-        # Create axes
+        # Create axes (no numbers to avoid LaTeX dependency)
         axes = Axes(
             x_range=[0, 10, 2],
             y_range=[1, 1.5, 0.1],
@@ -198,16 +201,23 @@ class AccumulatorGrowthScene(Scene):
             y_length=4,
             axis_config={"color": TEXT_GRAY, "include_tip": False},
             x_axis_config={"include_numbers": False},
-            y_axis_config={"include_numbers": True, "font_size": TINY_SIZE},
+            y_axis_config={"include_numbers": False},
         )
         axes.move_to(DOWN * 0.5)
 
         x_label = Text("Epochs", font_size=SMALL_SIZE, color=TEXT_GRAY)
         x_label.next_to(axes.x_axis, DOWN, buff=0.3)
-        y_label = Text("Accumulator", font_size=SMALL_SIZE, color=TEXT_GRAY)
-        y_label.next_to(axes.y_axis, LEFT, buff=0.3).rotate(PI / 2)
+        y_label = Text("Acc", font_size=SMALL_SIZE, color=TEXT_GRAY)
+        y_label.next_to(axes.y_axis, LEFT, buff=0.3)
 
-        self.play(Create(axes), Write(x_label), Write(y_label))
+        # Y-axis labels as Text
+        y_labels = VGroup()
+        for val in [1.0, 1.1, 1.2, 1.3, 1.4, 1.5]:
+            label = Text(f"{val:.1f}", font_size=TINY_SIZE - 2, color=TEXT_GRAY)
+            label.next_to(axes.c2p(0, val), LEFT, buff=0.1)
+            y_labels.add(label)
+
+        self.play(Create(axes), Write(x_label), Write(y_label), FadeIn(y_labels))
 
         # Accumulator curve (step function)
         points = [

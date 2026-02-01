@@ -9,8 +9,11 @@ Visualizes:
 """
 
 from manim import *
+import os
 import sys
-sys.path.append('..')
+
+# Add parent directory to path for imports
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 from zorb_animations.styles import *
 
 
@@ -90,8 +93,8 @@ class DomainBoundaryScene(Scene):
         self.wait(MEDIUM)
 
         # Conversion formula
-        formula = MathTex(
-            r"\text{vSOL} = \text{LST} \times \phi_{\text{LST}}",
+        formula = Text(
+            "vSOL = LST × φ",
             font_size=BODY_SIZE, color=SOLANA_PURPLE
         )
         formula.next_to(boundary, DOWN, buff=1)

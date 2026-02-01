@@ -207,6 +207,7 @@ const StressTestSection: React.FC<{ frame: number }> = ({ frame }) => {
   // Animated counters for stress test
   const txCount = Math.floor(
     interpolate(frame, [60, 450], [0, 2500], {
+      extrapolateLeft: "clamp",
       extrapolateRight: "clamp",
     })
   );
