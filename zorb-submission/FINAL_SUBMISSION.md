@@ -1,73 +1,17 @@
-# ZORB Hackathon Submission - FINAL FORM ANSWERS
+# ZORB Hackathon Submission
 
 **Form URL**: https://solanafoundation.typeform.com/privacyhacksub
 **Deadline**: February 1, 2026 (END OF DAY)
 
 ---
 
-## Core Narrative
+# Part 1: Submission Form Inputs
 
-This is the ground truth for ZORB's hackathon submission. All materials (video, animations, graphics) should align with this narrative.
-
-### The One-Liner
-> Free private transfers on Solana using a concurrent nullifier tree scheme with amortizable rent.
-
-### The Framing
-ZORB is exploring **programmable privacy on Solana**. We started with native private payments — not Token 2022 confidential transfers, but fully unlinkable transactions using commitments and nullifiers (the ZEXE model). This problem space is largely unexplored on Solana.
-
-### The Problem (Why This Matters)
-Private execution requires commitments and nullifiers. On Solana, every protocol stores nullifiers as individual PDAs — each costing 2 years of rent to be rent-exempt (~$0.13). This rent is locked forever.
-
-At scale: 10,000 tx = $1,300 locked. 1 million tx = $130,000 gone permanently.
-
-### The Solution (What ZORB Does)
-We present a **concurrent nullifier tree scheme** with amortizable rent tending to zero:
-
-- **Indexed Merkle Tree** — Same structure Aztec uses in production (67M nullifiers in ~1KB)
-- **Global epoch cursors** — Earliest provable epoch + current epoch enable safe PDA closure
-- **Two-layer security** — Immediate PDA coverage + background ZK batch insertion
-- **Closable nullifier PDAs** — Rent comes back after epoch advances
-
-**References**:
-- Indexed Merkle Tree paper: https://eprint.iacr.org/2021/1263.pdf
-- Aztec implementation: https://docs.aztec.network/developers/docs/foundational-topics/advanced/storage/indexed_merkle_tree
-
-### The Differentiators (Why ZORB Wins)
-1. **Zero rent costs** — Indexed merkle tree vs PDAs
-2. **Batch proofs** — 4/16/64 nullifiers per ZK proof
-3. **Yield while shielded** — Multi-LST pool (vSOL, jitoSOL, mSOL) earning 7-8% APY
-4. **Rent reclamation** — Old nullifier PDAs can be closed after epoch advance
-
-### Key Technical Claims
-- **Nullifiers are unlinkable to commitments** — No on-chain correlation between deposits and spends; the nullifier reveals nothing about which note was consumed
-- **Two-layer security** — ZK proof covers the merkle tree, PDA check covers pending insertions; no double-spend window
-- **Production-ready cryptography** — Real Groth16 verification on-chain, not mock verifiers
-
-### Team & Vision
-- **ZK team with Polygon experience** — Proven track record in zero-knowledge systems
-- **Researching programmable privacy on Solana** — Pushing the frontier of what's possible, open sourcing our work as we go
-- **Kernel L2 rollup coming Q2 2026** — Private smart contracts on Solana
-
-### The Tagline
-> "Privacy should be free. ZORB makes it possible."
+Copy-paste these answers directly into the submission form.
 
 ---
 
-## Related Assets
-
-| Asset | File | Purpose |
-|-------|------|---------|
-| Demo Video Script | [`PRESENTATION_VIDEO_SCRIPT.md`](./PRESENTATION_VIDEO_SCRIPT.md) | 3-minute video narration, timing, and visual cues |
-| Video Animations | `presentation-video/` | Motion Canvas scenes derived from PRESENTATION_VIDEO_SCRIPT.md |
-| Competitor Analysis | [`COMPETITOR_VIDEOS.md`](../competition-intel/analyses/COMPETITOR_VIDEOS.md) | Video strategy based on competitor research |
-
-**Video Production**: Follow [`PRESENTATION_VIDEO_SCRIPT.md`](./PRESENTATION_VIDEO_SCRIPT.md) exactly. The script defines timing, narration, and visuals for each section of the demo video.
-
----
-
-## Form Fields
-
-### Field 1: Project Name
+## Field 1: Project Name
 ```
 ZORB
 ```
@@ -244,12 +188,75 @@ ZORB aims to make privacy the default for Solana transactions. Our indexed merkl
 
 ---
 
-## Post-Submission
+## Post-Submission Checklist
 
 - [ ] Screenshot confirmation page
 - [ ] Save submission ID
 - [ ] Keep repo PUBLIC until Feb 7 judging ends
 - [ ] Check email for confirmation
+
+---
+---
+
+# Part 2: Technical Specification
+
+This is the ground truth for ZORB's hackathon submission. All materials (video, animations, graphics) should align with this narrative.
+
+---
+
+## The One-Liner
+> Free private transfers on Solana using a concurrent nullifier tree scheme with amortizable rent.
+
+## The Framing
+ZORB is exploring **programmable privacy on Solana**. We started with native private payments — not Token 2022 confidential transfers, but fully unlinkable transactions using commitments and nullifiers (the ZEXE model). This problem space is largely unexplored on Solana.
+
+## The Problem (Why This Matters)
+Private execution requires commitments and nullifiers. On Solana, every protocol stores nullifiers as individual PDAs — each costing 2 years of rent to be rent-exempt (~$0.13). This rent is locked forever.
+
+At scale: 10,000 tx = $1,300 locked. 1 million tx = $130,000 gone permanently.
+
+## The Solution (What ZORB Does)
+We present a **concurrent nullifier tree scheme** with amortizable rent tending to zero:
+
+- **Indexed Merkle Tree** — Same structure Aztec uses in production (67M nullifiers in ~1KB)
+- **Global epoch cursors** — Earliest provable epoch + current epoch enable safe PDA closure
+- **Two-layer security** — Immediate PDA coverage + background ZK batch insertion
+- **Closable nullifier PDAs** — Rent comes back after epoch advances
+
+**References**:
+- Indexed Merkle Tree paper: https://eprint.iacr.org/2021/1263.pdf
+- Aztec implementation: https://docs.aztec.network/developers/docs/foundational-topics/advanced/storage/indexed_merkle_tree
+
+## The Differentiators (Why ZORB Wins)
+1. **Zero rent costs** — Indexed merkle tree vs PDAs
+2. **Batch proofs** — 4/16/64 nullifiers per ZK proof
+3. **Yield while shielded** — Multi-LST pool (vSOL, jitoSOL, mSOL) earning 7-8% APY
+4. **Rent reclamation** — Old nullifier PDAs can be closed after epoch advance
+
+## Key Technical Claims
+- **Nullifiers are unlinkable to commitments** — No on-chain correlation between deposits and spends; the nullifier reveals nothing about which note was consumed
+- **Two-layer security** — ZK proof covers the merkle tree, PDA check covers pending insertions; no double-spend window
+- **Production-ready cryptography** — Real Groth16 verification on-chain, not mock verifiers
+
+## Team & Vision
+- **ZK team with Polygon experience** — Proven track record in zero-knowledge systems
+- **Researching programmable privacy on Solana** — Pushing the frontier of what's possible, open sourcing our work as we go
+- **Kernel L2 rollup coming Q2 2026** — Private smart contracts on Solana
+
+## The Tagline
+> "Privacy should be free. ZORB makes it possible."
+
+---
+
+## Related Assets
+
+| Asset | File | Purpose |
+|-------|------|---------|
+| Demo Video Script | [`PRESENTATION_VIDEO_SCRIPT.md`](./PRESENTATION_VIDEO_SCRIPT.md) | 3-minute video narration, timing, and visual cues |
+| Video Animations | `presentation-video/` | Motion Canvas scenes derived from PRESENTATION_VIDEO_SCRIPT.md |
+| Competitor Analysis | [`COMPETITOR_VIDEOS.md`](../competition-intel/analyses/COMPETITOR_VIDEOS.md) | Video strategy based on competitor research |
+
+**Video Production**: Follow [`PRESENTATION_VIDEO_SCRIPT.md`](./PRESENTATION_VIDEO_SCRIPT.md) exactly. The script defines timing, narration, and visuals for each section of the demo video.
 
 ---
 

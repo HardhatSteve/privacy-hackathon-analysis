@@ -6,17 +6,41 @@
 
 ---
 
-## CORE MESSAGING
+<core_messaging>
 
-ZORB has three key value propositions:
+The video must hit all messages below:
 
-1. **Private Store of Value** — Your SOL, invisible on-chain
-2. **Free Shielded Transfers** — No nullifier rent costs eating into your balance
-3. **Yield-Bearing Shielded SOL** — Earn 7-8% APY while staying private
+### 1. Free Shielded Transfers
+- [ ] ZEXE model requires nullifiers to prevent double-spending
+- [ ] On Solana, nullifiers stored as PDAs = $0.13 rent locked per tx
+- [ ] "Other protocols charge $0.13 per private transaction"
+- [ ] Concrete example: PrivacyCash has $X locked in nullifier PDAs (show on-chain data)
+- [ ] ZORB solution: indexed merkle tree (67M nullifiers in ~1KB)
+- [ ] "ZORB transfers are free — no nullifier rent"
+- [ ] "Send privately without fees eating your balance"
+
+### 2. Yield-Bearing Shielded SOL
+- [ ] "Your shielded SOL earns 7-8% APY"
+- [ ] "Privacy + yield — no tradeoff"
+- [ ] "Backed by liquid staking (vSOL, jitoSOL, mSOL)"
+- [ ] "Unified pool = larger anonymity set" (separate pools per LST would fragment privacy)
+
+### 3. zorb.cash — The Product
+- [ ] zorb.cash combines both: free transfers + yield-bearing privacy
+- [ ] **"Break ZORB" stress test**
+  - [ ] Demo environment: devnet / localnet (specify which)
+  - [ ] Infrastructure: [X instances of Y] — mention prover setup
+  - [ ] Throughput verified: [X tx/sec] achieved (test before recording)
+- [ ] "Shield your SOL. Send for free. Earn while hidden."
+**Note (do not claim, just frame correctly):**
+- Decentralized protocol — no operators, no custody, permissionless
+- Compliance path exists: proof of innocence / association sets
+
+</core_messaging>
 
 ---
 
-## VISUAL PREPARATION
+<visual_preparation>
 
 ### Assets Needed
 
@@ -36,9 +60,9 @@ ZORB has three key value propositions:
 - Clean desktop
 - Browser with zorb.cash open
 
----
+</visual_preparation>
 
-## MOTION CANVAS ANIMATIONS
+<motion_canvas_animations>
 
 **Location**: `../video-animations/`
 **Run**: `cd video-animations && npm run dev` → http://localhost:9000
@@ -54,24 +78,7 @@ ZORB has three key value propositions:
 | [2:00-2:30] Yield | `scenes/techHighlights.tsx` | ⚠️ UPDATE | Focus on yield-bearing SOL |
 | [2:30-3:00] CTA | `scenes/cta.tsx` | ✅ READY | Team + vision |
 
----
-
-## KEY MESSAGES CHECKLIST
-
-### Private Store of Value
-- [ ] "Your SOL, invisible on-chain"
-- [ ] "No one can see your balance or transactions"
-- [ ] "Shield once, stay private"
-
-### Free Shielded Transfers
-- [ ] "Other protocols charge $0.13 per private transaction"
-- [ ] "ZORB transfers are free — no nullifier rent"
-- [ ] "Send privately without fees eating your balance"
-
-### Yield-Bearing Shielded SOL
-- [ ] "Your shielded SOL earns 7-8% APY"
-- [ ] "Privacy + yield — no tradeoff"
-- [ ] "Backed by liquid staking (vSOL, jitoSOL, mSOL)"
+</motion_canvas_animations>
 
 ---
 
