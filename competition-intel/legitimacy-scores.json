@@ -1,0 +1,1813 @@
+[
+{
+  "repo": "AgenC_Moltbook_Agent",
+  "total_score": 25,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 8,
+  "completeness": 0,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "anamnesis",
+  "total_score": 29,
+  "code_quality": 8,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 10,
+  "completeness": 2,
+  "red_flags": -2,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "anoma.cash",
+  "total_score": 25,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 6,
+  "completeness": 2,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "anon.social",
+  "total_score": 27,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 6,
+  "documentation": 4,
+  "completeness": 2,
+  "red_flags": -2,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "anon0mesh",
+  "total_score": 12,
+  "code_quality": 4,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 4,
+  "completeness": 3,
+  "red_flags": -10,
+  "classification": "VIBE_CODED"
+}
+,
+{
+  "repo": "anonset",
+  "total_score": 21,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 4,
+  "completeness": 0,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "Arcium-poker",
+  "total_score": 29,
+  "code_quality": 0,
+  "git_history": 11,
+  "technical_depth": 6,
+  "documentation": 6,
+  "completeness": 8,
+  "red_flags": -2,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "Arcshield",
+  "total_score": 37,
+  "code_quality": 5,
+  "git_history": 11,
+  "technical_depth": 6,
+  "documentation": 10,
+  "completeness": 5,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "Attesta-Kit",
+  "total_score": 35,
+  "code_quality": 7,
+  "git_history": 11,
+  "technical_depth": 6,
+  "documentation": 8,
+  "completeness": 6,
+  "red_flags": -3,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "AURORAZK_SUBMISSION",
+  "total_score": 43,
+  "code_quality": 4,
+  "git_history": 11,
+  "technical_depth": 15,
+  "documentation": 10,
+  "completeness": 5,
+  "red_flags": -2,
+  "classification": "BASIC"
+}
+,
+{
+  "repo": "chameo",
+  "total_score": 36,
+  "code_quality": 2,
+  "git_history": 11,
+  "technical_depth": 13,
+  "documentation": 8,
+  "completeness": 4,
+  "red_flags": -2,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "cleanproof-frontend",
+  "total_score": 27,
+  "code_quality": 4,
+  "git_history": 11,
+  "technical_depth": 3,
+  "documentation": 8,
+  "completeness": 3,
+  "red_flags": -2,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "cloakcraft",
+  "total_score": 30,
+  "code_quality": 5,
+  "git_history": 11,
+  "technical_depth": 13,
+  "documentation": 10,
+  "completeness": 6,
+  "red_flags": -15,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "confidential-balances-exploration",
+  "total_score": 30,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 10,
+  "completeness": 3,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "confpay",
+  "total_score": 24,
+  "code_quality": 2,
+  "git_history": 11,
+  "technical_depth": 6,
+  "documentation": 10,
+  "completeness": 5,
+  "red_flags": -10,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "cvct_payroll",
+  "total_score": 32,
+  "code_quality": 4,
+  "git_history": 11,
+  "technical_depth": 6,
+  "documentation": 6,
+  "completeness": 5,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "Dark-Null-Protocol",
+  "total_score": 31,
+  "code_quality": 5,
+  "git_history": 11,
+  "technical_depth": 3,
+  "documentation": 10,
+  "completeness": 2,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "DarkTip",
+  "total_score": 32,
+  "code_quality": 8,
+  "git_history": 11,
+  "technical_depth": 3,
+  "documentation": 10,
+  "completeness": 5,
+  "red_flags": -5,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "dart-light",
+  "total_score": 25,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 8,
+  "completeness": 0,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "deploy-shield",
+  "total_score": 29,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 10,
+  "completeness": 2,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "donatrade",
+  "total_score": 30,
+  "code_quality": 5,
+  "git_history": 11,
+  "technical_depth": 6,
+  "documentation": 8,
+  "completeness": 5,
+  "red_flags": -5,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "easy-stealth-address",
+  "total_score": 30,
+  "code_quality": 8,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 8,
+  "completeness": 3,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "ECHO",
+  "total_score": 28,
+  "code_quality": 7,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 8,
+  "completeness": 2,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "encryptedMessagingChat",
+  "total_score": 34,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 6,
+  "documentation": 8,
+  "completeness": 3,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "epoch",
+  "total_score": 24,
+  "code_quality": 3,
+  "git_history": 11,
+  "technical_depth": 6,
+  "documentation": 6,
+  "completeness": 0,
+  "red_flags": -2,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "ExposureCheck",
+  "total_score": 19,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 2,
+  "completeness": 2,
+  "red_flags": -2,
+  "classification": "VIBE_CODED"
+}
+,
+{
+  "repo": "flash-loan-pinocchio",
+  "total_score": 23,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 3,
+  "documentation": 1,
+  "completeness": 2,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "FleekerFun",
+  "total_score": 22,
+  "code_quality": 5,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 6,
+  "completeness": 0,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "flew-private-prediction-market",
+  "total_score": 33,
+  "code_quality": 4,
+  "git_history": 11,
+  "technical_depth": 6,
+  "documentation": 6,
+  "completeness": 8,
+  "red_flags": -2,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "GhostSpeak",
+  "total_score": 28,
+  "code_quality": 4,
+  "git_history": 11,
+  "technical_depth": 3,
+  "documentation": 10,
+  "completeness": 8,
+  "red_flags": -8,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "Hidemypass",
+  "total_score": 25,
+  "code_quality": 3,
+  "git_history": 11,
+  "technical_depth": 3,
+  "documentation": 8,
+  "completeness": 2,
+  "red_flags": -2,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "human-rail",
+  "total_score": 36,
+  "code_quality": 5,
+  "git_history": 11,
+  "technical_depth": 6,
+  "documentation": 10,
+  "completeness": 6,
+  "red_flags": -2,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "hushfold",
+  "total_score": 9,
+  "code_quality": 6,
+  "git_history": 3,
+  "technical_depth": 0,
+  "documentation": 0,
+  "completeness": 0,
+  "red_flags": 0,
+  "classification": "VIBE_CODED"
+}
+,
+{
+  "repo": "hydentity",
+  "total_score": 31,
+  "code_quality": 4,
+  "git_history": 11,
+  "technical_depth": 9,
+  "documentation": 10,
+  "completeness": 5,
+  "red_flags": -8,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "incognito-program",
+  "total_score": 35,
+  "code_quality": 4,
+  "git_history": 11,
+  "technical_depth": 9,
+  "documentation": 6,
+  "completeness": 6,
+  "red_flags": -1,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "incognito-protocol",
+  "total_score": 23,
+  "code_quality": 2,
+  "git_history": 11,
+  "technical_depth": 6,
+  "documentation": 4,
+  "completeness": 0,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "Keyed",
+  "total_score": 25,
+  "code_quality": 2,
+  "git_history": 11,
+  "technical_depth": 6,
+  "documentation": 8,
+  "completeness": 3,
+  "red_flags": -5,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "LeakLens",
+  "total_score": 23,
+  "code_quality": 3,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 6,
+  "completeness": 3,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "light-protocol-arcium-experiment",
+  "total_score": 31,
+  "code_quality": 2,
+  "git_history": 11,
+  "technical_depth": 11,
+  "documentation": 2,
+  "completeness": 5,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "LioraOS-Claude-SDK",
+  "total_score": 27,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 8,
+  "completeness": 2,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "lynq-frontend",
+  "total_score": 26,
+  "code_quality": 7,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 6,
+  "completeness": 2,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "MINTGHOST---ZK-NFT-Minting",
+  "total_score": 27,
+  "code_quality": 2,
+  "git_history": 11,
+  "technical_depth": 13,
+  "documentation": 8,
+  "completeness": 6,
+  "red_flags": -13,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "mist-cli",
+  "total_score": 25,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 8,
+  "completeness": 0,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "mootvote",
+  "total_score": 34,
+  "code_quality": 2,
+  "git_history": 11,
+  "technical_depth": 13,
+  "documentation": 4,
+  "completeness": 6,
+  "red_flags": -2,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "Mukon-messenger",
+  "total_score": 31,
+  "code_quality": 2,
+  "git_history": 11,
+  "technical_depth": 6,
+  "documentation": 10,
+  "completeness": 5,
+  "red_flags": -3,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "nahualli",
+  "total_score": 40,
+  "code_quality": 4,
+  "git_history": 11,
+  "technical_depth": 15,
+  "documentation": 10,
+  "completeness": 2,
+  "red_flags": -2,
+  "classification": "BASIC"
+}
+,
+{
+  "repo": "noir_solana",
+  "total_score": 27,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 4,
+  "documentation": 6,
+  "completeness": 0,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "noir-solana-private-transfers",
+  "total_score": 42,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 15,
+  "documentation": 8,
+  "completeness": 2,
+  "red_flags": 0,
+  "classification": "BASIC"
+}
+,
+{
+  "repo": "noir-solana-test-implementation",
+  "total_score": 32,
+  "code_quality": 7,
+  "git_history": 11,
+  "technical_depth": 9,
+  "documentation": 10,
+  "completeness": 0,
+  "red_flags": -5,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "OBSCURA_APP",
+  "total_score": 29,
+  "code_quality": 2,
+  "git_history": 11,
+  "technical_depth": 13,
+  "documentation": 10,
+  "completeness": 6,
+  "red_flags": -13,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "OBSCURA-PRIVACY",
+  "total_score": 29,
+  "code_quality": 2,
+  "git_history": 11,
+  "technical_depth": 13,
+  "documentation": 10,
+  "completeness": 6,
+  "red_flags": -13,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "Obsidian",
+  "total_score": 33,
+  "code_quality": 5,
+  "git_history": 11,
+  "technical_depth": 6,
+  "documentation": 8,
+  "completeness": 8,
+  "red_flags": -5,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "opencoins",
+  "total_score": 24,
+  "code_quality": 4,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 6,
+  "completeness": 3,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "paraloom-core",
+  "total_score": 39,
+  "code_quality": 4,
+  "git_history": 11,
+  "technical_depth": 9,
+  "documentation": 10,
+  "completeness": 8,
+  "red_flags": -3,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "pescrow",
+  "total_score": 25,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 3,
+  "documentation": 3,
+  "completeness": 2,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "pigeon",
+  "total_score": 29,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 6,
+  "documentation": 6,
+  "completeness": 0,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "pincon",
+  "total_score": 24,
+  "code_quality": 8,
+  "git_history": 11,
+  "technical_depth": 3,
+  "documentation": 0,
+  "completeness": 2,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "PNPFUCIUS",
+  "total_score": 28,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 8,
+  "completeness": 3,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "privacy-cash-api",
+  "total_score": 28,
+  "code_quality": 4,
+  "git_history": 11,
+  "technical_depth": 3,
+  "documentation": 8,
+  "completeness": 2,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "privacy-execution-layer",
+  "total_score": 31,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 13,
+  "documentation": 8,
+  "completeness": 6,
+  "red_flags": -13,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "privacy-pay",
+  "total_score": 28,
+  "code_quality": 5,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 10,
+  "completeness": 2,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "privacy-vault",
+  "total_score": 37,
+  "code_quality": 2,
+  "git_history": 11,
+  "technical_depth": 13,
+  "documentation": 10,
+  "completeness": 1,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "privacylens",
+  "total_score": 26,
+  "code_quality": 9,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 8,
+  "completeness": 3,
+  "red_flags": -5,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "private-dao-voting",
+  "total_score": 42,
+  "code_quality": 4,
+  "git_history": 11,
+  "technical_depth": 15,
+  "documentation": 10,
+  "completeness": 2,
+  "red_flags": 0,
+  "classification": "BASIC"
+}
+,
+{
+  "repo": "private-state-toolkit-for-solana",
+  "total_score": 36,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 6,
+  "documentation": 8,
+  "completeness": 5,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "Privatepay",
+  "total_score": 27,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 8,
+  "completeness": 2,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "privatepussy",
+  "total_score": 25,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 3,
+  "documentation": 10,
+  "completeness": 2,
+  "red_flags": -7,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "PrivyLocker",
+  "total_score": 39,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 6,
+  "documentation": 10,
+  "completeness": 6,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "program",
+  "total_score": 34,
+  "code_quality": 4,
+  "git_history": 11,
+  "technical_depth": 9,
+  "documentation": 8,
+  "completeness": 5,
+  "red_flags": -3,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "Protocol-01",
+  "total_score": 40,
+  "code_quality": 8,
+  "git_history": 11,
+  "technical_depth": 13,
+  "documentation": 10,
+  "completeness": 11,
+  "red_flags": -13,
+  "classification": "BASIC"
+}
+,
+{
+  "repo": "psol-v2",
+  "total_score": 33,
+  "code_quality": 2,
+  "git_history": 11,
+  "technical_depth": 13,
+  "documentation": 8,
+  "completeness": 3,
+  "red_flags": -4,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "psychat-solana",
+  "total_score": 31,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 6,
+  "documentation": 8,
+  "completeness": 5,
+  "red_flags": -5,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "QN-Privacy-Gateway",
+  "total_score": 28,
+  "code_quality": 7,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 8,
+  "completeness": 2,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "rentreclaim-privacy",
+  "total_score": 30,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 8,
+  "completeness": 5,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "rollcast-network",
+  "total_score": 20,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 3,
+  "completeness": 0,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "safesol",
+  "total_score": 41,
+  "code_quality": 5,
+  "git_history": 11,
+  "technical_depth": 13,
+  "documentation": 10,
+  "completeness": 5,
+  "red_flags": -3,
+  "classification": "BASIC"
+}
+,
+{
+  "repo": "sapp",
+  "total_score": 19,
+  "code_quality": 2,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 8,
+  "completeness": 0,
+  "red_flags": -2,
+  "classification": "VIBE_CODED"
+}
+,
+{
+  "repo": "Scope-privacy-engine",
+  "total_score": 22,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 6,
+  "completeness": 2,
+  "red_flags": -3,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "Secp256r1-vault-pinocchio",
+  "total_score": 31,
+  "code_quality": 5,
+  "git_history": 11,
+  "technical_depth": 3,
+  "documentation": 10,
+  "completeness": 2,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "Secret-Battle-Encrypted-Duel",
+  "total_score": 23,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 6,
+  "completeness": 0,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "seedpay-solana-privacy-hack",
+  "total_score": 26,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 6,
+  "documentation": 1,
+  "completeness": 2,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "SHadoW-BID-PAYments",
+  "total_score": 18,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 1,
+  "completeness": 0,
+  "red_flags": 0,
+  "classification": "VIBE_CODED"
+}
+,
+{
+  "repo": "shadow-fence",
+  "total_score": 43,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 11,
+  "documentation": 10,
+  "completeness": 5,
+  "red_flags": 0,
+  "classification": "BASIC"
+}
+,
+{
+  "repo": "shadow-markets",
+  "total_score": 44,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 15,
+  "documentation": 10,
+  "completeness": 2,
+  "red_flags": 0,
+  "classification": "BASIC"
+}
+,
+{
+  "repo": "shadow-tracker",
+  "total_score": 20,
+  "code_quality": 3,
+  "git_history": 11,
+  "technical_depth": 3,
+  "documentation": 8,
+  "completeness": 2,
+  "red_flags": -7,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "shadow",
+  "total_score": 44,
+  "code_quality": 7,
+  "git_history": 11,
+  "technical_depth": 15,
+  "documentation": 8,
+  "completeness": 5,
+  "red_flags": -2,
+  "classification": "BASIC"
+}
+,
+{
+  "repo": "shadowwire-privacy-solana",
+  "total_score": 23,
+  "code_quality": 4,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 8,
+  "completeness": 5,
+  "red_flags": -5,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "Shielded-Phosyn",
+  "total_score": 18,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 1,
+  "completeness": 0,
+  "red_flags": 0,
+  "classification": "VIBE_CODED"
+}
+,
+{
+  "repo": "shielded-pool-pinocchio-solana",
+  "total_score": 32,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 7,
+  "documentation": 8,
+  "completeness": 0,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "shieldedremit",
+  "total_score": 25,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 8,
+  "completeness": 2,
+  "red_flags": -2,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "Shinade",
+  "total_score": 22,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 3,
+  "completeness": 2,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "Silent-Rails",
+  "total_score": 37,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 6,
+  "documentation": 6,
+  "completeness": 8,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "sip-app",
+  "total_score": 29,
+  "code_quality": 10,
+  "git_history": 11,
+  "technical_depth": 3,
+  "documentation": 8,
+  "completeness": 5,
+  "red_flags": -8,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "sip-mobile",
+  "total_score": 33,
+  "code_quality": 8,
+  "git_history": 11,
+  "technical_depth": 3,
+  "documentation": 8,
+  "completeness": 8,
+  "red_flags": -5,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "sip-protocol",
+  "total_score": 34,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 15,
+  "documentation": 10,
+  "completeness": 5,
+  "red_flags": -13,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "sip-website",
+  "total_score": 35,
+  "code_quality": 8,
+  "git_history": 11,
+  "technical_depth": 3,
+  "documentation": 10,
+  "completeness": 8,
+  "red_flags": -5,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "solana-agent-cash",
+  "total_score": 32,
+  "code_quality": 12,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 6,
+  "completeness": 3,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "solana-AI-FHE-services-engagement-contract",
+  "total_score": 22,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 3,
+  "completeness": 2,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "solana-compliance-relayer",
+  "total_score": 28,
+  "code_quality": 4,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 10,
+  "completeness": 6,
+  "red_flags": -3,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "solana-confidential-transfer-typescript",
+  "total_score": 25,
+  "code_quality": 4,
+  "git_history": 11,
+  "technical_depth": 3,
+  "documentation": 5,
+  "completeness": 2,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "solana-conviction-markets",
+  "total_score": 32,
+  "code_quality": 3,
+  "git_history": 11,
+  "technical_depth": 6,
+  "documentation": 6,
+  "completeness": 6,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "solana-exposure-scanner",
+  "total_score": 25,
+  "code_quality": 4,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 10,
+  "completeness": 2,
+  "red_flags": -2,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "solana-pinocchio-amm-workshop",
+  "total_score": 20,
+  "code_quality": 5,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 4,
+  "completeness": 0,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "solana-pqzk-fullchain",
+  "total_score": 33,
+  "code_quality": 4,
+  "git_history": 11,
+  "technical_depth": 6,
+  "documentation": 10,
+  "completeness": 5,
+  "red_flags": -3,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "Solana-Privacy-Hack-",
+  "total_score": 20,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 3,
+  "completeness": 0,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "solana-privacy-hack-backend",
+  "total_score": 21,
+  "code_quality": 8,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 0,
+  "completeness": 2,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "solana-privacy-hack-frontend",
+  "total_score": 23,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 4,
+  "completeness": 2,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "solana-privacy-hack",
+  "total_score": 16,
+  "code_quality": 2,
+  "git_history": 11,
+  "technical_depth": 3,
+  "documentation": 0,
+  "completeness": 0,
+  "red_flags": 0,
+  "classification": "VIBE_CODED"
+}
+,
+{
+  "repo": "Solana-Privacy-Hackathon-2026",
+  "total_score": 17,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 0,
+  "completeness": 0,
+  "red_flags": 0,
+  "classification": "VIBE_CODED"
+}
+,
+{
+  "repo": "solana-privacy-rpc",
+  "total_score": 28,
+  "code_quality": 7,
+  "git_history": 11,
+  "technical_depth": 6,
+  "documentation": 8,
+  "completeness": 3,
+  "red_flags": -7,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "solana-privacy-scanner",
+  "total_score": 24,
+  "code_quality": 4,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 6,
+  "completeness": 5,
+  "red_flags": -2,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "solana-privacy-shield",
+  "total_score": 23,
+  "code_quality": 3,
+  "git_history": 11,
+  "technical_depth": 4,
+  "documentation": 4,
+  "completeness": 3,
+  "red_flags": -2,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "solana-program-vault",
+  "total_score": 23,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 6,
+  "completeness": 0,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "Solana-Programs",
+  "total_score": 22,
+  "code_quality": 3,
+  "git_history": 11,
+  "technical_depth": 6,
+  "documentation": 0,
+  "completeness": 2,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "Solana-Vault-Escrow-Pinocchio",
+  "total_score": 26,
+  "code_quality": 7,
+  "git_history": 11,
+  "technical_depth": 3,
+  "documentation": 6,
+  "completeness": 2,
+  "red_flags": -3,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "solana-vault-standard",
+  "total_score": 27,
+  "code_quality": 2,
+  "git_history": 11,
+  "technical_depth": 9,
+  "documentation": 10,
+  "completeness": 3,
+  "red_flags": -8,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "solana-zklogin",
+  "total_score": 29,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 7,
+  "documentation": 3,
+  "completeness": 2,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "solanaNoirWXMR",
+  "total_score": 38,
+  "code_quality": 4,
+  "git_history": 11,
+  "technical_depth": 15,
+  "documentation": 8,
+  "completeness": 0,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "SolanaPrivacyHackathon2026",
+  "total_score": 43,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 15,
+  "documentation": 10,
+  "completeness": 8,
+  "red_flags": -7,
+  "classification": "BASIC"
+}
+,
+{
+  "repo": "SolanaPrivacyKit",
+  "total_score": 27,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 4,
+  "documentation": 4,
+  "completeness": 5,
+  "red_flags": -3,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "solprivacy-cli",
+  "total_score": 25,
+  "code_quality": 4,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 10,
+  "completeness": 2,
+  "red_flags": -2,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "SolsticeProtocol",
+  "total_score": 42,
+  "code_quality": 8,
+  "git_history": 11,
+  "technical_depth": 13,
+  "documentation": 10,
+  "completeness": 0,
+  "red_flags": 0,
+  "classification": "BASIC"
+}
+,
+{
+  "repo": "SolVoid",
+  "total_score": 41,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 13,
+  "documentation": 8,
+  "completeness": 8,
+  "red_flags": -5,
+  "classification": "BASIC"
+}
+,
+{
+  "repo": "stealth-rails-SDK",
+  "total_score": 25,
+  "code_quality": 5,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 8,
+  "completeness": 1,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "StealthPay",
+  "total_score": 25,
+  "code_quality": 5,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 10,
+  "completeness": 2,
+  "red_flags": -3,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "stealthsuo",
+  "total_score": 27,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 8,
+  "completeness": 2,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "styx-stack-Solana-",
+  "total_score": 17,
+  "code_quality": 5,
+  "git_history": 11,
+  "technical_depth": 3,
+  "documentation": 6,
+  "completeness": 2,
+  "red_flags": -10,
+  "classification": "VIBE_CODED"
+}
+,
+{
+  "repo": "tele-pediatric-privacy-shield",
+  "total_score": 23,
+  "code_quality": 4,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 8,
+  "completeness": 5,
+  "red_flags": -5,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "triton-privacy-solana",
+  "total_score": 25,
+  "code_quality": 3,
+  "git_history": 11,
+  "technical_depth": 6,
+  "documentation": 6,
+  "completeness": 2,
+  "red_flags": -3,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "unified-trust-protocol-sdk",
+  "total_score": 21,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 4,
+  "completeness": 0,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "uranix",
+  "total_score": 19,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 0,
+  "completeness": 2,
+  "red_flags": 0,
+  "classification": "VIBE_CODED"
+}
+,
+{
+  "repo": "vapor-tokens",
+  "total_score": 43,
+  "code_quality": 4,
+  "git_history": 11,
+  "technical_depth": 15,
+  "documentation": 8,
+  "completeness": 5,
+  "red_flags": 0,
+  "classification": "BASIC"
+}
+,
+{
+  "repo": "vault-pinocchio",
+  "total_score": 23,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 3,
+  "documentation": 1,
+  "completeness": 2,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "Veil-SDK",
+  "total_score": 26,
+  "code_quality": 7,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 6,
+  "completeness": 2,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "veil",
+  "total_score": 23,
+  "code_quality": 0,
+  "git_history": 11,
+  "technical_depth": 9,
+  "documentation": 10,
+  "completeness": 3,
+  "red_flags": -10,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "veilvote",
+  "total_score": 34,
+  "code_quality": 4,
+  "git_history": 11,
+  "technical_depth": 6,
+  "documentation": 8,
+  "completeness": 5,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "velum",
+  "total_score": 23,
+  "code_quality": 4,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 8,
+  "completeness": 2,
+  "red_flags": -2,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "vex-zk",
+  "total_score": 35,
+  "code_quality": 5,
+  "git_history": 11,
+  "technical_depth": 10,
+  "documentation": 8,
+  "completeness": 3,
+  "red_flags": -2,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "vielProof",
+  "total_score": 33,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 8,
+  "documentation": 6,
+  "completeness": 2,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "voizen-core",
+  "total_score": 28,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 8,
+  "completeness": 3,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "wavis-protocol",
+  "total_score": 36,
+  "code_quality": 3,
+  "git_history": 11,
+  "technical_depth": 6,
+  "documentation": 8,
+  "completeness": 8,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "yieldcash-solana-privacy",
+  "total_score": 44,
+  "code_quality": 4,
+  "git_history": 11,
+  "technical_depth": 15,
+  "documentation": 8,
+  "completeness": 6,
+  "red_flags": 0,
+  "classification": "BASIC"
+}
+,
+{
+  "repo": "zelana",
+  "total_score": 18,
+  "code_quality": 1,
+  "git_history": 11,
+  "technical_depth": 9,
+  "documentation": 4,
+  "completeness": 3,
+  "red_flags": -10,
+  "classification": "VIBE_CODED"
+}
+,
+{
+  "repo": "zk-coprocessor-bridge",
+  "total_score": 36,
+  "code_quality": 7,
+  "git_history": 11,
+  "technical_depth": 10,
+  "documentation": 8,
+  "completeness": 0,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "zk-disorder",
+  "total_score": 27,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 0,
+  "documentation": 8,
+  "completeness": 2,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "zk-lense",
+  "total_score": 33,
+  "code_quality": 5,
+  "git_history": 11,
+  "technical_depth": 7,
+  "documentation": 10,
+  "completeness": 0,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "zk-playground",
+  "total_score": 30,
+  "code_quality": 8,
+  "git_history": 11,
+  "technical_depth": 3,
+  "documentation": 8,
+  "completeness": 3,
+  "red_flags": -3,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "ZKPMTD",
+  "total_score": 28,
+  "code_quality": 2,
+  "git_history": 11,
+  "technical_depth": 3,
+  "documentation": 10,
+  "completeness": 2,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "zkprof",
+  "total_score": 26,
+  "code_quality": 3,
+  "git_history": 11,
+  "technical_depth": 4,
+  "documentation": 6,
+  "completeness": 2,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "zmix",
+  "total_score": 26,
+  "code_quality": 4,
+  "git_history": 11,
+  "technical_depth": 7,
+  "documentation": 4,
+  "completeness": 2,
+  "red_flags": -2,
+  "classification": "ROUGH"
+}
+,
+{
+  "repo": "ZorroZk",
+  "total_score": 27,
+  "code_quality": 6,
+  "git_history": 11,
+  "technical_depth": 7,
+  "documentation": 3,
+  "completeness": 0,
+  "red_flags": 0,
+  "classification": "ROUGH"
+}
+]

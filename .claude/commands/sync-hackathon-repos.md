@@ -33,19 +33,82 @@ curl -s "https://api.github.com/search/repositories?q=solana+privacy+pushed:2026
 curl -s "https://api.github.com/search/repositories?q=privacy+hackathon+solana&sort=updated&order=desc&per_page=100" | jq '.items[] | {full_name, html_url, pushed_at, created_at, description}'
 ```
 
-### 3. For Each Repo - Clone or Update
+### 2.5 Filter Out Excluded Repos
 
-For new repos:
+**CRITICAL: Before processing any repo, check if it's in the exclusion list.**
+
+The `repo-index.json` contains an `excluded_repos` object with repos that have been manually reviewed and determined to NOT be privacy hackathon submissions. These should be skipped entirely.
+
 ```bash
-git clone --depth 1 <repo_url> repos/<repo_name>
+# Check if a repo is excluded
+repo_name="<repo_name>"
+is_excluded=$(jq -r ".excluded_repos[\"$repo_name\"] // empty" repo-index.json)
+
+if [[ -n "$is_excluded" ]]; then
+    reason=$(jq -r ".excluded_repos[\"$repo_name\"].reason" repo-index.json)
+    echo "SKIPPED (excluded): $repo_name - $reason"
+    continue  # Skip to next repo
+fi
 ```
 
-For existing repos:
+**Exclusion reasons include:**
+- Not Solana (wrong blockchain)
+- Pre-existing project (not created for hackathon)
+- Support repo (part of another submission, e.g., docs/blog for main project)
+- Not a project (profile README, resource list, etc.)
+- Broken/empty repo
+
+When processing GitHub API results, always filter against `excluded_repos` before cloning.
+
+### 3. For Each Repo - Check for Updates and Re-clone
+
+**IMPORTANT: Always check remote HEAD hash before updating to detect changes.**
+
+For each repo (new or existing):
+
 ```bash
-cd repos/<repo_name> && git fetch origin && git reset --hard origin/HEAD
+# Step 1: Get the PREVIOUS hash from repo-index.json (if exists)
+previous_hash=$(jq -r '.repos["<repo_name>"].head_commit // "none"' repo-index.json)
+
+# Step 2: For existing repos - get CURRENT local hash before update
+if [[ -d "repos/<repo_name>/.git" ]]; then
+    current_local_hash=$(cd repos/<repo_name> && git rev-parse HEAD)
+
+    # Step 3: Check remote hash WITHOUT cloning (faster)
+    remote_hash=$(git ls-remote <repo_url> HEAD | cut -f1)
+
+    if [[ "$current_local_hash" == "$remote_hash" ]]; then
+        echo "UNCHANGED: <repo_name> @ $current_local_hash"
+        # Skip re-clone, repo is up to date
+    else
+        echo "UPDATED: <repo_name> $current_local_hash -> $remote_hash"
+        # Remove and re-clone to get fresh copy
+        rm -rf repos/<repo_name>
+        git clone --depth 1 <repo_url> repos/<repo_name>
+    fi
+else
+    # New repo - clone it
+    echo "NEW: <repo_name>"
+    git clone --depth 1 <repo_url> repos/<repo_name>
+fi
+
+# Step 4: Record the NEW hash after clone/update
+new_hash=$(cd repos/<repo_name> && git rev-parse HEAD)
 ```
 
-Record the HEAD commit hash for each repo.
+**Track Changes Summary:**
+```bash
+# After processing all repos, report:
+echo "=== SYNC SUMMARY ==="
+echo "NEW repos cloned: $new_count"
+echo "UPDATED repos (hash changed): $updated_count"
+echo "UNCHANGED repos: $unchanged_count"
+echo ""
+echo "=== REPOS WITH UPDATES ==="
+# List repos where previous_hash != new_hash
+```
+
+Record the HEAD commit hash for each repo in repo-index.json with both `head_commit` and `previous_head_commit` fields.
 
 ### 4. Technical Due Diligence (PARALLEL)
 
@@ -145,7 +208,7 @@ Classification:
 
 ### 7. Update repo-index.json
 
-Write the updated index with all repos and their states:
+Write the updated index with all repos and their states. **Track both current and previous hashes to detect changes:**
 
 ```json
 {
@@ -154,13 +217,24 @@ Write the updated index with all repos and their states:
     "start": "2026-01-12",
     "end": "2026-02-01"
   },
+  "sync_stats": {
+    "total_repos": 106,
+    "new_this_sync": 3,
+    "updated_this_sync": 12,
+    "unchanged_this_sync": 91,
+    "repos_with_updates": ["chameo", "sip-protocol", "vex-zk"]
+  },
   "repos": {
     "repo-name": {
       "remote_url": "https://github.com/org/repo",
       "head_commit": "abc123def456...",
       "head_commit_short": "abc123d",
+      "previous_head_commit": "xyz789abc...",
+      "previous_head_commit_short": "xyz789a",
+      "has_update": true,
       "last_commit_date": "2026-02-01T03:45:00Z",
       "last_synced": "2026-02-01T12:00:00Z",
+      "first_synced": "2026-01-25T08:00:00Z",
       "analysis_file": "analyses/repo-name/abc123d.md",
       "hackathon_likelihood": 85,
       "likelihood_classification": "HIGH",
@@ -242,7 +316,22 @@ After completion, report:
 1. Number of repos synced (new vs updated)
 2. Number of repos analyzed (new analyses vs unchanged)
 3. Any repos that failed to sync or analyze
-4. Likelihood distribution (HIGH/MEDIUM/LOW counts)
-5. Repos with changed HEAD commits since last sync
-6. Top 10 repos by likelihood score
-7. Sponsor bounty candidates by category
+4. **Number of repos skipped (in excluded_repos list)**
+5. Likelihood distribution (HIGH/MEDIUM/LOW counts)
+6. Repos with changed HEAD commits since last sync
+7. Top 10 repos by likelihood score
+8. Sponsor bounty candidates by category
+
+## Managing Exclusions
+
+To add a repo to the exclusion list (preventing future syncs):
+
+```bash
+jq '.excluded_repos["<repo_name>"] = {"reason": "<reason>", "excluded_at": "'$(date +%Y-%m-%d)'"}' repo-index.json > tmp.json && mv tmp.json repo-index.json
+```
+
+To remove a repo from exclusions (allow it to be synced again):
+
+```bash
+jq 'del(.excluded_repos["<repo_name>"])' repo-index.json > tmp.json && mv tmp.json repo-index.json
+```

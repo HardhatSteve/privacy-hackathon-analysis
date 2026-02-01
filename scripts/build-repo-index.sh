@@ -1,6 +1,7 @@
 #!/bin/bash
 # Build repo-index.json by scanning all cloned repositories
 # Includes time-biased scoring for hackathon likelihood
+# Tracks previous hashes to detect updates
 
 set -e
 cd "$(dirname "$0")/.."
@@ -8,6 +9,32 @@ cd "$(dirname "$0")/.."
 HACKATHON_START="2026-01-12"
 HACKATHON_END="2026-02-01"
 LAST_MINUTE_START="2026-01-30"  # Final 48hrs
+OLD_INDEX_FILE="competition-intel/repo-index.json"
+
+# Load previous index for hash comparison
+get_previous_hash() {
+    local repo_name="$1"
+    if [[ -f "$OLD_INDEX_FILE" ]]; then
+        jq -r ".repos[\"$repo_name\"].head_commit // \"none\"" "$OLD_INDEX_FILE" 2>/dev/null || echo "none"
+    else
+        echo "none"
+    fi
+}
+
+get_first_synced() {
+    local repo_name="$1"
+    if [[ -f "$OLD_INDEX_FILE" ]]; then
+        jq -r ".repos[\"$repo_name\"].first_synced // \"\"" "$OLD_INDEX_FILE" 2>/dev/null || echo ""
+    else
+        echo ""
+    fi
+}
+
+# Count stats
+NEW_COUNT=0
+UPDATED_COUNT=0
+UNCHANGED_COUNT=0
+UPDATED_REPOS=""
 
 echo '{'
 echo '  "last_full_sync": "'$(date -u +"%Y-%m-%dT%H:%M:%SZ")'",'
@@ -19,9 +46,9 @@ echo '  },'
 echo '  "repos": {'
 
 first=true
-for dir in repos/*/; do
-    dir="${dir%/}"          # Now: repos/reponame
-    basename="${dir#repos/}" # Extract: reponame
+for dir in competition-intel/repos/*/; do
+    dir="${dir%/}"          # Now: competition-intel/repos/reponame
+    basename="${dir#competition-intel/repos/}" # Extract: reponame
 
     # Skip if not a directory
     [[ ! -d "$dir" ]] && continue
@@ -44,10 +71,10 @@ for dir in repos/*/; do
 
     # Check for existing analysis file (uses basename for analyses path)
     analysis_file=""
-    if [[ -f "analyses/$basename/$head_commit_short.md" ]]; then
-        analysis_file="analyses/$basename/$head_commit_short.md"
-    elif [[ -f "analyses/$basename/LATEST.md" ]]; then
-        analysis_file="analyses/$basename/LATEST.md"
+    if [[ -f "competition-intel/analyses/$basename/$head_commit_short.md" ]]; then
+        analysis_file="competition-intel/analyses/$basename/$head_commit_short.md"
+    elif [[ -f "competition-intel/analyses/$basename/LATEST.md" ]]; then
+        analysis_file="competition-intel/analyses/$basename/LATEST.md"
     fi
 
     # Initialize score
@@ -178,13 +205,39 @@ for dir in repos/*/; do
         analysis_file_json="\"$analysis_file\""
     fi
 
+    # Get previous hash for this repo
+    previous_hash=$(get_previous_hash "$basename")
+    previous_hash_short="${previous_hash:0:7}"
+
+    # Determine if this is new, updated, or unchanged
+    has_update="false"
+    if [[ "$previous_hash" == "none" ]]; then
+        ((NEW_COUNT++))
+    elif [[ "$previous_hash" != "$head_commit" ]]; then
+        has_update="true"
+        ((UPDATED_COUNT++))
+        UPDATED_REPOS="$UPDATED_REPOS\"$basename\","
+    else
+        ((UNCHANGED_COUNT++))
+    fi
+
+    # Get first_synced (preserve from previous index or set to now)
+    first_synced=$(get_first_synced "$basename")
+    if [[ -z "$first_synced" ]]; then
+        first_synced=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+    fi
+
     cat <<EOF
     "$basename": {
       "remote_url": "$remote_url",
       "head_commit": "$head_commit",
       "head_commit_short": "$head_commit_short",
+      "previous_head_commit": "$previous_hash",
+      "previous_head_commit_short": "$previous_hash_short",
+      "has_update": $has_update,
       "last_commit_date": "$last_commit_date",
       "last_synced": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
+      "first_synced": "$first_synced",
       "analysis_file": $analysis_file_json,
       "hackathon_likelihood": $score,
       "likelihood_classification": "$classification",
@@ -198,6 +251,16 @@ EOF
 
 done
 
+# Remove trailing comma from updated repos list
+UPDATED_REPOS="${UPDATED_REPOS%,}"
+
 echo ''
+echo '  },'
+echo '  "sync_stats": {'
+echo '    "total_repos": '$((NEW_COUNT + UPDATED_COUNT + UNCHANGED_COUNT))','
+echo '    "new_this_sync": '$NEW_COUNT','
+echo '    "updated_this_sync": '$UPDATED_COUNT','
+echo '    "unchanged_this_sync": '$UNCHANGED_COUNT','
+echo '    "repos_with_updates": ['"$UPDATED_REPOS"']'
 echo '  }'
 echo '}'
