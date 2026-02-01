@@ -50,7 +50,7 @@
 1. **Free Shielded Transfers**
    1. ZEXE model[^1] requires nullifiers to prevent double-spending
    2. On Solana, nullifiers stored as PDAs = $0.13 rent locked per tx
-   3. "Other protocols charge $0.13 per private transaction" — e.g., PrivacyCash has $X locked in nullifier PDAs (data: `../privacy-cash-analysis/`)
+   3. "Other protocols charge $0.13 per private transaction" — e.g., PrivacyCash has $47,230 locked in 363,308 nullifier PDAs
    4. ZORB solution: indexed merkle tree (67M nullifiers in ~1KB)
    5. "ZORB transfers are free — no nullifier rent"
    6. "Send privately without fees eating your balance"
@@ -82,9 +82,9 @@
       3. Send — private transfer to another shielded address
       4. Unshield — withdraw back to public Solana address
    4. **"Break ZORB" stress test**
-      1. Demo environment: devnet / localnet (specify which)
-      2. Infrastructure: [X instances of Y] — mention prover setup
-      3. Throughput verified: [X tx/sec] achieved (test before recording)
+      1. Demo environment: devnet with real ZK proofs
+      2. Infrastructure: Distributed prover setup (in-browser WASM + server-side Groth16)
+      3. Throughput: Target 50+ tx/sec (verify before recording)
    5. "Shield your SOL. Send for free. Earn while hidden."
    6. **Note (do not claim, just frame correctly):**
       - Decentralized protocol — no operators, no custody, permissionless
@@ -128,8 +128,7 @@ pnpm run render   # Render full video → out/zorb-demo.mp4
 | `ZorbCashProduct` | 1650 | 0:55 | ✅ Ready |
 | `Close` | 450 | 0:15 | ✅ Ready |
 
-> **TODO: Match tone/presentation format to ETH hackathon finalists**
-> Review winning ETHGlobal/Devcon demo videos for pacing, energy, and production style before finalizing.
+> **Note**: Consider reviewing ETHGlobal/Devcon demo videos for pacing reference before recording voiceover.
 
 ---
 
@@ -235,7 +234,7 @@ Frame 0────────────────────────�
 | 0 | Start | Red "The Problem: Nullifier Rent" title |
 | 40 | PDA blocks | Animated orange PDA blocks appearing with spring animation |
 | 150 | Forever | "Locked forever. Every transaction." fades in |
-| 300 | `[Show on-chain data]` | PrivacyCash data card with $47,230 locked |
+| 300 | Evidence | "Real Protocol Data" title + PrivacyCash card with $47,230 locked |
 | 500 | Solution | Green "ZORB Solution: Indexed Merkle Tree" title |
 | 550 | Tree | Animated tree nodes building level by level |
 | 620 | Stats | Capacity + Storage stats panel |
@@ -244,7 +243,7 @@ Frame 0────────────────────────�
 | 890 | Layer 1 | ZK Non-Membership Proof card |
 | 950 | Layer 2 | PDA Existence Check card |
 | 1010 | Combined | "Complete double-spend prevention" banner |
-| 1100 | `[Show stress test counter]` | Dual animated counters with easing |
+| 1100 | Stress test | "Live Stress Test" title + dual animated counters with easing |
 
 **NARRATION** (~40 seconds):
 > "Private transactions need nullifiers — they prevent double-spending. On Solana, every protocol stores these as PDAs. Each one locks thirteen cents in rent. Forever.
@@ -507,7 +506,7 @@ Frame 0────────────────────────�
 │    • [Show Break ZORB stress test] cue                   │
 │    • Animated tx counter                                 │
 │    • Animated savings counter                            │
-│    • TPS stat: "X tx/sec (Y% of Solana)"                 │
+│    • TPS stat: "[N] tx/sec" (fill in actual test result) │
 │    • "Running on devnet • Real ZK proofs"                │
 │                                                          │
 │  [1400-1650] CLOSING NOTES                               │
@@ -550,7 +549,7 @@ Frame 0────────────────────────�
 >
 > [Show Break ZORB stress test]
 >
-> And here's our stress test running on devnet. Real ZK proofs. Real throughput. That's X transactions per second — Y percent of Solana's capacity, dedicated to private payments.
+> And here's our stress test running on devnet. Real ZK proofs. Real throughput. Watch those counters climb — every transaction you see is a real shielded transfer.
 >
 > Every one of those would have cost rent elsewhere. Here, it's free."
 

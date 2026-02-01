@@ -212,8 +212,6 @@ const StressTestSection: React.FC<{ frame: number }> = ({ frame }) => {
   );
 
   const savedAmount = (txCount * 0.13).toFixed(2);
-  const tps = "X"; // Placeholder - fill with verified number
-  const solanaPercent = "Y%"; // Placeholder - fill with verified number
 
   return (
     <AbsoluteFill
@@ -239,7 +237,7 @@ const StressTestSection: React.FC<{ frame: number }> = ({ frame }) => {
           fontSize: 22,
           color: colors.textMuted,
           opacity,
-          marginBottom: 30,
+          marginBottom: 40,
         }}
       >
         Running on devnet • Real ZK proofs • Real throughput
@@ -248,14 +246,14 @@ const StressTestSection: React.FC<{ frame: number }> = ({ frame }) => {
       <div
         style={{
           display: "flex",
-          gap: 60,
+          gap: 80,
           opacity,
         }}
       >
         <div style={{ textAlign: "center" }}>
           <div
             style={{
-              fontSize: 72,
+              fontSize: 90,
               fontWeight: "bold",
               color: colors.text,
               fontFamily: "monospace",
@@ -263,7 +261,7 @@ const StressTestSection: React.FC<{ frame: number }> = ({ frame }) => {
           >
             {txCount.toLocaleString()}
           </div>
-          <div style={{ fontSize: 20, color: colors.textMuted }}>
+          <div style={{ fontSize: 24, color: colors.textMuted }}>
             Private Transactions
           </div>
         </div>
@@ -271,7 +269,7 @@ const StressTestSection: React.FC<{ frame: number }> = ({ frame }) => {
         <div style={{ textAlign: "center" }}>
           <div
             style={{
-              fontSize: 72,
+              fontSize: 90,
               fontWeight: "bold",
               color: colors.solutionGreen,
               fontFamily: "monospace",
@@ -279,33 +277,17 @@ const StressTestSection: React.FC<{ frame: number }> = ({ frame }) => {
           >
             ${savedAmount}
           </div>
-          <div style={{ fontSize: 20, color: colors.textMuted }}>
-            Rent Saved
-          </div>
-        </div>
-
-        <div style={{ textAlign: "center" }}>
-          <div
-            style={{
-              fontSize: 72,
-              fontWeight: "bold",
-              color: colors.zorbPurple,
-              fontFamily: "monospace",
-            }}
-          >
-            {tps}
-          </div>
-          <div style={{ fontSize: 20, color: colors.textMuted }}>
-            tx/sec ({solanaPercent} of Solana)
+          <div style={{ fontSize: 24, color: colors.textMuted }}>
+            Rent Saved vs PDAs
           </div>
         </div>
       </div>
 
       <p
         style={{
-          fontSize: 24,
+          fontSize: 28,
           color: colors.solutionGreen,
-          marginTop: 40,
+          marginTop: 50,
           opacity,
         }}
       >

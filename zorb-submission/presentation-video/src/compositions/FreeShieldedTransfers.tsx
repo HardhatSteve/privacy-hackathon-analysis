@@ -248,12 +248,12 @@ const OnChainEvidenceSection: React.FC<{ frame: number }> = ({ frame }) => {
       <h3
         style={{
           fontSize: 40,
-          color: colors.textMuted,
+          color: colors.problemRed,
           opacity,
           marginBottom: 40,
         }}
       >
-        [Show on-chain data]
+        Real Protocol Data
       </h3>
 
       {/* PrivacyCash data card */}
@@ -825,12 +825,12 @@ const StressTestCounterDemo: React.FC<{ frame: number }> = ({ frame }) => {
       <h3
         style={{
           fontSize: 36,
-          color: colors.textMuted,
+          color: colors.zorbCyan,
           opacity,
           marginBottom: 20,
         }}
       >
-        [Show stress test counter]
+        Live Stress Test
       </h3>
 
       <p

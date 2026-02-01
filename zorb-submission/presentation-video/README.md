@@ -2,6 +2,20 @@
 
 Remotion video for the ZORB Solana Privacy Hackathon submission.
 
+## Current Status
+
+**Video rendered and ready for voiceover:**
+- Output: `out/zorb-demo.mp4`
+- Duration: 3:00 (180 seconds)
+- Resolution: 1920x1080 (1080p)
+- Size: ~13 MB
+
+### Next Steps
+1. Record voiceover following `../PRESENTATION_VIDEO_SCRIPT.md`
+2. Sync audio with video using ffmpeg
+3. Upload to YouTube (unlisted)
+4. Add link to `../FINAL_SUBMISSION.md`
+
 ## Quick Start
 
 ```bash
@@ -30,7 +44,7 @@ Per `../PRESENTATION_VIDEO_SCRIPT.md`, the video is 3 minutes (5400 frames @ 30f
 - **ZorbDemo** — Full 3-minute video combining all sections
 - **Introduction** — ZORB logo, programmable privacy framing
 - **FreeShieldedTransfers** — PDA problem, indexed merkle tree solution
-- **YieldBearingSOL** — Unified SOL, anonymity sets, 7-8% APY
+- **YieldBearingSOL** — Anonymity set problem → Unified SOL solution → 7-8% APY bonus
 - **ZorbCashProduct** — Demo flows, stress test visualization
 - **Close** — CTA, links, tagline
 
