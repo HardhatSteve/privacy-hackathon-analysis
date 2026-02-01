@@ -128,6 +128,12 @@ Assets derived from the script:
 2. **Screen recordings** — Live demo at zorb.cash/stress-test, code walkthrough, Solana Explorer
 3. **Final edit** — All assets stitched together per script timing using FFmpeg
 
+### Video Resources
+
+| Path | Contents |
+|------|----------|
+| `presentation-video/resources/token-icons/` | SVG icons for LST tokens (SOL, jitoSOL, mSOL, vSOL, etc.) |
+
 When creating or modifying video assets, always check `PRESENTATION_VIDEO_SCRIPT.md` first to ensure alignment with the spec.
 
 ## Submission Checklist

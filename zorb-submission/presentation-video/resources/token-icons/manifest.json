@@ -1,0 +1,68 @@
+{
+  "tokens": [
+    {
+      "symbol": "JitoSOL",
+      "name": "Jito Staked SOL",
+      "mint": "J1toso1uCk3RLmjorhTtrVwY9HJ7X8V9yYac6Y7kGCPn",
+      "metaplex_pda": "8yn5oqFMwYA8SgGqWwKq1Hia8aM5gh1DWmHEL34hMqBX",
+      "metaplex_uri": "https://storage.googleapis.com/token-metadata/JitoSOL.json",
+      "icons": {
+        "metaplex": "https://storage.googleapis.com/token-metadata/JitoSOL-256.png",
+        "local": "source/metaplex/JitoSOL-256.png",
+        "resolution": "256x256",
+        "format": "PNG"
+      },
+      "higher_res_sources": [
+        "https://brandfetch.com/jito.network (SVG/PNG brand assets)",
+        "https://iconscout.com/all-assets/jito-criptomoneda"
+      ]
+    },
+    {
+      "symbol": "dSOL",
+      "name": "Drift Staked SOL",
+      "mint": "Dso1bDeDjCQxTrWHqUUi63oBvV7Mdm6WaobLbQ7gnPQ",
+      "metaplex_pda": "88jpQZ6NjvR6yhtnc2dwr5Z34MLsB8QpxnKtdL28ct1i",
+      "metaplex_uri": "https://drift-public.s3.eu-central-1.amazonaws.com/dSOL.json",
+      "icons": {
+        "metaplex": "https://drift-public.s3.eu-central-1.amazonaws.com/dSOL.svg",
+        "local": "source/metaplex/dSOL.svg",
+        "resolution": "vector",
+        "format": "SVG"
+      },
+      "higher_res_sources": [
+        "SVG is already vector - infinite resolution",
+        "https://drift.trade (official website may have brand assets)"
+      ]
+    },
+    {
+      "symbol": "vSOL",
+      "name": "The Vault",
+      "mint": "vSoLxydx6akxyMD9XEcPvGYNGq6Nn66oqVb3UkGkei7",
+      "metaplex_pda": "7VCeH22Ai4FAE6w5hG3gZVRcXASqsUHp29HEHQVv7GQ3",
+      "metaplex_uri": "https://gateway.irys.xyz/A2h4aFwi2vW2yXbixX6mvwhWB7P5bebrDbVza9XkJxHv",
+      "icons": {
+        "metaplex_svg": "https://bafkreig55mf3lazzbgndiqyqvdmchdsykvvebww7cqlws6ywgog5xfdzta.ipfs.nftstorage.link/",
+        "metaplex_png": "https://gateway.irys.xyz/DTBps6awrJWectiBhMubYke4TBnE9kkVqyCVP4MB4irB",
+        "local_svg": "source/metaplex/vSOL-icon.svg",
+        "local_png": "source/hires/vSOL-hires.png",
+        "resolution": "680x680",
+        "format": "SVG + PNG"
+      }
+    },
+    {
+      "symbol": "dzSOL",
+      "name": "DoubleZero Staked SOL",
+      "mint": "Gekfj7SL2fVpTDxJZmeC46cTYxinjB6gkAnb6EGT6mnn",
+      "metaplex_pda": "5DpuzMFVBGPTodwvovdBXDy8Mg2su7u28WHRsN3BRdF9",
+      "metaplex_uri": "https://doublezero.xyz/dzSOL/metadata.json",
+      "icons": {
+        "metaplex_svg": "https://fn474du36qdxqh6szvejo72imufs4tcnskea73kg4jx53e5rarba.arweave.net/K3n-Dpv0B3gf0s1Il39IZQsuTE2SiA_tRuJv3ZOxBEI",
+        "metaplex_png": "https://doublezero.xyz/dzSOL/icon.png",
+        "local_svg": "source/metaplex/dzSOL-icon.svg",
+        "local_png": "source/hires/dzSOL-hires.png",
+        "resolution": "200x200",
+        "format": "SVG + PNG"
+      }
+    }
+  ]
+}

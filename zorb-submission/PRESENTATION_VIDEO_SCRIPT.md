@@ -6,37 +6,61 @@
 
 ---
 
-<core_messaging>
+<video_outline>
 
-The video must hit all messages below:
+The video must hit all messages below (in order):
 
-### 1. Free Shielded Transfers
-- [ ] ZEXE model requires nullifiers to prevent double-spending
-- [ ] On Solana, nullifiers stored as PDAs = $0.13 rent locked per tx
-- [ ] "Other protocols charge $0.13 per private transaction"
-- [ ] Concrete example: PrivacyCash has $X locked in nullifier PDAs (show on-chain data)
-- [ ] ZORB solution: indexed merkle tree (67M nullifiers in ~1KB)
-- [ ] "ZORB transfers are free — no nullifier rent"
-- [ ] "Send privately without fees eating your balance"
+0. **Introduction — ZORB**
+   1. ZORB is exploring programmable privacy on Solana
+   2. We started with private payments — fully unlinkable transactions using commitments and nullifiers (the ZEXE model)[^1]
+   3. Architecturally similar to Zcash shielded payments[^2]
+   4. This problem space is largely unexplored on Solana
 
-### 2. Yield-Bearing Shielded SOL
-- [ ] "Your shielded SOL earns 7-8% APY"
-- [ ] "Privacy + yield — no tradeoff"
-- [ ] "Backed by liquid staking (vSOL, jitoSOL, mSOL)"
-- [ ] "Unified pool = larger anonymity set" (separate pools per LST would fragment privacy)
+1. **Free Shielded Transfers**
+   - **TODO:** Two birds, one stone — bring STARKs and Circle-FRI onto Solana through Groth16 (recursive verification)
+   1. ZEXE model[^1] requires nullifiers to prevent double-spending
+   2. On Solana, nullifiers stored as PDAs = $0.13 rent locked per tx
+   3. "Other protocols charge $0.13 per private transaction" — e.g., PrivacyCash has $X locked in nullifier PDAs (show on-chain data)
+   4. ZORB solution: indexed merkle tree (67M nullifiers in ~1KB)
+   5. "ZORB transfers are free — no nullifier rent"
+   6. "Send privately without fees eating your balance"
+   7. Stress test demo: show throughput as % of Solana TPS + total $ saved (rent that would have been locked)
 
-### 3. zorb.cash — The Product
-- [ ] zorb.cash combines both: free transfers + yield-bearing privacy
-- [ ] **"Break ZORB" stress test**
-  - [ ] Demo environment: devnet / localnet (specify which)
-  - [ ] Infrastructure: [X instances of Y] — mention prover setup
-  - [ ] Throughput verified: [X tx/sec] achieved (test before recording)
-- [ ] "Shield your SOL. Send for free. Earn while hidden."
-**Note (do not claim, just frame correctly):**
-- Decentralized protocol — no operators, no custody, permissionless
-- Compliance path exists: proof of innocence / association sets
+2. **Yield-Bearing Shielded SOL**
+   1. Introduce **Unified SOL** — the product name (show icon)
+   2. Groups SOL-equivalents (SOL, vSOL, jitoSOL, mSOL) into a single fungible unit for shielded payments
+   3. Yield-bearing: underlying LSTs continue earning staking rewards while shielded — "Your shielded SOL earns 7-8% APY"
+   4. "Privacy + yield — no tradeoff"
+   5. Technical: ZK circuit computes yield share using global reward accumulator (amount never revealed)
+   6. Technical: `unified-sol-pool` Solana program handles LST vaults, exchange rates, harvest-finalize cycle
+   7. "Unified pool = larger anonymity set" (separate pools per LST would fragment privacy)
 
-</core_messaging>
+3. **zorb.cash — The Product**
+   1. zorb.cash is an early product that combines both: free transfers + yield-bearing privacy
+   2. Wallet: deterministic signature wallet; can also do native ed25519 Solana keypair spend authorizations via STARK + in-browser WASM proving
+   3. **Demo: Basic flows**
+      1. Shielded addresses — generate/display
+      2. Shield — deposit SOL/LST into shielded pool
+      3. Send — private transfer to another shielded address
+      4. Unshield — withdraw back to public Solana address
+   4. **"Break ZORB" stress test**
+      1. Demo environment: devnet / localnet (specify which)
+      2. Infrastructure: [X instances of Y] — mention prover setup
+      3. Throughput verified: [X tx/sec] achieved (test before recording)
+   3. "Shield your SOL. Send for free. Earn while hidden."
+   4. **Note (do not claim, just frame correctly):**
+      - Decentralized protocol — no operators, no custody, permissionless
+      - Compliance path exists: proof of innocence / association sets
+
+</video_outline>
+
+<references>
+
+[^1]: **ZEXE** — "ZEXE: Enabling Decentralized Private Computation" (Bowe, Chiesa, Green, Miers, Mishra, Wu). IEEE S&P 2020. The commitment + nullifier model for private computation. Paper: https://eprint.iacr.org/2018/962
+
+[^2]: **Zerocash** — "Zerocash: Decentralized Anonymous Payments from Bitcoin" (Ben-Sasson et al.). IEEE S&P 2014. Origin of the commitment/nullifier paradigm used in Zcash and ZEXE. Paper: https://eprint.iacr.org/2014/349
+
+</references>
 
 ---
 
